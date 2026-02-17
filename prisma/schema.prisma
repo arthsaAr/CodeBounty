@@ -1,5 +1,57 @@
-// Database connection
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model User {
+  id          Int      @id @default(autoincrement())
+  githubId    String   @unique
+  username    String
+  email       String?
+  createdAt   DateTime @default(now())
+  repositories  Repository[]
+  transactions  Transaction[]
+}
+
+model Repository {
+  id        Int      @id @default(autoincrement())
+  name      String
+  url       String
+  ownerId   Int
+  owner     User     @relation(fields: [ownerId], references: [id])
+  bounties Bounty[] 
+}
+
+model Bounty {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  reward      Float
+  repository  Repository @relation(fields: [repositoryId], references: [id])
+  repositoryId Int
+  createdAt   DateTime @default(now())
+  bugReports   BugReport[]
+}
+
+model BugReport {
+  id        Int      @id @default(autoincrement())
+  title     String
+  description String
+  bountyId  Int
+  bounty    Bounty   @relation(fields: [bountyId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Transaction {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  amount    Float
+  type      String
+  createdAt DateTime @default(now())
 }

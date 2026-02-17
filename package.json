@@ -23,7 +23,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@prisma/client": "^7.4.0",
+    "@prisma/client": "^6.19.2",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.3.1",
@@ -31,6 +31,6 @@
     "jsonwebtoken": "^9.0.3",
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12",
-    "prisma": "^7.4.0"
+    "prisma": "^6.19.2"
   }
 }
