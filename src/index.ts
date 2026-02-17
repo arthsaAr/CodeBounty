@@ -1,12 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
 import {PrismaClient} from "@prisma/client";
+import passport from "./config/passport";
+import authRoutes from "./routes/auth";
 
 dotenv.config();
 
 const prisma = new PrismaClient();
 const app = express();      //creating the web server
 app.use(express.json());        //this helps server to understand JSON data in request
+app.use(passport.initialize());
+app.use("/auth", authRoutes);
 
 //creates a route so whensomeone visits http://localhost:3000/ they see "CodeBounty..."
 app.get("/", (req, res) => {
