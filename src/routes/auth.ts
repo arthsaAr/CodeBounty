@@ -5,11 +5,17 @@ import jwt from "jsonwebtoken";
 
 const router = Router();
 
+//this redirects user to github login page
+//and sends the Client_id to github
 router.get(
     "/github", passport.authenticate("github", {scope: ["user:email"]})
 );
 
-router.get("/github/callback", passport.authenticate("github", {session:false}), 
+//when the user loggsin and allows the persmission, user is redirected to this callback
+//this creates a signed token with id and username
+router.get(
+    "/github/callback", 
+    passport.authenticate("github", {session:false}), 
     (req, res) => {
         const user = req.user as any;
         const token = jwt.sign({
@@ -17,7 +23,7 @@ router.get("/github/callback", passport.authenticate("github", {session:false}),
         }, process.env.JWT_SECRET!,
         {expiresIn: "7d"});
 
-        res.json({token});
+        res.json({token});      //sending the token to client(or frontend)
     }
 );
 

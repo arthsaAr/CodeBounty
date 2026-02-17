@@ -7,6 +7,8 @@ dotenv.config();
 const prisma = new PrismaClient();
 
 passport.use(
+    //here, github sends passport accesstoken and profile
+    //profile contains the id, username, and emails(sent by github)
     new GitHubStrategy(
         {
             clientID: process.env.GITHUB_CLIENT_ID!,
@@ -15,9 +17,12 @@ passport.use(
         },
         async(accessToken, refreshToken, profile, done) => {
             try {
+                //if user already exists in database(prisma db)
                 let user = await prisma.user.findUnique({
                     where: {githubId: profile.id},
                 });
+                //if no user exists than create one
+                //github identity and prisma user are connected using githubID
                 if(!user){
                     user = await prisma.user.create({
                         data: {
@@ -27,7 +32,7 @@ passport.use(
                         },
                     });
                 }
-                return done(null, user);
+                return done(null, user);        //auth success
             } catch(error) {
                 return done(error as Error);
             }
