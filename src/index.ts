@@ -1,14 +1,21 @@
 import express from "express";
 import dotenv from "dotenv";
+import {PrismaClient} from "@prisma/client";
 
 dotenv.config();
 
+const prisma = new PrismaClient();
 const app = express();      //creating the web server
 app.use(express.json());        //this helps server to understand JSON data in request
 
 //creates a route so whensomeone visits http://localhost:3000/ they see "CodeBounty..."
 app.get("/", (req, res) => {
     res.send("CodeBounty backend is running!");
+});
+
+app.get("/test-db", async(req , res) => {
+    const users = await prisma.user.findMany();
+    res.json(users);
 });
 
 const PORT = process.env.PORT || 3000;
