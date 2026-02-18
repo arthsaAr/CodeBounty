@@ -13,22 +13,22 @@ export const authenticate = (
     res: Response,
     next: NextFunction
 ) => {
-    const authHeader = req.headers.authorization;
+    const authHeader = req.headers.authorization;       //checking if client sent a JWT
 
     if(!authHeader){
         return res.status(401).json({message: "No token provided"});
     }
 
-    const token = authHeader.split(" ")[1];
+    const token = authHeader.split(" ")[1];     //taking only the token part
 
     if(!token){
         return res.status(401).json({message: "Invalid token format"});
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!);
-        req.user = decoded;
-        next();
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!);     //verifying the userid and username from the secret code
+        req.user = decoded;             //attachingt the user info, and all routes can access who is calling
+        next();     //for valid token, continuing to route handler
     } catch(error) {
         return res.status(401).json({message: "Invalid or expired token"});
     }

@@ -13,8 +13,11 @@ const prisma = new PrismaClient();
 const app = express();      //creating the web server
 app.use(express.json());        //this helps server to understand JSON data in request
 app.use(passport.initialize());
+
 app.use("/auth", authRoutes);
 
+//testing the protected route
+//first authenticate --> checks token --> if valid route runs and if invalid 401
 app.get("/protected", authenticate, (req: AuthenticatedRequest, res) => {
     res.json({
         message: "Access Granted",
