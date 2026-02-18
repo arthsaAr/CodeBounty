@@ -2,6 +2,8 @@ import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github2";
 import { PrismaClient } from "@prisma/client";
 import dotenv from "dotenv";
+import { Profile } from "passport-github2";
+import { VerifyCallback } from "passport-oauth2";
 
 dotenv.config();
 const prisma = new PrismaClient();
@@ -15,7 +17,7 @@ passport.use(
             clientSecret: process.env.GITHUB_CLIENT_SECRET!,
             callbackURL: "http://localhost:3000/auth/github/callback",
         },
-        async(accessToken, refreshToken, profile, done) => {
+        async(accessToken: string, refreshToken: string, profile: Profile, done: VerifyCallback) => {
             try {
                 //if user already exists in database(prisma db)
                 let user = await prisma.user.findUnique({

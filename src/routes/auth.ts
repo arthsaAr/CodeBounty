@@ -1,5 +1,5 @@
 //creating auth routes
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import passport from "../config/passport";
 import jwt from "jsonwebtoken";
 
@@ -13,10 +13,11 @@ router.get(
 
 //when the user loggsin and allows the persmission, user is redirected to this callback
 //this creates a signed token with id and username
+//JST is like proof of identity for future request
 router.get(
     "/github/callback", 
     passport.authenticate("github", {session:false}), 
-    (req, res) => {
+    (req: Request, res: Response) => {
         const user = req.user as any;
         const token = jwt.sign({
             id: user.id, username: user.username

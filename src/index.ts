@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import {PrismaClient} from "@prisma/client";
 import passport from "./config/passport";
 import authRoutes from "./routes/auth";
+import { Request, Response } from "express";
 
 dotenv.config();
 
@@ -13,11 +14,11 @@ app.use(passport.initialize());
 app.use("/auth", authRoutes);
 
 //creates a route so whensomeone visits http://localhost:3000/ they see "CodeBounty..."
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
     res.send("CodeBounty backend is running!");
 });
 
-app.get("/test-db", async(req , res) => {
+app.get("/test-db", async(req: Request, res: Response) => {
     const users = await prisma.user.findMany();
     res.json(users);
 });
