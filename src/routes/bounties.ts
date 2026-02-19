@@ -1,11 +1,15 @@
-/**
- * creating bounty setup
- */
+// /**
+//  * creating bounty setup
+//  */
 
 import { Router } from "express";
 import { authenticate, AuthenticatedRequest } from "../middleware/authenticate";
 import { PrismaClient } from "@prisma/client";
 
+const prisma = new PrismaClient();
+const router = Router();
+
+//creates the bounty
 router.post("/", authenticate, async (req: AuthenticatedRequest, res)=> {
     try{
         const user = req.user;
@@ -41,8 +45,6 @@ router.post("/", authenticate, async (req: AuthenticatedRequest, res)=> {
             },
         });
 
-
-
         res.json(bounty);
     } catch(error){
         console.error(error);
@@ -50,8 +52,48 @@ router.post("/", authenticate, async (req: AuthenticatedRequest, res)=> {
     }
 });
 
-//TODO!
-//need to get all the active repositories(for the bug finders)
-//update the status of the bounties, active, completed, cancelled
+//getting all the active bounties (for bug finders)
+router.get("/", async(req , res) => {
+    try{
+        const bounties = await prisma.bounty.findMany({
+            where: {status: "active"},
+            include: {repository: true},
+        });
+        res.json(bounties);
+    }catch(error){
+        res.status(500).json({message: "Failed to fetch bounties" });
+    }
+});
+
+//updating the status of bounties(like active/completed/cancelled)
+
+router.patch("/:id/status", authenticate, async(req: AuthenticatedRequest, res) => {
+    try{
+        const user = req.user;
+        const bountyId = parseInt(req.params.id as string);
+        const {status} = req.body;
+
+        const bounty = await prisma.bounty.findUnique({
+            where: {id: bountyId}
+        });
+
+        if(!bounty){
+            return res.status(404).json({message: "Bounty not found!"});
+        }
+
+        if(bounty.creatorId !== user.id){
+            return res.status(403).json({message: "Not your bounty"});
+        }
+
+        const updated = await prisma.bounty.update({
+            where: {id: bountyId},
+            data: {status}
+        });
+
+        res.json(updated);
+    }catch(error){
+        res.status(500).json({message: "Failed to update the bounty"});
+    }
+});
 
 export default router;

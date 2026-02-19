@@ -7,6 +7,7 @@ import { Request, Response } from "express";
 import { authenticate } from "./middleware/authenticate";
 import { AuthenticatedRequest } from "./middleware/authenticate";
 import repositoryRoutes from "./routes/repositories";
+import bountyRoutes from "./routes/bounties";
 
 dotenv.config();
 
@@ -14,9 +15,9 @@ const prisma = new PrismaClient();
 const app = express();      //creating the web server
 app.use(express.json());        //this helps server to understand JSON data in request
 app.use(passport.initialize());
-
 app.use("/auth", authRoutes);
 app.use("/repositories", repositoryRoutes);
+app.use("/bounties", bountyRoutes);
 
 //testing the protected route
 //first authenticate --> checks token --> if valid route runs and if invalid 401
