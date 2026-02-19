@@ -10,6 +10,7 @@ import { authenticate } from "./middleware/authenticate";
 import { AuthenticatedRequest } from "./middleware/authenticate";
 import repositoryRoutes from "./routes/repositories";
 import bountyRoutes from "./routes/bounties";
+import bugReportsRoutes from "./routes/bugReports";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(passport.initialize());
 app.use("/auth", authRoutes);
 app.use("/repositories", repositoryRoutes);
 app.use("/bounties", bountyRoutes);
+app.use("/bug-Reports", bugReportsRoutes);
 
 //testing the protected route
 //first authenticate --> checks token --> if valid route runs and if invalid 401
