@@ -78,6 +78,10 @@ router.patch("/:id/status", authenticate, async (req: AuthenticatedRequest, res)
         const reportId = parseInt(req.params.id as string);
         const {status} = req.body;
 
+        if(!["approved", "rejected"].includes(status)) {
+            return res.status(400).json({message: "Invalid status"});
+        }
+
         const report = await prisma.bugReport.findUnique({
             where: {id: reportId},
             include: {bounty: true},
@@ -91,12 +95,52 @@ router.patch("/:id/status", authenticate, async (req: AuthenticatedRequest, res)
             return res.status(403).json({message: "Not your bounty"});
         }
 
-        const  updated = await prisma.bugReport.update({
-            where: {id: reportId},
-            data: {status},
+        if(status === "rejected"){
+            const  updated = await prisma.bugReport.update({
+                where: {id: reportId},
+                data: {status: "rejected"},
+            });
+            res.json(updated);
+        }
+
+        //for when approved
+        const result = await prisma.$transaction(async (tx) => {
+            //firstly update the report
+            const  updateReport = await prisma.bugReport.update({
+                where: {id: reportId},
+                data: {status: "approved"},
+            });
+
+            //mark complete
+            await tx.bounty.update({
+                where: {id: report.bountyId},
+                data: {status: "completed"},
+            });
+
+            //transfer the credits to hunter
+
+            //creator's is reduced!
+            await tx.user.update({
+                where: {id: report.bounty.creatorId},
+                data: {
+                    credits: {decrement: report.bounty.creatorId}
+                }
+            });
+
+            //hunter should be increased
+            await tx.user.update({
+                where: {id: report.hunterId},
+                data: {
+                    credits: {increment: report.bounty.creatorId},
+                    reputation: {increment: 10},
+                },
+            });
+
+            return updateReport;
         });
 
-        res.json(updated);
+       res.json(result);
+
     }catch(error){
         res.status(500).json({message: "Failed to update report status"});
     }

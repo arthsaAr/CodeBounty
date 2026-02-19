@@ -17,6 +17,8 @@ model User {
   transactions  Transaction[]
   bounties      Bounty[]      @relation("UserBounties")
   bugReports    BugReport[]   // Added this
+  credits    Int      @default(1000)
+  reputation Int      @default(0)
 }
 
 model Repository {
