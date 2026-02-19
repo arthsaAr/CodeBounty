@@ -6,6 +6,7 @@ import authRoutes from "./routes/auth";
 import { Request, Response } from "express";
 import { authenticate } from "./middleware/authenticate";
 import { AuthenticatedRequest } from "./middleware/authenticate";
+import repositoryRoutes from "./routes/repositories";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());        //this helps server to understand JSON data in r
 app.use(passport.initialize());
 
 app.use("/auth", authRoutes);
+app.use("/repositories", repositoryRoutes);
 
 //testing the protected route
 //first authenticate --> checks token --> if valid route runs and if invalid 401
@@ -30,6 +32,7 @@ app.get("/", (req: Request, res: Response) => {
     res.send("CodeBounty backend is running!");
 });
 
+//just shows the users in the database
 app.get("/test-db", async(req: Request, res: Response) => {
     const users = await prisma.user.findMany();
     res.json(users);

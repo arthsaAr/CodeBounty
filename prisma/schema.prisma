@@ -19,12 +19,14 @@ model User {
 }
 
 model Repository {
-  id        Int      @id @default(autoincrement())
-  name      String
-  url       String
-  ownerId   Int
-  owner     User     @relation(fields: [ownerId], references: [id])
-  bounties Bounty[] 
+  id       Int      @id @default(autoincrement())
+  githubId String   @unique  // Add this
+  name     String
+  url      String
+  active   Boolean  @default(false)  // Add this
+  ownerId  Int
+  owner    User     @relation(fields: [ownerId], references: [id])
+  bounties Bounty[]
 }
 
 model Bounty {
