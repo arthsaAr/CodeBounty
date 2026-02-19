@@ -76,4 +76,30 @@ router.patch("/:id/activate", authenticate, async (req: AuthenticatedRequest, re
     }
 });
 
+//activating a repository
+router.patch("/:id/deactivate", authenticate, async (req: AuthenticatedRequest, res) => {
+    try {
+        const user = req.user;
+        const repoId = parseInt(req.params.id as string);
+
+        const repo = await prisma.repository.findUnique({where : {id: repoId}});
+        if(!repo){
+            return res.status(404).json({message: "Repository not found"});
+        }
+        if(repo.ownerId !== user.id){
+            return res.status(403).json({message: "Not your repository"});
+        }
+
+        const updatedRepo = await prisma.repository.update({
+            where: {id: repoId},
+            data: {active: false},
+        });
+
+        res.json(updatedRepo);
+    }catch(error){
+        console.error(error);
+        res.status(500).json({message: "Failed to deactivate repository"});
+    }
+});
+
 export default router;
