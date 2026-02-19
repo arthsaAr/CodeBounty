@@ -16,6 +16,7 @@ model User {
   createdAt   DateTime @default(now())
   repositories  Repository[]
   transactions  Transaction[]
+  bounties    Bounty[]  @relation("UserBounties")
 }
 
 model Repository {
@@ -33,11 +34,17 @@ model Bounty {
   id          Int      @id @default(autoincrement())
   title       String
   description String
-  reward      Float
-  repository  Repository @relation(fields: [repositoryId], references: [id])
+  amount      Int
+  difficulty  String
+  status      String   @default("active")
+
   repositoryId Int
-  createdAt   DateTime @default(now())
-  bugReports   BugReport[]
+  creatorId    Int
+
+  repository Repository @relation(fields: [repositoryId], references: [id])
+  creator    User       @relation("UserBounties", fields: [creatorId], references: [id])
+
+  bugReports BugReport[]
 }
 
 model BugReport {
