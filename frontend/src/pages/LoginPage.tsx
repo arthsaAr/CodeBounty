@@ -19,27 +19,27 @@ export default function LoginPage() {
             <div className="bg-[#151920] p-4 rounded-sm w-96 text-center mt-4">
                 <h2 className="text-lg font-semibold">Choose Your Role</h2>
 
-                <div className="bg-[#151920] py-5 rounded-lg mt-4 border-gray-700 hover:border-green-600 border-2 flex items-start gap-4">
-                    <FiTarget color="green" className="ml-1" size={30}/>
+                <div className="bg-[#151920] p-4 rounded-lg mt-4 border-gray-700 hover:border-green-600 border-2 flex items-start gap-4">
+                    <FiTarget color="green" size={30}/>
                     <div className="flex flex-col text-left">
                         <h2 className="font-semibold">Bug Hunter</h2>
                         <h3 className="text-xs text-gray-500 font-semibold">Review code and submit bug reports for rewards</h3>
                     </div>
                 </div>
 
-                <div className="bg-[#151920] py-5  rounded-lg mt-2 border-gray-700  hover:border-green-600 border-2 flex items-start gap-4">
-                    <IoShieldOutline color="green"  className="ml-1" size={30}/>
+                <div className="bg-[#151920] p-4  rounded-lg mt-2 border-gray-700  hover:border-green-600 border-2 flex items-start gap-4">
+                    <IoShieldOutline color="green" size={30}/>
                     <div className="flex flex-col text-left">
                         <h2 className="font-semibold">Repository Owner</h2>
                         <h3 className="text-xs text-gray-500 font-semibold">Post bounties and get your code reviewed</h3>
                     </div>
                 </div>
 
-                <div className="bg-[#151920] py-5 rounded-lg mt-2 border-gray-700  hover:border-green-600 border-2 flex items-start gap-4">
-                    <FaArrowTrendUp color="green"  className="ml-1" size={30}/>
+                <div className="bg-[#151920] p-4 rounded-lg mt-2 border-gray-700  hover:border-green-600 border-2 flex items-start gap-4">
+                    <FaArrowTrendUp color="green" size={30}/>
                     <div className="flex flex-col text-left">
                         <h2 className="font-semibold">Both</h2>
-                        <h3 className="text-xs text-gray-500 font-semibold">Hunt bugs and post bounties on your repositories</h3>
+                        <h3 className="text-xs text-gray-500 font-semibold">Hunt bugs & post bounties on your repositories</h3>
                     </div>
                     
                 </div>
@@ -53,7 +53,9 @@ export default function LoginPage() {
                             >
                             <FiGithub  className="mb-1 inline" />    Sign in with GitHub
                 </button>
-                <h3 className="text-xs mt-2 text-gray-400">By signing in, you agree to our Terms of Service</h3>
+                <h3 className="text-xs mt-2 text-gray-400">By signing in, you agree to our
+                    <span className="underline text-gray-400 hover:text-green-400 ml-1">Terms of Service</span>
+                </h3>
             </div>
 
             
