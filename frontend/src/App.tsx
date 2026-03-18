@@ -1,4 +1,5 @@
 import LoginPage from "./pages/LoginPage";
+import OAuthSuccess from "./pages/OAuthSuccess";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/oauth-success" element={<OAuthSuccess />} />
       </Routes>
     </Router>
     
