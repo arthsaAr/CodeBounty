@@ -1,6 +1,7 @@
 import LoginPage from "./pages/LoginPage";
 import OAuthSuccess from "./pages/OAuthSuccess";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import OwnerDashboard from "./pages/OwnerDashboard";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/oauth-success" element={<OAuthSuccess />} />
+        <Route path="/dashboard-owner" element={<OwnerDashboard />} />
       </Routes>
     </Router>
     
