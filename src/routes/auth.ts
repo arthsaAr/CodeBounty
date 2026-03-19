@@ -18,13 +18,19 @@ router.get(
     "/github/callback", 
     passport.authenticate("github", {session:false}), 
     (req: Request, res: Response) => {
+
         const user = req.user as any;
+        if (!user) {
+        return res.status(401).send("User not found");
+        }
+
         const token = jwt.sign({
             id: user.id, username: user.username
         }, process.env.JWT_SECRET!,
         {expiresIn: "7d"});
-
-        res.json({token});      //sending the token to client(or frontend)
+        console.log("Redirecting with token");
+        // res.json({token});      //sending the token to client(or frontend)
+        res.redirect(`http://localhost:5173/oauth-success?token=${token}`);
     }
 );
 
