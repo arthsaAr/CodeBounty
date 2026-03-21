@@ -1,0 +1,1 @@
+//page where pwner creates a new bounty
