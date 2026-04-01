@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components.tsx/Navbar";
+import Quickstat from "../components.tsx/Quickstat";
 
 export default function OwnerDashboard() {
     
@@ -23,14 +24,16 @@ export default function OwnerDashboard() {
     <div className="min-h-screen bg-black text-white">
 
       <Navbar />
-
-      <h1 className="text-3xl font-bold mb-2 mt-3">Welcome back, demo_user!</h1>
-      <h3 className="text-lg mb-6 text-gray-400">Browse bounties and submit bug reports</h3>
-      <button className="bg-green-500 px-4 py-2 rounded mb-6">
+      
+      <div className="px-8 md:px-16 py-6">
+        <Quickstat />
+      </div>
+      
+      {/* <button className="bg-green-500 px-4 py-2 rounded mb-6">
         Create Bounty
-      </button>
+      </button> */}
 
-      <div>
+      {/* <div>
         {bounties.map((b: any) => (
           <div key={b.id} className="border p-4 mb-2 rounded">
             <p>{b.title}</p>
@@ -38,7 +41,7 @@ export default function OwnerDashboard() {
             <p>{b.status}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
