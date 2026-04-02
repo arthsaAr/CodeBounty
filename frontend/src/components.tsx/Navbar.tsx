@@ -3,9 +3,13 @@ import { FiTarget } from 'react-icons/fi'
 import { MdOutlineDashboard, MdOutlineLogout  } from "react-icons/md";
 import { GoTrophy } from "react-icons/go";
 
-const Navbar = () => {
+type NavBarProps = {
+  setActivePage: (page: string) => void;
+  activePage: string;
+}
 
-  const isActive = true;  //temp
+const Navbar = ({ setActivePage, activePage }: NavBarProps) => {
+
   return (
     <div className='w-full bg-[#0f131a] text-white px-6 py-4 flex items-center justify-between'>
         <div className="text-xl font-semibold">
@@ -14,20 +18,43 @@ const Navbar = () => {
         </div>
 
       <div className="flex items-center gap-4">
-        <div className={`flex flex-row gap-2 items-center rounded-lg px-3 py-2 transition-colors 
-          ${isActive ? "bg-gray-800/80 text-emerald-400" : "hover:bg-gray-800 text-gray-400"}`}>  
+        <div 
+          onClick={() => setActivePage("dashboard")}
+          className={`flex flex-row gap-2 items-center rounded-lg px-3 py-2 cursor-pointer 
+          ${
+            activePage === "dashboard"
+              ? "bg-gray-800"
+              : "hover:bg-gray-800"
+          }
+          `}>  
             <MdOutlineDashboard color="green" size={20}/>
-            <button className={isActive ? "text-emerald-400" : "text-gray-400"}>Dashboard</button>
+            <span className={activePage === "dashboard" ? "text-emerald-400" : "text-white"}>Dashboard</span>
         </div>
 
-        <div className='flex flex-row gap-1 items-center rounded-lg  p-2 hover:bg-gray-800'>  
+        <div
+          onClick={() => setActivePage("bounties")}
+          className={`flex flex-row gap-1 items-center rounded-lg p-2 
+          ${            
+            activePage === "bounties"
+              ? "bg-gray-800"
+              : "hover:bg-gray-800"
+          }
+          `}>  
             <FiTarget color="green" size={20}/>
-            <button>Browse Bounties</button>
+            <span className={activePage === "bounties" ? "text-emerald-400" : "text-white"}>Browse Bounties</span>
         </div>
 
-        <div className='flex flex-row gap-1 items-center rounded-lg p-2 hover:bg-gray-800'>  
+        <div 
+          onClick={() => setActivePage("leaderboard")}
+          className={`flex flex-row gap-1 items-center rounded-lg p-2 
+          ${            
+            activePage === "leaderboard"
+              ? "bg-gray-800"
+              : "hover:bg-gray-800"
+          }
+          `}>  
             <GoTrophy  color="green" size={20}/>
-            <button>Leaderboard</button>
+            <span className={activePage === "leaderboard" ? "text-emerald-400" : "text-white"}>Leaderboard</span>
         </div>
       </div>
 

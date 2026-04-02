@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components.tsx/Navbar";
 import Quickstat from "../components.tsx/Quickstat";
+import BrowseBounties from "../components.tsx/BrowseBounties";
+import Leaderboard from "../components.tsx/Leaderboard";
 
 export default function OwnerDashboard() {
     
-  const [bounties, setBounties] = useState([]);
+  // const [bounties, setBounties] = useState([]);
+  const [activePage, setActivePage] = useState("dashboard");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -23,10 +26,14 @@ export default function OwnerDashboard() {
   return (
     <div className="min-h-screen bg-black text-white">
 
-      <Navbar />
+      <Navbar setActivePage={setActivePage} activePage={activePage} />
       
       <div className="px-8 md:px-16 py-6">
-        <Quickstat />
+        {activePage === "dashboard" && <Quickstat />}
+
+        {activePage === "bounties" && <BrowseBounties />}
+
+        {activePage === "leaderboard" && <Leaderboard />}
       </div>
       
       {/* <button className="bg-green-500 px-4 py-2 rounded mb-6">
