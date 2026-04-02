@@ -2,12 +2,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-import Quickstat from "../components/subcomp/Quickstat";
-import BrowseBounties from "../components/BrowseBounties";
-import Leaderboard from "../components/Leaderboard";
-import RecentBounties from "../components/subcomp/RecentBounties";
-import Submissions from "../components/subcomp/Submissions";
-import Quickactions from "../components/subcomp/Quickactions";
+import Quickstat from "../components/dashboard/Quickstat";
+import  Browserheader from "../components/browser/browserheader";
+import Leaderboard from "../components/leaderboard/Topthree";
+import RecentBounties from "../components/dashboard/RecentBounties";
+import Submissions from "../components/dashboard/Submissions";
+import Quickactions from "../components/dashboard/Quickactions";
+import Searchbar from "../components/browser/Searchbar";
 
 export default function OwnerDashboard() {
     
@@ -49,7 +50,14 @@ export default function OwnerDashboard() {
         )
         }
 
-        {activePage === "bounties" && <BrowseBounties />}
+        {activePage === "bounties" && 
+        (
+          <>
+          <Browserheader />
+          <Searchbar />
+          </>
+        )
+        }
 
         {activePage === "leaderboard" && <Leaderboard />}
       </div>
