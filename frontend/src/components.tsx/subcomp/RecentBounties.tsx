@@ -13,7 +13,7 @@ const RecentBounties = () => {
             <div>
                 <h1 className='text-white text-2xl'>Memory leak in Chart component</h1>
                 <h2 className='text-gray-500 font-normal text-md'>react-dashboard /src/components/Chart.tsx</h2>
-                <div className='flex flex-row gap-4 mt-2'>
+                <div className='flex flex-row gap-2 mt-2'>
                     <span className='px-3 py-1 text-xs font-medium rounded-full bg-red-500/10 text-red-400 border border-red-500/20'>hard</span>
                     <span className='px-3 py-1 text-xs font-medium rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20'>active</span>
                 </div>
