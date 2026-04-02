@@ -1,29 +1,30 @@
 //starting dashboard implementation!
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../components.tsx/Navbar";
-import Quickstat from "../components.tsx/subcomp/Quickstat";
-import BrowseBounties from "../components.tsx/BrowseBounties";
-import Leaderboard from "../components.tsx/Leaderboard";
-import RecentBounties from "../components.tsx/subcomp/RecentBounties";
-import Submissions from "../components.tsx/subcomp/Submissions";
+import Navbar from "../components/Navbar";
+import Quickstat from "../components/subcomp/Quickstat";
+import BrowseBounties from "../components/BrowseBounties";
+import Leaderboard from "../components/Leaderboard";
+import RecentBounties from "../components/subcomp/RecentBounties";
+import Submissions from "../components/subcomp/Submissions";
+import Quickactions from "../components/subcomp/Quickactions";
 
 export default function OwnerDashboard() {
     
   // const [bounties, setBounties] = useState([]);
   const [activePage, setActivePage] = useState("dashboard");
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
 
-    axios.get("http://localhost:3000/bounties?owner=true", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then(res => setBounties(res.data))
-    .catch(err => console.error(err));
-  }, []);
+  //   axios.get("http://localhost:3000/bounties?owner=true", {
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+  //   .then(res => setBounties(res.data))
+  //   .catch(err => console.error(err));
+  // }, []);
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -42,6 +43,8 @@ export default function OwnerDashboard() {
                 <Submissions />
               </div>
             </div>
+
+            <Quickactions setActivePage={setActivePage} />
           </>
         )
         }
