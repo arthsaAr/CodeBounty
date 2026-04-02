@@ -15,7 +15,7 @@ const quickStats = () => {
               <h1 className='text-gray-400 text-sm'>Credits</h1>
               <h2 className='text-emerald-400 mt-1 font-semibold text-2xl'>320</h2>
             </div>
-            <RiCoinsLine className="text-green-700" size={35}/>
+            <RiCoinsLine className="text-green-700"  opacity={0.5} size={35}/>
           </div>
 
           <div className='rounded-lg bg-[#151920] border border-gray-800 p-6 flex justify-between items-center hover:border-gray-500 transition duration-300 ease-in-out cursor-pointer'>
@@ -23,7 +23,7 @@ const quickStats = () => {
               <h1 className='text-gray-400 text-sm'>Reputation</h1>
               <h2 className='text-emerald-400 mt-1 font-semibold text-2xl'>850</h2>
             </div>
-            <SlBadge  className="text-blue-500" size={35}/>
+            <SlBadge  className="text-blue-500" opacity={0.5} size={35}/>
           </div>
 
           <div className='rounded-lg bg-[#151920] border border-gray-800 p-6 flex justify-between items-center hover:border-gray-500 transition duration-300 ease-in-out cursor-pointer'>
@@ -31,7 +31,7 @@ const quickStats = () => {
               <h1 className='text-gray-400 text-sm'>Success Rate</h1>
               <h2 className='mt-1 font-semibold text-2xl'>0%</h2>
             </div>
-            <CiCircleCheck className="text-green-700" size={35}/>
+            <CiCircleCheck className="text-green-700" opacity={0.5} size={35}/>
           </div>
         </div>
     </div>
