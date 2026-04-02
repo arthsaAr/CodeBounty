@@ -7,7 +7,7 @@ const submissions = () => {
     <div>
         <h2 className='text-2xl font-semibold mb-4'>Your Submissions</h2>
 
-        <div className='flex gap-2 flex-row rounded-xl bg-[#151920] border border-gray-800 p-6 justify-start items-start hover:border-emerald-700 cursor-pointer'>
+        <div className='flex gap-2 flex-row rounded-xl bg-[#151920] border border-gray-800 p-6 justify-start items-start cursor-pointer'>
             <div className='bg-yellow-600/10 rounded-xl p-1'>
               <MdAccessTimeFilled className="text-yellow-500"  opacity={0.8} size={35} />
             </div>
@@ -21,7 +21,7 @@ const submissions = () => {
             </div>
         </div>
 
-        <div className=' mt-4 flex gap-2 flex-row rounded-xl bg-[#151920] border border-gray-800 p-6 justify-start items-start hover:border-emerald-700 cursor-pointer'>
+        <div className=' mt-4 flex gap-2 flex-row rounded-xl bg-[#151920] border border-gray-800 p-6 justify-start items-start cursor-pointer'>
             <div className='bg-green-600/10 rounded-xl p-1'>
               <IoCheckmarkCircleOutline  className="text-green-500"  opacity={0.8} size={35} />
             </div>
