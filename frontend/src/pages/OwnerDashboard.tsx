@@ -10,6 +10,7 @@ import Submissions from "../components/dashboard/Submissions";
 import Quickactions from "../components/dashboard/Quickactions";
 import Searchbar from "../components/browser/Searchbar";
 import ActiveBounties from "../components/browser/ActiveBounties";
+import Bottombar from "../components/Bottombar";
 
 export default function OwnerDashboard() {
     
@@ -29,11 +30,11 @@ export default function OwnerDashboard() {
   // }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen flex flex-col bg-black text-white">
 
       <Navbar setActivePage={setActivePage} activePage={activePage} />
       
-      <div className="px-8 md:px-16 py-6">
+      <div className="flex-grow px-8 md:px-16 py-6">
         {activePage === "dashboard" && (
           <>
             <Quickstat /> 
@@ -77,6 +78,8 @@ export default function OwnerDashboard() {
           </div>
         ))}
       </div> */}
+
+      <Bottombar />
     </div>
   );
 }

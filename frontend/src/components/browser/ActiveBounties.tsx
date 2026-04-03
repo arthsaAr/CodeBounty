@@ -48,7 +48,6 @@ const ActiveBounties = () => {
           date="3/11/2026"
           />
       </div>
-
     </div>
   )
 }
