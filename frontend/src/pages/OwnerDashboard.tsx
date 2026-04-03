@@ -9,6 +9,7 @@ import RecentBounties from "../components/dashboard/RecentBounties";
 import Submissions from "../components/dashboard/Submissions";
 import Quickactions from "../components/dashboard/Quickactions";
 import Searchbar from "../components/browser/Searchbar";
+import ActiveBounties from "../components/browser/ActiveBounties";
 
 export default function OwnerDashboard() {
     
@@ -55,6 +56,7 @@ export default function OwnerDashboard() {
           <>
           <Browserheader />
           <Searchbar />
+          <ActiveBounties />
           </>
         )
         }

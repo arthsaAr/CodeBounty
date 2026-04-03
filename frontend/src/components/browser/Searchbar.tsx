@@ -1,10 +1,12 @@
 import React from 'react'
 import { GoSearch } from "react-icons/go";
 import { FaAngleDown } from "react-icons/fa6";
+import { CiFilter } from "react-icons/ci";
 
 const Searchbar = () => {
   return (
-     <div className="flex flex-row items-center w-full gap-3">
+    <>
+     <div className="flex flex-row items-center w-full gap-3 mb-4">
       <div className="flex-1 min-w-0 h-12 rounded-lg border border-gray-800 hover:border-emerald-700 bg-[#1f2937] p-1 shadow-sm transition-all focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500">
         <div className="flex items-center w-full bg-[#1f2937] rounded-md px-3 py-2">
           <GoSearch className="text-gray-400 mr-2" />
@@ -27,6 +29,24 @@ const Searchbar = () => {
         <FaAngleDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
       </div>
     </div>
+    <div className='flex flex-row gap-2 items-center justify-start'>
+        <CiFilter className="text-gray-400" size={19} />
+        <h3 className="text-gray-400">Difficulty:</h3>
+
+        <div className='rounded-lg bg-emerald-500 border border-emerald-500 px-3 py-1 h-8 flex items-center text-sm text-white'>
+            <h3>All</h3>
+        </div>
+        <div className='rounded-lg bg-[#111827] border border-gray-700 px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600'>
+            <h3>Hard</h3>
+        </div>
+        <div className='rounded-lg bg-[#111827] border border-gray-700 px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600'>
+            <h3>Medium</h3>
+        </div>
+        <div className='rounded-lg bg-[#111827] border border-gray-700 px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600'>
+            <h3>Easy</h3>
+        </div>
+    </div>
+    </>
   )
 }
 
