@@ -3,14 +3,17 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Quickstat from "../components/dashboard/Quickstat";
-import  Browserheader from "../components/browser/browserheader";
-import Leaderboard from "../components/leaderboard/Topthree";
+import Browserheader from "../components/browser/Browserheader";
+import TopThree from "../components/leaderboard/Topthree";
 import RecentBounties from "../components/dashboard/RecentBounties";
 import Submissions from "../components/dashboard/Submissions";
 import Quickactions from "../components/dashboard/Quickactions";
 import Searchbar from "../components/browser/Searchbar";
 import ActiveBounties from "../components/browser/ActiveBounties";
 import Bottombar from "../components/Bottombar";
+import TopThreeCard from "../components/leaderboard/TopThreeCard";
+import Ranking from "../components/leaderboard/Ranking";
+import SummaryCard from "../components/leaderboard/SummaryCard";
 
 export default function OwnerDashboard() {
     
@@ -62,7 +65,14 @@ export default function OwnerDashboard() {
         )
         }
 
-        {activePage === "leaderboard" && <Leaderboard />}
+        {activePage === "leaderboard" && (
+          <>
+            <TopThree />
+            <TopThreeCard />
+            <Ranking />
+            <SummaryCard />
+          </>
+        )}
       </div>
       
       {/* <button className="bg-green-500 px-4 py-2 rounded mb-6">
