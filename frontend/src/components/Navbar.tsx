@@ -2,6 +2,8 @@ import React from 'react'
 import { FiTarget } from 'react-icons/fi'
 import { MdOutlineDashboard, MdOutlineLogout  } from "react-icons/md";
 import { GoTrophy } from "react-icons/go";
+import { RiCoinsLine } from 'react-icons/ri';
+import { SlBadge } from 'react-icons/sl';
 
 type NavBarProps = {
   setActivePage: (page: string) => void;
@@ -59,6 +61,17 @@ const Navbar = ({ setActivePage, activePage }: NavBarProps) => {
       </div>
 
       <div className="flex items-center gap-4">
+        <div className='flex flex-row gap-2'>
+          <div className='flex flex-row bg-gray-700 rounded-full p-2 gap-2'>
+            <RiCoinsLine className="text-green-700" size={22}/>
+            <h3>320</h3>
+          </div>
+
+          <div className='bg-gray-700 flex flex-row rounded-full p-2 gap-2'>
+            <SlBadge className="text-green-700" size={22}/>  
+            <h3>850</h3>
+          </div>
+        </div>
         <button className="hover:text-green-400">demo_user</button>
         <button onClick={() => {
                 localStorage.removeItem("token");
