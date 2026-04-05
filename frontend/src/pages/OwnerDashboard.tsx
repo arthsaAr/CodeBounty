@@ -37,7 +37,7 @@ export default function OwnerDashboard() {
 
       <Navbar setActivePage={setActivePage} activePage={activePage} />
       
-      <div className="flex-grow px-8 md:px-16 py-6">
+      <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         {activePage === "dashboard" && (
           <>
             <Quickstat /> 

@@ -11,7 +11,7 @@ type NavBarProps = {
 const Navbar = ({ setActivePage, activePage }: NavBarProps) => {
 
   return (
-    <div className='w-full bg-[#0f131a] text-white px-6 py-4 flex items-center justify-between'>
+    <div className="w-full fixed top-0 z-50 bg-[#0f131a]/70 backdrop-blur-md text-white px-6 py-4 flex items-center justify-between">
         <div className="text-xl font-semibold">
             <span className="text-green-400">&lt;/&gt;</span>{" "}
             Code<span className="text-green-400">Bounty</span>
