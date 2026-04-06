@@ -1,5 +1,5 @@
 import React from 'react'
-type BountyProps = {
+type RecentProps = {
   title: string;
   description: string;
   difficulty: string;
