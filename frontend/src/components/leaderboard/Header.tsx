@@ -1,7 +1,7 @@
 import React from 'react'
 import { GoTrophy } from 'react-icons/go'
 
-const Topthree = () => {
+const Header = () => {
   return (
     <div>
         <div className='flex flex-col items-center'>
@@ -16,4 +16,4 @@ const Topthree = () => {
   )
 }
 
-export default Topthree
+export default Header

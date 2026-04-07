@@ -4,7 +4,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import Quickstat from "../components/dashboard/Quickstat";
 import Browserheader from "../components/browser/Browserheader";
-import TopThree from "../components/leaderboard/Topthree";
+import Header from "../components/leaderboard/Header";
 import RecentBounties from "../components/dashboard/RecentBounties";
 import Submissions from "../components/dashboard/Submissions";
 import Quickactions from "../components/dashboard/Quickactions";
@@ -67,7 +67,7 @@ export default function OwnerDashboard() {
 
         {activePage === "leaderboard" && (
           <>
-            <TopThree />
+            <Header />
             <TopThreeCard />
             <Ranking />
             <SummaryCard />
