@@ -13,4 +13,5 @@ Current pages for the site are as follows:
 ### Bounty Browser
 <img src="frontend/Screenshots/BrowseBounties.png" width="1200" />
 
-
+### Leaderboard
+<img src="frontend/Screenshots/Leaderboard.png" width="1200" />
