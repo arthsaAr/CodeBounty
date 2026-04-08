@@ -6,7 +6,7 @@ import { GoTrophy } from 'react-icons/go'
 const SummaryCard = () => {
   return (
     <div>
-        <div className='flex flex-row gap-5 items-center mt-3'>
+        <div className='flex flex-row gap-5 items-center mt-5'>
             <div 
                 className='flex-1 flex flex-col gap-1 items-center justify-center text-center border border-gray-800 bg-[#151920] hover:border-emerald-700 rounded-lg p-8 '>
                 <FiTarget color="green" size={60}/>
