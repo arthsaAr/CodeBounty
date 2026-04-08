@@ -21,7 +21,7 @@ export default function OAuthSuccess() {
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center">
-      <p>Logging you in...</p>
+      <p>Logging you in...!</p>
     </div>
   );
 }
