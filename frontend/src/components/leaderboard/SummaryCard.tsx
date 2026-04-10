@@ -1,7 +1,6 @@
 import React from 'react'
 import { FiTarget } from 'react-icons/fi'
 import { SlBadge } from "react-icons/sl";
-import { GiAchievement } from 'react-icons/gi'
 import { GoTrophy } from 'react-icons/go'
 
 const SummaryCard = () => {

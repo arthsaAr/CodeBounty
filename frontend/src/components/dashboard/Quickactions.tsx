@@ -1,6 +1,5 @@
 import React from 'react'
 import { FiTarget } from 'react-icons/fi'
-import { GiAchievement } from "react-icons/gi";
 import { SlBadge } from "react-icons/sl";
 
 type NavBarProps = {

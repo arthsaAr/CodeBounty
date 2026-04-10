@@ -1,6 +1,4 @@
 import React from 'react'
-import { FiTarget } from 'react-icons/fi'
-import { GiAchievement } from 'react-icons/gi'
 import { SlBadge } from "react-icons/sl";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import boyPic from "../../assets/profile/boy.png";
