@@ -1,5 +1,6 @@
 import React from 'react'
 import { FiTarget } from 'react-icons/fi'
+import { SlBadge } from "react-icons/sl";
 import { GiAchievement } from 'react-icons/gi'
 import { GoTrophy } from 'react-icons/go'
 
@@ -16,7 +17,7 @@ const SummaryCard = () => {
 
             <div
                 className='flex-1 flex flex-col gap-1 items-center justify-center text-center border border-gray-800 bg-[#151920] hover:border-emerald-700 rounded-lg p-8 '>
-                <GiAchievement color="green" size={60} />
+                <SlBadge color="green" size={60} />
                 <h2 className='text-2xl'>87%</h2>
                 <h3 className='text-lg text-gray-500'>Average Success Rate</h3>
             </div>

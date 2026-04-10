@@ -23,7 +23,7 @@ const TopThreeCard = () => {
         
           <div className='flex flex-row gap-2 mt-1'>
             <div className='flex flex-row gap-1 items-center'>
-              <GiAchievement color="green" size={25} />
+              <SlBadge color="green" size={25} />
               <h2 className='text-gray-400 text-lg'>2180</h2>
             </div>
 
@@ -80,7 +80,7 @@ const TopThreeCard = () => {
 
             <div className='flex flex-row gap-3 mt-1'>
               <div className='flex flex-row gap-1 items-center'>
-                <GiAchievement color="green" size={25} />
+                <SlBadge color="green" size={25} />
                 <h2 className='text-gray-400 text-lg'>1890</h2>
               </div>
 
