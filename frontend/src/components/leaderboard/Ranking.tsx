@@ -26,7 +26,7 @@ const Ranking = () => {
 
           <tbody className="text-white text-lg">
             <tr className="border-b border-gray-800 hover:bg-gray-800/40">
-              <td className="py-3 ">🥇 #1</td>
+              <td className="py-3 ">#1 🥇</td>
               <td className="py-3">
                 <div className="flex items-center gap-2">
                   <img src={pic1} className="w-8 h-8 rounded-full border border-emerald-400" />
@@ -34,7 +34,7 @@ const Ranking = () => {
                 </div>
               </td>
               <td className="py-3 text-emerald-400">2450</td>
-              <td className="py-3">$8,900</td>
+              <td className="py-3 text-emerald-400">$8,900</td>
               <td className="py-3">
                 <div className='inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-medium'>
                     94%
@@ -43,7 +43,7 @@ const Ranking = () => {
             </tr>
 
             <tr className="border-b border-gray-800 hover:bg-gray-800/40">
-              <td className="py-3">🥈 #2</td>
+              <td className="py-3">#2 🥈</td>
               <td className="py-3">
                 <div className="flex items-center gap-2">
                   <img src={pic2} className="w-8 h-8 rounded-full border border-emerald-400" />
@@ -51,7 +51,7 @@ const Ranking = () => {
                 </div>
               </td>
               <td className="py-3 text-emerald-400">2180</td>
-              <td className="py-3">$7,650</td>
+              <td className="py-3 text-emerald-400">$7,650</td>
               <td className="py-3">
                 <div className='inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-medium'>
                     91%
@@ -60,7 +60,7 @@ const Ranking = () => {
             </tr>
 
             <tr className="border-b border-gray-800 hover:bg-gray-800/40">
-              <td className="py-3">🥉 #3</td>
+              <td className="py-3">#3 🥉</td>
               <td className="py-3">
                 <div className="flex items-center gap-2">
                   <img src={pic3} className="w-8 h-8 rounded-full border border-emerald-400" />
@@ -68,7 +68,7 @@ const Ranking = () => {
                 </div>
               </td>
               <td className="py-3 text-emerald-400">1890</td>
-              <td className="py-3">$6,200</td>
+              <td className="py-3 text-emerald-400">$6,200</td>
               <td className="py-3">
                 <div className='inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-sm font-medium'>
                     88%
@@ -85,7 +85,7 @@ const Ranking = () => {
                 </div>
               </td>
               <td className="py-3 text-emerald-400">1650</td>
-              <td className="py-3">$5,400</td>
+              <td className="py-3 text-emerald-400">$5,400</td>
               <td className="py-3">
                 <div className='inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-sm font-medium'>
                     85%
@@ -102,7 +102,7 @@ const Ranking = () => {
                 </div>
               </td>
               <td className="py-3 text-emerald-400">1420</td>
-              <td className="py-3">$4,800</td>
+              <td className="py-3 text-emerald-400">$4,800</td>
               <td className="py-3">
                 <div className='inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-sm font-medium'>
                     83%
@@ -119,8 +119,8 @@ const Ranking = () => {
                 </div>
               </td>
               <td className="py-3 text-emerald-400">850</td>
-              <td className="py-3">$2,100</td>
-              <td className="py-3">
+              <td className="py-3 text-emerald-400">$2,100</td>
+              <td className="py-3 ">
                 <div className='inline-block px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 text-sm font-medium'>
                     78%
                 </div>

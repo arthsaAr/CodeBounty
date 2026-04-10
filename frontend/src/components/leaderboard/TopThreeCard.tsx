@@ -1,7 +1,7 @@
 import React from 'react'
 import { FiTarget } from 'react-icons/fi'
 import { GiAchievement } from 'react-icons/gi'
-import { GoTrophy } from 'react-icons/go'
+import { SlBadge } from "react-icons/sl";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import boyPic from "../../assets/profile/boy.png";
 import womanPic from "../../assets/profile/woman.png";
@@ -51,7 +51,7 @@ const TopThreeCard = () => {
 
             <div className='flex flex-row gap-2 mt-1'>
               <div className='flex flex-row gap-1 items-center'>
-                <GiAchievement color="green" size={25} />
+                <SlBadge color="green" size={25} />
                 <h2 className='text-gray-400 text-lg'>2450</h2>
               </div>
 
