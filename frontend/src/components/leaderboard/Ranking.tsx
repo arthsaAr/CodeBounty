@@ -1,4 +1,5 @@
 import React from 'react'
+import { SlBadge } from "react-icons/sl";
 import pic1 from "../../assets/profile/boy.png";
 import pic2 from "../../assets/profile/woman.png";
 import pic3 from "../../assets/profile/man.png";
@@ -33,7 +34,12 @@ const Ranking = () => {
                   <span>security_hawk</span>
                 </div>
               </td>
-              <td className="py-3 text-emerald-400">2450</td>
+              <td className="py-3 text-emerald-400">
+                <div className='flex flex-row gap-2 items-center'>
+                  <SlBadge color="green" size={17} />
+                  2450
+                </div>
+              </td>
               <td className="py-3 text-emerald-400">$8,900</td>
               <td className="py-3">
                 <div className='inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-medium'>
@@ -50,7 +56,12 @@ const Ranking = () => {
                   <span>hunter_pro</span>
                 </div>
               </td>
-              <td className="py-3 text-emerald-400">2180</td>
+              <td className="py-3 text-emerald-400">
+                <div className='flex flex-row gap-2 items-center'>
+                  <SlBadge color="green" size={17} />
+                  2180
+                </div>
+              </td>
               <td className="py-3 text-emerald-400">$7,650</td>
               <td className="py-3">
                 <div className='inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-medium'>
@@ -67,7 +78,12 @@ const Ranking = () => {
                   <span>bug_finder</span>
                 </div>
               </td>
-              <td className="py-3 text-emerald-400">1890</td>
+              <td className="py-3 text-emerald-400">
+                <div className='flex flex-row gap-2 items-center'>
+                  <SlBadge color="green" size={17} />
+                  1890
+                </div>
+              </td>
               <td className="py-3 text-emerald-400">$6,200</td>
               <td className="py-3">
                 <div className='inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-sm font-medium'>
@@ -84,7 +100,12 @@ const Ranking = () => {
                   <span>code_ninja</span>
                 </div>
               </td>
-              <td className="py-3 text-emerald-400">1650</td>
+              <td className="py-3 text-emerald-400">
+                <div className='flex flex-row gap-2 items-center'>
+                  <SlBadge color="green" size={17} />
+                  1650
+                </div>
+              </td>
               <td className="py-3 text-emerald-400">$5,400</td>
               <td className="py-3">
                 <div className='inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-sm font-medium'>
@@ -101,7 +122,12 @@ const Ranking = () => {
                   <span>dev_sleuth</span>
                 </div>
               </td>
-              <td className="py-3 text-emerald-400">1420</td>
+              <td className="py-3 text-emerald-400">
+                <div className='flex flex-row gap-2 items-center'>
+                  <SlBadge color="green" size={17} />
+                  1420
+                </div>
+              </td>
               <td className="py-3 text-emerald-400">$4,800</td>
               <td className="py-3">
                 <div className='inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-sm font-medium'>
@@ -118,7 +144,12 @@ const Ranking = () => {
                   <span>dedmo_user</span>
                 </div>
               </td>
-              <td className="py-3 text-emerald-400">850</td>
+              <td className="py-3 text-emerald-400">
+                <div className='flex flex-row gap-2 items-center'>
+                  <SlBadge color="green" size={17} />
+                  850
+                </div>
+              </td>
               <td className="py-3 text-emerald-400">$2,100</td>
               <td className="py-3 ">
                 <div className='inline-block px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 text-sm font-medium'>
