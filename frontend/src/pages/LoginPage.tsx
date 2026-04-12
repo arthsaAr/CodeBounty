@@ -72,7 +72,6 @@ export default function LoginPage() {
                         <h2 className="font-semibold">Both</h2>
                         <h3 className="text-xs text-gray-500 font-semibold">Hunt bugs & post bounties on your repositories</h3>
                     </div>
-                    
                 </div>
 
                 <button
@@ -84,6 +83,8 @@ export default function LoginPage() {
                                         return;
                                     }
                                     
+                                    localStorage.setItem("role", selectedRole);
+
                                     window.location.href = "http://localhost:3000/auth/github"
                                 }}
                             >

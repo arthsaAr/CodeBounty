@@ -5,6 +5,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 export default function OAuthSuccess() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const role = localStorage.getItem("role");
 
   useEffect(() => {
     const token = searchParams.get("token");
@@ -13,7 +14,14 @@ export default function OAuthSuccess() {
       localStorage.setItem("token", token);
 
       // For now just send to owner dashboard
-      navigate("/dashboard-owner");
+
+      //only to owner dashboard(for hunter)
+      if(role === "hunter"){
+        navigate("/dashboard-owner");
+      }else{
+        alert("Page for Bug Hunter is supperted!");
+        navigate("/login");
+      }
     } else {
       navigate("/login");
     }
