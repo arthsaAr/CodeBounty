@@ -75,10 +75,15 @@ export default function LoginPage() {
                     
                 </div>
 
-
-
-                <button className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold py-2 mt-3 rounded w-full"
+                <button
+                    disabled={!selectedRole}
+                    className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold py-2 mt-3 rounded w-full"
                                 onClick={() => {
+                                    if(selectedRole !== "hunter"){
+                                        alert("Only Bug Hunter role is supported at the moment!");
+                                        return;
+                                    }
+                                    
                                     window.location.href = "http://localhost:3000/auth/github"
                                 }}
                             >
