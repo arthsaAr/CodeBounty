@@ -3,8 +3,12 @@ import { FiGithub  } from "react-icons/fi";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { IoShieldOutline } from "react-icons/io5";
 import { FiTarget } from "react-icons/fi";
+import {useState} from "react";
 
 export default function LoginPage() {
+    const [selectedRole, setSelectedRole] = useState<string | null>(null);
+
+
     return (
         <div className="min-h-screen bg-[#0a0e14] text-white flex flex-col items-center justify-center p-6">
             <div className="text-center mb-8">
@@ -22,7 +26,15 @@ export default function LoginPage() {
             <div className="bg-[#151920] p-8 rounded-lg w-full max-w-[420px] border border-gray-800 shadow-2xl">
                 <h2 className="text-xl font-semibold mb-2 text-center">Choose Your Role</h2>
 
-                <div className="bg-[#151920] p-4 rounded-lg mt-4 border-gray-800 hover:border-green-600 border-2 flex items-start gap-4">
+                <div
+                    onClick={() => setSelectedRole("hunter")}
+                    className={`bg-[#151920] p-4 rounded-lg mt-4 border-2 flex items-start gap-4
+                        ${ 
+                            selectedRole === "hunter"
+                            ? "border-emerald-500 bg-emerald-500/5"
+                            : "border-gray-800 hover:border-green-600"
+                        }
+                        `}>
                     <FiTarget color="green" size={30}/>
                     <div className="flex flex-col text-left">
                         <h2 className="font-semibold">Bug Hunter</h2>
@@ -30,7 +42,15 @@ export default function LoginPage() {
                     </div>
                 </div>
 
-                <div className="bg-[#151920] p-4  rounded-lg mt-2 border-gray-800  hover:border-green-600 border-2 flex items-start gap-4">
+                <div
+                    onClick={() => setSelectedRole("owner")} 
+                    className={`bg-[#151920] p-4  rounded-lg mt-2 border-2 flex items-start gap-4
+                        ${
+                            selectedRole === "owner"
+                            ? "border-emerald-500 bg-emerald-500/5" 
+                            : "border-gray-800 hover:border-green-600"
+                        }
+                        `}>
                     <IoShieldOutline color="green" size={30}/>
                     <div className="flex flex-col text-left">
                         <h2 className="font-semibold">Repository Owner</h2>
@@ -38,7 +58,15 @@ export default function LoginPage() {
                     </div>
                 </div>
 
-                <div className="bg-[#151920] p-4 rounded-lg mt-2 border-gray-800  hover:border-green-600 border-2 flex items-start gap-4">
+                <div
+                    onClick={() => setSelectedRole("both")} 
+                    className={`bg-[#151920] p-4 rounded-lg mt-2 border-2 flex items-start gap-4
+                        ${
+                            selectedRole === "both"
+                            ? "border-emerald-500 bg-emerald-500/5"
+                            : "border-gray-800 hover:border-green-600"
+                        }
+                        `}>
                     <FaArrowTrendUp color="green" size={30}/>
                     <div className="flex flex-col text-left">
                         <h2 className="font-semibold">Both</h2>
