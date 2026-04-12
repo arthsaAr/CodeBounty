@@ -4,6 +4,7 @@ import { MdOutlineDashboard, MdOutlineLogout  } from "react-icons/md";
 import { GoTrophy } from "react-icons/go";
 import { RiCoinsLine } from 'react-icons/ri';
 import { SlBadge } from 'react-icons/sl';
+import pic1 from "../assets/profile/boy.png";
 
 type NavBarProps = {
   setActivePage: (page: string) => void;
@@ -72,6 +73,7 @@ const Navbar = ({ setActivePage, activePage }: NavBarProps) => {
             <h3>850</h3>
           </div>
         </div>
+        <img src={pic1} className="w-8 h-8 rounded-full border border-emerald-400" />
         <button className="hover:text-green-400">demo_user</button>
         <button onClick={() => {
                 localStorage.removeItem("token");
