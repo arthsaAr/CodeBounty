@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HunterDashboard from "./pages/HunterDashboard";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import CommonDashboard from "./pages/CommonDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -11,9 +12,21 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/oauth-success" element={<OAuthSuccess />} />
-        <Route path="/dashboard-hunter" element={<HunterDashboard />} />
-        <Route path="/dashboard-owner" element={<OwnerDashboard />} />
-        <Route path="/dashboard-common" element={<CommonDashboard />} />
+        <Route path="/dashboard-hunter" element={
+            <ProtectedRoute allowedRole = "hunter">
+              <HunterDashboard />
+            </ProtectedRoute>
+          } />
+        <Route path="/dashboard-owner" element={
+            <ProtectedRoute allowedRole = "owner">
+              <OwnerDashboard />
+            </ProtectedRoute>
+          } />
+        <Route path="/dashboard-common" element={
+          <ProtectedRoute allowedRole = "both">
+            <CommonDashboard />
+          </ProtectedRoute>
+          } />
       </Routes>
     </Router>
     

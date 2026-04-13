@@ -20,6 +20,11 @@ export default function OAuthSuccess() {
         navigate("/dashboard-hunter");
       }else if(role === "owner"){
         navigate("/dashboard-owner");
+      }else if(role === "both"){
+        navigate("/dashboard-common");
+      }else{
+        // alert("Must select a role!");
+        return;
       }
     } else {
       navigate("/login");
