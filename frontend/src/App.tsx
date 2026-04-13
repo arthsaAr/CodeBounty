@@ -3,6 +3,7 @@ import OAuthSuccess from "./pages/OAuthSuccess";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HunterDashboard from "./pages/HunterDashboard";
 import OwnerDashboard from "./pages/OwnerDashboard";
+import CommonDashboard from "./pages/CommonDashboard";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/oauth-success" element={<OAuthSuccess />} />
         <Route path="/dashboard-hunter" element={<HunterDashboard />} />
         <Route path="/dashboard-owner" element={<OwnerDashboard />} />
+        <Route path="/dashboard-common" element={<CommonDashboard />} />
       </Routes>
     </Router>
     
