@@ -17,10 +17,9 @@ export default function OAuthSuccess() {
 
       //only to owner dashboard(for hunter)
       if(role === "hunter"){
+        navigate("/dashboard-hunter");
+      }else if(role === "owner"){
         navigate("/dashboard-owner");
-      }else{
-        alert("Page for Bug Hunter is supperted!");
-        navigate("/login");
       }
     } else {
       navigate("/login");
