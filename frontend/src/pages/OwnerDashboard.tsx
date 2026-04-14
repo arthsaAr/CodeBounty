@@ -14,7 +14,33 @@ export default function OwnerDashboard() {
       <Navbar setActivePage={setActivePage} activePage={activePage} />
 
       <div className="flex-grow px-8 md:px-16 py-6 mt-20">
-        CHECK
+        {activePage === "dashboard" && (
+          <>
+          <h1 className='text-white'>DASHBOARD</h1>
+          </>
+        )
+        }
+
+        {activePage === "bounties" && (
+          <>
+          <h1 className='text-white'>BOUNTIES</h1>
+          </>
+        )
+        }
+
+        {activePage === "createBounty" && (
+          <>
+          <h1 className='text-white'>CREATE BOUNTY</h1>
+          </>
+        )
+        }
+
+        {activePage === "leaderboard" && (
+          <>
+          <h1 className='text-white'>LEADERBOARD</h1>
+          </>
+        )
+        }
       </div>
 
       <Bottombar />

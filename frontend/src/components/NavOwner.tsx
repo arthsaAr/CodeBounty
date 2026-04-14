@@ -3,7 +3,6 @@ import { FiTarget } from 'react-icons/fi'
 import { MdOutlineDashboard, MdOutlineLogout  } from "react-icons/md";
 import { GoTrophy } from "react-icons/go";
 import { RiCoinsLine } from 'react-icons/ri';
-import { SlBadge } from 'react-icons/sl';
 import pic1 from "../assets/profile/boy.png";
 import { RiAddFill } from "react-icons/ri";
 
