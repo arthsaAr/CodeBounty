@@ -5,6 +5,7 @@ import { GoTrophy } from "react-icons/go";
 import { RiCoinsLine } from 'react-icons/ri';
 import { SlBadge } from 'react-icons/sl';
 import pic1 from "../assets/profile/boy.png";
+import { RiAddFill } from "react-icons/ri";
 
 type NavBarProps = {
   setActivePage: (page: string) => void;
@@ -47,6 +48,19 @@ const NavOwner = ({ setActivePage, activePage }: NavBarProps) => {
             <span className={activePage === "bounties" ? "text-emerald-400" : "text-white"}>Browse Bounties</span>
         </div>
 
+        <div
+          onClick={() => setActivePage("createBounty")}
+          className={`flex flex-row gap-1 items-center rounded-lg p-2 
+          ${            
+            activePage === "createBounty"
+              ? "bg-gray-800"
+              : "hover:bg-gray-800"
+          }
+          `}>  
+            <RiAddFill color="green" size={20}/>
+            <span className={activePage === "createBounty" ? "text-emerald-400" : "text-white"}>Create Bounty</span>
+        </div>
+
         <div 
           onClick={() => setActivePage("leaderboard")}
           className={`flex flex-row gap-1 items-center rounded-lg p-2 
@@ -62,16 +76,9 @@ const NavOwner = ({ setActivePage, activePage }: NavBarProps) => {
       </div>
 
       <div className="flex items-center gap-4">
-        <div className='flex flex-row gap-2'>
-          <div className='flex flex-row bg-gray-700 rounded-full p-2 gap-2'>
-            <RiCoinsLine className="text-green-700" size={22}/>
-            <h3>320</h3>
-          </div>
-
-          <div className='bg-gray-700 flex flex-row rounded-full p-2 gap-2'>
-            <SlBadge className="text-green-700" size={22}/>  
-            <h3>850</h3>
-          </div>
+        <div className='flex flex-row bg-gray-700 rounded-full p-2 gap-2'>
+          <RiCoinsLine className="text-green-700" size={22}/>
+          <h3>5000</h3>
         </div>
         <img src={pic1} className="w-8 h-8 rounded-full border border-emerald-400" />
         <button className="hover:text-green-400">demo_user</button>
