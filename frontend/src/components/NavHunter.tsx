@@ -11,7 +11,7 @@ type NavBarProps = {
   activePage: string;
 }
 
-const Navbar = ({ setActivePage, activePage }: NavBarProps) => {
+const NavHunter = ({ setActivePage, activePage }: NavBarProps) => {
 
   return (
     <div className="w-full fixed top-0 z-50 bg-[#0f131a]/70 backdrop-blur-md text-white px-6 py-4 flex items-center justify-between">
@@ -86,4 +86,4 @@ const Navbar = ({ setActivePage, activePage }: NavBarProps) => {
   )
 }
 
-export default Navbar
+export default NavHunter

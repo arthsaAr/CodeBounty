@@ -1,7 +1,7 @@
 //starting dashboard implementation!
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavHunter";
 import Quickstat from "../components/dashboard/Quickstat";
 import Browserheader from "../components/browser/Browserheader";
 import Header from "../components/leaderboard/Header";
