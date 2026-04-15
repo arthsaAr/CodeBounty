@@ -6,6 +6,8 @@ import Navbar from "../components/NavOwner";
 import { useState } from "react";
 import Quickstat from "../components/Owner/dashboard/Quickstat";
 import Quickactions from "../components/Owner/dashboard/Quickactions";
+import YourBounties from '../components/Owner/dashboard/YourBounties';
+import Recentactivity from '../components/Owner/dashboard/RecentActivity';
 
 export default function OwnerDashboard() {
   const [activePage, setActivePage] = useState("dashboard");
@@ -20,6 +22,14 @@ export default function OwnerDashboard() {
           <>
             <Quickstat />
             
+            <div className="flex flex-row gap-8 mt-6">
+              <div className="flex-1">
+                <YourBounties />
+              </div>
+              <div className="flex-1">
+                <Recentactivity />
+              </div>
+            </div>
 
             <Quickactions setActivePage={setActivePage} />
           </>
