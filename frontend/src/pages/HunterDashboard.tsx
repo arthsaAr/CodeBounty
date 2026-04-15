@@ -1,18 +1,18 @@
 //starting dashboard implementation!
 import { useState } from "react";
 import Navbar from "../components/NavHunter";
-import Quickstat from "../components/dashboard/Quickstat";
-import Browserheader from "../components/browser/Browserheader";
-import Header from "../components/leaderboard/Header";
-import RecentBounties from "../components/dashboard/RecentBounties";
-import Submissions from "../components/dashboard/Submissions";
-import Quickactions from "../components/dashboard/Quickactions";
-import Searchbar from "../components/browser/Searchbar";
-import ActiveBounties from "../components/browser/ActiveBounties";
+import Quickstat from "../components/hunter/dashboard/Quickstat";
+import Browserheader from "../components/hunter/browser/Browserheader";
+import Header from "../components/hunter/leaderboard/Header";
+import RecentBounties from "../components/hunter/dashboard/RecentBounties";
+import Submissions from "../components/hunter/dashboard/Submissions";
+import Quickactions from "../components/hunter/dashboard/Quickactions";
+import Searchbar from "../components/hunter/browser/Searchbar";
+import ActiveBounties from "../components/hunter/browser/ActiveBounties";
 import Bottombar from "../components/Bottombar";
-import TopThreeCard from "../components/leaderboard/TopThreeCard";
-import Ranking from "../components/leaderboard/Ranking";
-import SummaryCard from "../components/leaderboard/SummaryCard";
+import TopThreeCard from "../components/hunter/leaderboard/TopThreeCard";
+import Ranking from "../components/hunter/leaderboard/Ranking";
+import SummaryCard from "../components/hunter/leaderboard/SummaryCard";
 
 export default function HunterDashboard() {
     

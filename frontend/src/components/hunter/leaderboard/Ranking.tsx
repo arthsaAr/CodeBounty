@@ -1,11 +1,11 @@
 import React from 'react'
 import { SlBadge } from "react-icons/sl";
-import pic1 from "../../assets/profile/boy.png";
-import pic2 from "../../assets/profile/woman.png";
-import pic3 from "../../assets/profile/man.png";
-import pic4 from "../../assets/profile/boy2.png";
-import pic5 from "../../assets/profile/woman2.png";
-import pic6 from "../../assets/profile/man2.png";
+import pic1 from "../../../assets/profile/boy.png";
+import pic2 from "../../../assets/profile/woman.png";
+import pic3 from "../../../assets/profile/man.png";
+import pic4 from "../../../assets/profile/boy2.png";
+import pic5 from "../../../assets/profile/woman2.png";
+import pic6 from "../../../assets/profile/man2.png";
 
 const Ranking = () => {
   return (

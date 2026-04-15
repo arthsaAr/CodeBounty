@@ -4,6 +4,7 @@ import React from 'react'
 import Bottombar from "../components/Bottombar";
 import Navbar from "../components/NavOwner";
 import { useState } from "react";
+import Quickstat from "../components/Owner/dashboard/Quickstat";
 
 export default function OwnerDashboard() {
   const [activePage, setActivePage] = useState("dashboard");
@@ -16,7 +17,7 @@ export default function OwnerDashboard() {
       <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         {activePage === "dashboard" && (
           <>
-          <h1 className='text-white'>DASHBOARD</h1>
+            <Quickstat />
           </>
         )
         }

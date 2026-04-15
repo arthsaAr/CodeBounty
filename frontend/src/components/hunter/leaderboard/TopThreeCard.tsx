@@ -1,9 +1,9 @@
 import React from 'react'
 import { SlBadge } from "react-icons/sl";
 import { FaArrowTrendUp } from "react-icons/fa6";
-import boyPic from "../../assets/profile/boy.png";
-import womanPic from "../../assets/profile/woman.png";
-import manPic from "../../assets/profile/man.png";
+import boyPic from "../../../assets/profile/boy.png";
+import womanPic from "../../../assets/profile/woman.png";
+import manPic from "../../../assets/profile/man.png";
 
 const TopThreeCard = () => {
   return (
