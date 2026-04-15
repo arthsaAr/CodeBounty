@@ -5,6 +5,7 @@ import Bottombar from "../components/Bottombar";
 import Navbar from "../components/NavOwner";
 import { useState } from "react";
 import Quickstat from "../components/Owner/dashboard/Quickstat";
+import Quickactions from "../components/Owner/dashboard/Quickactions";
 
 export default function OwnerDashboard() {
   const [activePage, setActivePage] = useState("dashboard");
@@ -18,6 +19,9 @@ export default function OwnerDashboard() {
         {activePage === "dashboard" && (
           <>
             <Quickstat />
+            
+
+            <Quickactions setActivePage={setActivePage} />
           </>
         )
         }
