@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import RepositorySelector from "../createBounty/subComponent/RepositorySelector";
 import Repository from './subComponent/Repository';
+import BountyForm from './subComponent/Bountyform';
 import { MdKeyboardBackspace } from "react-icons/md";
 
 const SetupBounty = () => {
@@ -78,10 +79,12 @@ const SetupBounty = () => {
             <div className='rounded-xl bg-[#151920] border border-gray-800 p-6'>
                 <div
                     onClick={() => setStep(1)} 
-                    className='inline-flex flex-row hover:bg-[#1d2532] items-center gap-1 border border-[#151920] px-3 py-2 justify-start rounded-lg'>
+                    className='inline-flex flex-row hover:bg-[#1d2532] items-center gap-1 border border-[#151920] px-3 py-2 justify-start rounded-lg mb-2'>
                     <MdKeyboardBackspace size={20} />
                     <h1 className='text-lg'>Back to repositories</h1>
                 </div>
+                <h1 className='text-xl font-semibold font-sans'>Bounty Details</h1>
+                <BountyForm />
             </div>
             </>
             // <button
