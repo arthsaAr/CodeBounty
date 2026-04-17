@@ -1,12 +1,65 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from "react";
 import RepositorySelector from "../createBounty/subComponent/RepositorySelector";
 import Repository from './subComponent/Repository';
 import BountyForm from './subComponent/Bountyform';
 import { MdKeyboardBackspace } from "react-icons/md";
+import axios from "axios";
 
 const SetupBounty = () => {
     const [step, setStep] = useState(1);
+
+    const [repos, setRepos] = useState([]);
+    const [loading, setLoading] = useState(false); //(mainly for blocking button, and showing loading when a call is being made)
+    const [error, setError] = useState<string | null>(null);  //(proper error handling)
+
+    const fetchRepos = async () => {
+        try {
+            setError(null);
+            const token = localStorage.getItem("token");
+
+            const res = await axios.get("http://localhost:3000/repositories", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            setRepos(res.data);
+        } catch(err: any) {
+            const errorMsg = err.response?.data?.message || "Failed to fetch repositories";
+            setError(errorMsg);
+            console.error("Fetch repos error:", err);
+        }
+    }
+
+    const importRepos = async() => {
+        try {
+            setError(null);
+            setLoading(true);
+            const token = localStorage.getItem("token");
+            
+            //calling import from backend
+            await axios.get("http://localhost:3000/repositories/import", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            //reff.
+            await fetchRepos();   //refreshing after import
+        } catch(err: any) {
+            const errorMsg = err.response?.data?.message || "Failed to import repositories";
+            setError(errorMsg);
+            console.error("Import repos error:", err);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    //runs once when loading a page
+    useEffect(() => {
+        fetchRepos();
+    }, []);
 
   return (
     //mx-auto makes it center horizontally
@@ -45,31 +98,30 @@ const SetupBounty = () => {
         {step === 1 && (
             <>
             <div className='rounded-xl bg-[#151920] border border-gray-800 p-6'>
-                <RepositorySelector />
+                <RepositorySelector onImport={importRepos} isLoading={loading} />
 
-                <Repository 
-                    title="react-dashboard"
-                    description="Modern React dashboard with TypeScript"
-                    language="TypeScript"
-                    stars="2345"
-                    onSelect={() => setStep(2)}
-                />
+                {error && (
+                    <div className='bg-red-900 border border-red-700 text-red-200 px-4 py-3 rounded mb-4'>
+                        <p>{error}</p>
+                    </div>
+                )}
 
-                <Repository 
-                    title="express-api"
-                    description="RESTful API built with Express and MongoDB"
-                    language="JavaScript"
-                    stars="1123"
-                    onSelect={() => setStep(2)}
-                />
+                {repos.length === 0 && !loading && !error && (
+                    <div className='text-center py-8 text-gray-400'>
+                        <p className='text-lg'>No repositories found. Click "Import from GitHub" to get started!</p>
+                    </div>
+                )}
 
-                <Repository 
-                    title="vue-components"
-                    description="Collection of vue reusable components"
-                    language="Vue"
-                    stars="890"
-                    onSelect={() => setStep(2)}
-                />
+                {repos.map((repo: any) => (
+                    <Repository
+                        key={repo.id}
+                        title={repo.name}
+                        description="Imported from GitHub"
+                        language="Unknown"
+                        stars="N/A"
+                        onSelect={() => setStep(2)}
+                    />
+                ))}
             </div>
             </>
         )}
@@ -87,12 +139,6 @@ const SetupBounty = () => {
                 <BountyForm />
             </div>
             </>
-            // <button
-            // onClick={() => setStep(1)}
-            // className="bg-emerald-500 hover:bg-emerald-400 text-black px-4 py-2 rounded"
-            // >
-            // Continue
-            // </button>
         )}
     </div>
   )

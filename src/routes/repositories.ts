@@ -46,7 +46,8 @@ router.get("/import", authenticate, async(req: AuthenticatedRequest, res) => {
         }
         res.json(improtedRepos);
     } catch(error){
-        res.status(500).json({message: "Failed to import repositories"});
+        console.error("Import error:", error);
+        res.status(500).json({message: "Failed to import repositories", error: error instanceof Error ? error.message : String(error)});
     }
 });
 
@@ -99,6 +100,24 @@ router.patch("/:id/deactivate", authenticate, async (req: AuthenticatedRequest, 
     }catch(error){
         console.error(error);
         res.status(500).json({message: "Failed to deactivate repository"});
+    }
+});
+
+//making a GET endpoint for sending repos to the frontend
+router.get("/", authenticate, async (req: AuthenticatedRequest, res) => {
+    try{
+        const user = req.user;
+
+        const repos = await prisma.repository.findMany({
+            where: {
+                ownerId: user.id
+            }
+        });
+
+        res.json(repos);
+    } catch(error){
+        console.error("Fetch repos error:", error);
+        res.status(500).json({ message: "Failed to fetch repositories", error: error instanceof Error ? error.message : String(error) });
     }
 });
 

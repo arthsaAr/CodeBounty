@@ -11,11 +11,19 @@ import { AuthenticatedRequest } from "./middleware/authenticate";
 import repositoryRoutes from "./routes/repositories";
 import bountyRoutes from "./routes/bounties";
 import bugReportsRoutes from "./routes/bugReports";
+import cors from "cors";
 
 dotenv.config();
 
 const prisma = new PrismaClient();
 const app = express();      //creating the web server
+
+//need cors because: React frontend(http://localhost:5173) and Express backend(http://localhost:3000) run on different ports, 
+// and browsers block cross requests unless the backend explicitly allows them.
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
 
 //all these router parts are called REST APIs endpoints
 //it means, that it uses HTTP methods (GET, POST, PATCH, DELETE)
