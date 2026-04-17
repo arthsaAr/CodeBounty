@@ -1,9 +1,7 @@
 import LoginPage from "./pages/LoginPage";
 import OAuthSuccess from "./pages/OAuthSuccess";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HunterDashboard from "./pages/HunterDashboard";
-import OwnerDashboard from "./pages/OwnerDashboard";
-import CommonDashboard from "./pages/CommonDashboard";
+import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -14,17 +12,17 @@ function App() {
         <Route path="/oauth-success" element={<OAuthSuccess />} />
         <Route path="/dashboard-hunter" element={
             <ProtectedRoute allowedRole = "hunter">
-              <HunterDashboard />
+              <Dashboard role="hunter" />
             </ProtectedRoute>
           } />
         <Route path="/dashboard-owner" element={
             <ProtectedRoute allowedRole = "owner">
-              <OwnerDashboard />
+              <Dashboard role="owner" />
             </ProtectedRoute>
           } />
         <Route path="/dashboard-common" element={
           <ProtectedRoute allowedRole = "both">
-            <CommonDashboard />
+            <Dashboard role="common" />
           </ProtectedRoute>
           } />
       </Routes>

@@ -13,34 +13,34 @@ import Bottombar from "../components/Bottombar";
 import TopThreeCard from "../components/hunter/leaderboard/TopThreeCard";
 import Ranking from "../components/hunter/leaderboard/Ranking";
 import SummaryCard from "../components/hunter/leaderboard/SummaryCard";
+import YourBounties from '../components/Owner/dashboard/YourBounties';
+import Recentactivity from '../components/Owner/dashboard/RecentActivity';
+import CreateHeader from "../components/Owner/createBounty/CreateHeader";
+import SetupBounty from '../components/Owner/createBounty/SetupBounty';
 
-export default function HunterDashboard() {
+type dashboardProps = {
+  role: string;
+};
+
+const HunterDashboard = ({
+  role
+}: HunterDashboard) => {
     
   // const [bounties, setBounties] = useState([]);
   const [activePage, setActivePage] = useState("dashboard");
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-
-  //   axios.get("http://localhost:3000/bounties?owner=true", {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  //   .then(res => setBounties(res.data))
-  //   .catch(err => console.error(err));
-  // }, []);
-
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
 
-      <Navbar setActivePage={setActivePage} activePage={activePage} loginStatus="hunter" />
+      <Navbar setActivePage={setActivePage} activePage={activePage} loginStatus={role} />
       
       <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         {activePage === "dashboard" && (
           <>
             <Quickstat /> 
-            <div className="flex flex-row gap-8 mt-6">
+
+            {role === "hunter" && 
+              <div className="flex flex-row gap-8 mt-6">
               <div className="flex-1">
                 <RecentBounties />
               </div>
@@ -48,6 +48,18 @@ export default function HunterDashboard() {
                 <Submissions />
               </div>
             </div>
+            }
+
+            {role === "owner" && 
+              <div className="flex flex-row gap-8 mt-6">
+                <div className="flex-1">
+                  <YourBounties />
+                </div>
+                <div className="flex-1">
+                  <Recentactivity />
+                </div>
+              </div>
+            }
 
             <Quickactions setActivePage={setActivePage} />
           </>
@@ -64,6 +76,14 @@ export default function HunterDashboard() {
         )
         }
 
+        {role !== "hunter" && activePage === "createBounty" && (
+            <>
+            <CreateHeader />
+            <SetupBounty />
+            </>
+          )
+        }
+
         {activePage === "leaderboard" && (
           <>
             <Header />
@@ -74,17 +94,9 @@ export default function HunterDashboard() {
         )}
       </div>
 
-      {/* <div>
-        {bounties.map((b: any) => (
-          <div key={b.id} className="border p-4 mb-2 rounded">
-            <p>{b.title}</p>
-            <p>${b.amount}</p>
-            <p>{b.status}</p>
-          </div>
-        ))}
-      </div> */}
-
       <Bottombar />
     </div>
   );
 }
+
+export default HunterDashboard;
