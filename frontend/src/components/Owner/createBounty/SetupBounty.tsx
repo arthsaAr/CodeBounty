@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from "react";
+import RepositorySelector from "../createBounty/subComponent/RepositorySelector";
 
 const SetupBounty = () => {
     const [step, setStep] = useState(1);
@@ -39,8 +40,21 @@ const SetupBounty = () => {
         </div>
 
         {step === 1 && (
+            <>
             <button
             onClick={() => setStep(2)}
+            className="bg-emerald-500 hover:bg-emerald-400 text-black px-4 py-2 rounded mb-3"
+            >
+            Continue
+            </button>
+
+            <RepositorySelector />
+            </>
+        )}
+
+        {step === 2 && (
+            <button
+            onClick={() => setStep(1)}
             className="bg-emerald-500 hover:bg-emerald-400 text-black px-4 py-2 rounded"
             >
             Continue
