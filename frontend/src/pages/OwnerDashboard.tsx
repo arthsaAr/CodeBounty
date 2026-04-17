@@ -8,6 +8,9 @@ import Quickstat from "../components/Owner/dashboard/Quickstat";
 import Quickactions from "../components/Owner/dashboard/Quickactions";
 import YourBounties from '../components/Owner/dashboard/YourBounties';
 import Recentactivity from '../components/Owner/dashboard/RecentActivity';
+import Browserheader from "../components/hunter/browser/Browserheader";
+import Searchbar from "../components/hunter/browser/Searchbar";
+import ActiveBounties from "../components/hunter/browser/ActiveBounties";
 
 export default function OwnerDashboard() {
   const [activePage, setActivePage] = useState("dashboard");
@@ -38,7 +41,9 @@ export default function OwnerDashboard() {
 
         {activePage === "bounties" && (
           <>
-          <h1 className='text-white'>BOUNTIES</h1>
+            <Browserheader />
+            <Searchbar />
+            <ActiveBounties />
           </>
         )
         }
