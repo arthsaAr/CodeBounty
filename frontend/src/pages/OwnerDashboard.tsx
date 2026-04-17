@@ -2,7 +2,7 @@
 // lets user act as bug hunters(fixers)
 import React from 'react'
 import Bottombar from "../components/Bottombar";
-import Navbar from "../components/NavOwner";
+import Navbar from "../components/NavBar";
 import { useState } from "react";
 import Quickstat from "../components/Owner/dashboard/Quickstat";
 import Quickactions from "../components/Owner/dashboard/Quickactions";
@@ -24,7 +24,7 @@ export default function OwnerDashboard() {
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
 
-      <Navbar setActivePage={setActivePage} activePage={activePage} />
+      <Navbar setActivePage={setActivePage} activePage={activePage}  loginStatus='owner'/>
 
       <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         {activePage === "dashboard" && (

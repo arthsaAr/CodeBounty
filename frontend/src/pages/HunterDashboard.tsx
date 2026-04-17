@@ -1,6 +1,6 @@
 //starting dashboard implementation!
 import { useState } from "react";
-import Navbar from "../components/NavHunter";
+import Navbar from "../components/NavBar";
 import Quickstat from "../components/hunter/dashboard/Quickstat";
 import Browserheader from "../components/hunter/browser/Browserheader";
 import Header from "../components/hunter/leaderboard/Header";
@@ -34,7 +34,7 @@ export default function HunterDashboard() {
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
 
-      <Navbar setActivePage={setActivePage} activePage={activePage} />
+      <Navbar setActivePage={setActivePage} activePage={activePage} loginStatus="hunter" />
       
       <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         {activePage === "dashboard" && (

@@ -3,15 +3,17 @@ import { FiTarget } from 'react-icons/fi'
 import { MdOutlineDashboard, MdOutlineLogout  } from "react-icons/md";
 import { GoTrophy } from "react-icons/go";
 import { RiCoinsLine } from 'react-icons/ri';
+import { SlBadge } from 'react-icons/sl';
 import pic1 from "../assets/profile/boy.png";
 import { RiAddFill } from "react-icons/ri";
 
 type NavBarProps = {
   setActivePage: (page: string) => void;
   activePage: string;
+  loginStatus: string;
 }
 
-const NavOwner = ({ setActivePage, activePage }: NavBarProps) => {
+const NavBar = ({ setActivePage, activePage, loginStatus }: NavBarProps) => {
 
   return (
     <div className="w-full fixed top-0 z-50 bg-[#0f131a]/70 backdrop-blur-md text-white px-6 py-4 flex items-center justify-between">
@@ -21,7 +23,7 @@ const NavOwner = ({ setActivePage, activePage }: NavBarProps) => {
         </div>
 
       <div className="flex items-center gap-4">
-        <div
+        <div 
           onClick={() => setActivePage("dashboard")}
           className={`flex flex-row gap-2 items-center rounded-lg px-3 py-2 cursor-pointer 
           ${
@@ -47,18 +49,20 @@ const NavOwner = ({ setActivePage, activePage }: NavBarProps) => {
             <span className={activePage === "bounties" ? "text-emerald-400" : "text-white"}>Browse Bounties</span>
         </div>
 
-        <div
-          onClick={() => setActivePage("createBounty")}
-          className={`flex flex-row gap-1 items-center rounded-lg p-2 
-          ${            
-            activePage === "createBounty"
-              ? "bg-gray-800"
-              : "hover:bg-gray-800"
-          }
-          `}>  
-            <RiAddFill color="green" size={20}/>
-            <span className={activePage === "createBounty" ? "text-emerald-400" : "text-white"}>Create Bounty</span>
-        </div>
+        {loginStatus !== "hunter" && (
+          <div
+            onClick={() => setActivePage("createBounty")}
+            className={`flex flex-row gap-1 items-center rounded-lg p-2 
+            ${            
+              activePage === "createBounty"
+                ? "bg-gray-800"
+                : "hover:bg-gray-800"
+            }
+            `}>  
+              <RiAddFill color="green" size={20}/>
+              <span className={activePage === "createBounty" ? "text-emerald-400" : "text-white"}>Create Bounty</span>
+          </div>
+        )}
 
         <div 
           onClick={() => setActivePage("leaderboard")}
@@ -75,10 +79,26 @@ const NavOwner = ({ setActivePage, activePage }: NavBarProps) => {
       </div>
 
       <div className="flex items-center gap-4">
+        
+      {loginStatus === "owner" ? 
         <div className='flex flex-row bg-gray-700 rounded-full p-2 gap-2'>
           <RiCoinsLine className="text-green-700" size={22}/>
           <h3>5000</h3>
         </div>
+      :  
+        <div className='flex flex-row gap-2'>
+          <div className='flex flex-row bg-gray-700 rounded-full p-2 gap-2'>
+            <RiCoinsLine className="text-green-700" size={22}/>
+            <h3>320</h3>
+          </div>
+
+          <div className='bg-gray-700 flex flex-row rounded-full p-2 gap-2'>
+            <SlBadge className="text-green-700" size={22}/>  
+            <h3>850</h3>
+          </div>
+        </div>
+      }
+
         <img src={pic1} className="w-8 h-8 rounded-full border border-emerald-400" />
         <button className="hover:text-green-400">demo_user</button>
         <button onClick={() => {
@@ -92,4 +112,4 @@ const NavOwner = ({ setActivePage, activePage }: NavBarProps) => {
   )
 }
 
-export default NavOwner
+export default NavBar
