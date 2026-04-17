@@ -11,7 +11,7 @@ const Quickstat = () => {
         <h1 className="text-3xl font-semibold mb-2 mt-3">Welcome back, demo_user!</h1>
         <h3 className="text-lg mb-6 text-gray-400">Manage your bounties and review submissions</h3>
 
-        <div className='grid grid-cols-1 md:grid-cols-4 gap-5 mt-6 max-w-5xl'>
+        <div className='grid grid-cols-1 md:grid-cols-5 gap-5 mt-6 max-w-8xl'>
           <div className='rounded-lg bg-[#151920] border border-gray-800 p-6 flex justify-between items-center hover:border-gray-500 transition duration-300 ease-in-out cursor-pointer'>
                 <div>
                     <h1 className='text-gray-400 text-sm'>Credits</h1>
