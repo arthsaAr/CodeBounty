@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import RepositorySelector from "../createBounty/subComponent/RepositorySelector";
 import Repository from './subComponent/Repository';
+import { MdKeyboardBackspace } from "react-icons/md";
 
 const SetupBounty = () => {
     const [step, setStep] = useState(1);
@@ -42,13 +43,6 @@ const SetupBounty = () => {
 
         {step === 1 && (
             <>
-            <button
-            onClick={() => setStep(2)}
-            className="bg-emerald-500 hover:bg-emerald-400 text-black px-4 py-2 rounded mb-3"
-            >
-            Continue
-            </button>
-
             <div className='rounded-xl bg-[#151920] border border-gray-800 p-6'>
                 <RepositorySelector />
 
@@ -57,6 +51,7 @@ const SetupBounty = () => {
                     description="Modern React dashboard with TypeScript"
                     language="TypeScript"
                     stars="2345"
+                    onSelect={() => setStep(2)}
                 />
 
                 <Repository 
@@ -64,6 +59,7 @@ const SetupBounty = () => {
                     description="RESTful API built with Express and MongoDB"
                     language="JavaScript"
                     stars="1123"
+                    onSelect={() => setStep(2)}
                 />
 
                 <Repository 
@@ -71,19 +67,29 @@ const SetupBounty = () => {
                     description="Collection of vue reusable components"
                     language="Vue"
                     stars="890"
+                    onSelect={() => setStep(2)}
                 />
             </div>
-            
             </>
         )}
 
         {step === 2 && (
-            <button
-            onClick={() => setStep(1)}
-            className="bg-emerald-500 hover:bg-emerald-400 text-black px-4 py-2 rounded"
-            >
-            Continue
-            </button>
+            <>
+            <div className='rounded-xl bg-[#151920] border border-gray-800 p-6'>
+                <div
+                    onClick={() => setStep(1)} 
+                    className='inline-flex flex-row hover:bg-[#1d2532] items-center gap-1 border border-[#151920] px-3 py-2 justify-start rounded-lg'>
+                    <MdKeyboardBackspace size={20} />
+                    <h1 className='text-lg'>Back to repositories</h1>
+                </div>
+            </div>
+            </>
+            // <button
+            // onClick={() => setStep(1)}
+            // className="bg-emerald-500 hover:bg-emerald-400 text-black px-4 py-2 rounded"
+            // >
+            // Continue
+            // </button>
         )}
     </div>
   )
