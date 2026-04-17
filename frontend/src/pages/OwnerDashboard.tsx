@@ -15,6 +15,7 @@ import Ranking from "../components/hunter/leaderboard/Ranking";
 import SummaryCard from "../components/hunter/leaderboard/SummaryCard";
 import Searchbar from "../components/hunter/browser/Searchbar";
 import ActiveBounties from "../components/hunter/browser/ActiveBounties";
+import CreateHeader from "../components/Owner/createBounty/CreateHeader";
 
 export default function OwnerDashboard() {
   const [activePage, setActivePage] = useState("dashboard");
@@ -54,7 +55,7 @@ export default function OwnerDashboard() {
 
         {activePage === "createBounty" && (
           <>
-          <h1 className='text-white'>CREATE BOUNTY</h1>
+           <CreateHeader />
           </>
         )
         }
