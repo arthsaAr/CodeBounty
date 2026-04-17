@@ -9,6 +9,10 @@ import Quickactions from "../components/Owner/dashboard/Quickactions";
 import YourBounties from '../components/Owner/dashboard/YourBounties';
 import Recentactivity from '../components/Owner/dashboard/RecentActivity';
 import Browserheader from "../components/hunter/browser/Browserheader";
+import Header from "../components/hunter/leaderboard/Header";
+import TopThreeCard from "../components/hunter/leaderboard/TopThreeCard";
+import Ranking from "../components/hunter/leaderboard/Ranking";
+import SummaryCard from "../components/hunter/leaderboard/SummaryCard";
 import Searchbar from "../components/hunter/browser/Searchbar";
 import ActiveBounties from "../components/hunter/browser/ActiveBounties";
 
@@ -57,7 +61,10 @@ export default function OwnerDashboard() {
 
         {activePage === "leaderboard" && (
           <>
-          <h1 className='text-white'>LEADERBOARD</h1>
+            <Header />
+            <TopThreeCard />
+            <Ranking />
+            <SummaryCard />
           </>
         )
         }
