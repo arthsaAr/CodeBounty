@@ -6,7 +6,7 @@ const YourBounties = () => {
   return (
     <div>
         <div className='flex flex-row justify-between mb-4 items-center'>
-            <h2 className='text-2xl font-semibold'>Recent Bounties</h2>
+            <h2 className='text-2xl font-semibold'>Your Bounties</h2>
             <button className='text-lg text-white hover:text-emerald-400'>View All</button>
         </div>
 

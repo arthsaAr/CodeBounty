@@ -1,12 +1,14 @@
 //starting dashboard implementation!
 import { useState } from "react";
 import Navbar from "../components/NavBar";
-import Quickstat from "../components/hunter/dashboard/Quickstat";
+import HunterStat from "../components/hunter/dashboard/Quickstat";
+import OwnerStat from "../components/Owner/dashboard/Quickstat";
+import CommonStat from "../components/common/dashboard/Quickstat";
 import Browserheader from "../components/hunter/browser/Browserheader";
 import Header from "../components/hunter/leaderboard/Header";
 import RecentBounties from "../components/hunter/dashboard/RecentBounties";
 import Submissions from "../components/hunter/dashboard/Submissions";
-import Quickactions from "../components/hunter/dashboard/Quickactions";
+import Quickactions from "../components/Quickactions";
 import Searchbar from "../components/hunter/browser/Searchbar";
 import ActiveBounties from "../components/hunter/browser/ActiveBounties";
 import Bottombar from "../components/Bottombar";
@@ -37,17 +39,27 @@ const HunterDashboard = ({
       <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         {activePage === "dashboard" && (
           <>
-            <Quickstat /> 
+            {role === "hunter" && 
+              <HunterStat />
+            }
+
+            {role === "owner" && 
+              <OwnerStat />
+            }
+             
+            {role === "common" && 
+              <CommonStat />
+            }
 
             {role === "hunter" && 
               <div className="flex flex-row gap-8 mt-6">
-              <div className="flex-1">
-                <RecentBounties />
+                <div className="flex-1">
+                  <RecentBounties />
+                </div>
+                <div className="flex-1">
+                  <Submissions />
+                </div>
               </div>
-              <div className="flex-1">
-                <Submissions />
-              </div>
-            </div>
             }
 
             {role === "owner" && 
@@ -61,7 +73,18 @@ const HunterDashboard = ({
               </div>
             }
 
-            <Quickactions setActivePage={setActivePage} />
+            {role === "common" && 
+              <div className="flex flex-row gap-8 mt-6">
+                <div className="flex-1">
+                  <YourBounties />
+                </div>
+                <div className="flex-1">
+                  <Submissions />
+                </div>
+              </div>
+            }
+
+            <Quickactions curPage={role} setActivePage={setActivePage} />
           </>
         )
         }

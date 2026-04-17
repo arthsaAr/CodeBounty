@@ -3,7 +3,7 @@ import { CiCircleCheck } from "react-icons/ci";
 import { SlBadge } from "react-icons/sl";
 import { RiCoinsLine } from "react-icons/ri";
 
-const quickStats = () => {
+const Quickstat = () => {
   return (
     <div>
         <h1 className="text-3xl font-semibold mb-2 mt-3">Welcome back, demo_user!</h1>
@@ -38,4 +38,4 @@ const quickStats = () => {
   )
 }
 
-export default quickStats
+export default Quickstat
