@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from "react";
 import RepositorySelector from "../createBounty/subComponent/RepositorySelector";
+import Repository from './subComponent/Repository';
 
 const SetupBounty = () => {
     const [step, setStep] = useState(1);
@@ -48,7 +49,31 @@ const SetupBounty = () => {
             Continue
             </button>
 
-            <RepositorySelector />
+            <div className='rounded-xl bg-[#151920] border border-gray-800 p-6'>
+                <RepositorySelector />
+
+                <Repository 
+                    title="react-dashboard"
+                    description="Modern React dashboard with TypeScript"
+                    language="TypeScript"
+                    stars="2345"
+                />
+
+                <Repository 
+                    title="express-api"
+                    description="RESTful API built with Express and MongoDB"
+                    language="JavaScript"
+                    stars="1123"
+                />
+
+                <Repository 
+                    title="vue-components"
+                    description="Collection of vue reusable components"
+                    language="Vue"
+                    stars="890"
+                />
+            </div>
+            
             </>
         )}
 
