@@ -13,6 +13,8 @@ const SetupBounty = () => {
     const [loading, setLoading] = useState(false); //(mainly for blocking button, and showing loading when a call is being made)
     const [error, setError] = useState<string | null>(null);  //(proper error handling)
 
+    //for fetching, getting the github/login/token and selecting all the repos for specific token user
+    //returning all the repo data.
     const fetchRepos = async () => {
         try {
             setError(null);
@@ -32,6 +34,8 @@ const SetupBounty = () => {
         }
     }
 
+    //this is triggered when the import button is clicked (from RepositorySelector component)
+    //for now it is passed into the component and it's trigger is handled there
     const importRepos = async() => {
         try {
             setError(null);
