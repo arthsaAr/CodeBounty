@@ -78,7 +78,8 @@ const SetupBounty = () => {
                 </div>
                 <h1 className={`text-lg 
                     ${step === 1 ? "text-emerald-400" : "text-gray-400"}
-                    `}>
+                    `}
+                    onClick={() => setStep(2)} >
                     Select Repository
                 </h1>
             </div>

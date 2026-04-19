@@ -1,6 +1,5 @@
 import React from 'react'
 import { LuGithub } from "react-icons/lu";
-import axios from "axios";
 
 const RepositorySelector = ({onImport, isLoading}: any) => {
   return (
