@@ -5,6 +5,7 @@ import Repository from './subComponent/Repository';
 import BountyForm from './subComponent/Bountyform';
 import { MdKeyboardBackspace } from "react-icons/md";
 import axios from "axios";
+import { RiAddFill } from "react-icons/ri";
 
 const SetupBounty = () => {
     const [step, setStep] = useState(1);
@@ -141,7 +142,18 @@ const SetupBounty = () => {
                     <h1 className='text-lg'>Back to repositories</h1>
                 </div>
                 <h1 className='text-xl font-semibold font-sans'>Bounty Details</h1>
+
                 <BountyForm />
+                
+                <div className='flex flex-row gap-3'>
+                    <div className='w-3/4 mt-3 flex p-3 flex-row rounded-lg bg-emerald-500 justify-center items-center hover:bg-emerald-600 transition-all'>
+                        <RiAddFill color="black" size={20}/>
+                        <h1 className="text-xl font-semibold text-black text-center ">Create Bounty</h1>
+                    </div>
+                    <div className='w-1/4 mt-3 flex p-3 flex-row rounded-lg justify-center items-center hover:bg-gray-600 border border-emerald-500'>
+                        <h1 className="text-xl font-semibold text-emerald-500 text-center ">Cancel</h1>
+                    </div>
+                </div>
             </div>
             </>
         )}
