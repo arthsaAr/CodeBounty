@@ -42,14 +42,17 @@ const Bountyform = () => {
         <div className="flex flex-col gap-1 mt-2">
           <label className="text-sm text-gray-400">Difficulty*</label>
           <div className='flex flex-row gap-3 '>
-            <div className='w-1/3 p-6 text-center rounded-lg border text-lg border-emerald-500'>
-              Easy
+            <div className='flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg border-gray-700 hover:border-emerald-500'>
+              <div className="w-5 h-5 rounded-full bg-green-400 shadow-[0_0_10px_3px_rgba(34,197,94,0.7)]"></div>
+              <h1 className='font-semibold text-md'>Easy</h1>
             </div>
-            <div className='p-6 w-1/3 rounded-lg text-center border text-lg border-emerald-500'>
-              Medium
+            <div className='flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg border-gray-700 hover:border-emerald-500'>
+              <div className="w-5 h-5 rounded-full bg-yellow-400 shadow-[0_0_10px_3px_rgba(250,204,21,0.7)]"></div>
+              <h1 className='font-semibold text-md'>Medium</h1>
             </div>
-            <div className='p-6 w-1/3 rounded-lg border text-center text-lg border-emerald-500'>
-              Hard
+            <div className='flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg border-gray-700 hover:border-emerald-500'>
+              <div className="w-5 h-5 rounded-full bg-red-500 shadow-[0_0_10px_3px_rgba(239,68,68,0.7)]"></div>
+              <h1 className='font-semibold text-md'>Hard</h1>
             </div>
           </div>
         </div>
