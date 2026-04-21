@@ -17,33 +17,39 @@ export default function ProtectedRoute({ children, allowedRole }: Props) {
             const token = localStorage.getItem("token");
             const role = localStorage.getItem("role");
 
+            let valid = false;
+
             //when no token, then blocking directly
             if(!token){
+                // setLoading(false);
+                // return;
+            } else if(role !== allowedRole){
+                // setLoading(false);
+                // return;
+            } else {
+                try{
+                    await axios.get("http://localhost:3000/protected", {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    });
+
+                    valid = true;
+                } catch(error){
+                    //when invalid removing token and role data
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("role");
+                    valid = false;
+                }
+            }
+
+            setIsValid(valid);
+
+            setIsValid(valid);
+
+            setTimeout(() => {
                 setLoading(false);
-                return;
-            }
-
-            if(role !== allowedRole){
-                setLoading(false);
-                return;
-            }
-
-            try{
-                await axios.get("http://localhost:3000/protected", {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-
-                setIsValid(true);
-            } catch(error){
-                //when invalid removing token and role data
-                localStorage.removeItem("token");
-                localStorage.removeItem("role");
-                setIsValid(false);
-            }
-
-            setLoading(false);
+            }, 2000);
         };
 
         checkAuth();
@@ -51,15 +57,27 @@ export default function ProtectedRoute({ children, allowedRole }: Props) {
 
     if(loading){
         return (
-            <p>Checking access...</p>
+            <div className="flex items-center justify-center min-h-screen bg-gray-100">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
+                    <div className="animate-pulse text-gray-600 text-lg">
+                        Checking access...
+                    </div>
+                </div>
+            </div>
         );
     }
 
     //blocking
     //if not logged in block access
-    if(!isValid){
+    if(isValid === false){
         return <Navigate to="/login" />;
     }
 
-    return <>{children}</>;
+    if(isValid === true){
+        return <>{children}</>;
+    }
+
+    return null;
+
 }
