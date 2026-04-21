@@ -57,10 +57,11 @@ export default function ProtectedRoute({ children, allowedRole }: Props) {
 
     if(loading){
         return (
-            <div className="flex items-center justify-center min-h-screen bg-gray-100">
+            <div className="flex items-center justify-center min-h-screen bg-[#0f131a] text-white">
                 <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
-                    <div className="animate-pulse text-gray-600 text-lg">
+                    <div className="w-12 h-12 mx-auto mb-4 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+
+                    <div className="text-gray-400 text-lg animate-pulse">
                         Checking access...
                     </div>
                 </div>
