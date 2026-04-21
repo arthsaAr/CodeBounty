@@ -4,7 +4,7 @@ const Bountyform = () => {
   return (
     <div className='mt-2'>
         <div className="flex flex-col gap-1 mt-2">
-          <label className="text-sm text-gray-400">File path*</label>
+          <label className="text-sm text-gray-400">File path<span className='text-red-600'>*</span></label>
           <select className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white">
             <option>src/components/Chart.tsx</option>
             <option>src/hooks/useDebounce.ts</option>
@@ -13,7 +13,7 @@ const Bountyform = () => {
         </div>
 
         <div className="flex flex-col gap-1 mt-2">
-          <label className="text-sm text-gray-400">Bounty Title*</label>
+          <label className="text-sm text-gray-400">Bounty Title<span className='text-red-600'>*</span></label>
           <input
             type="text"
             placeholder="Eg. Memory leak in Component"
@@ -22,7 +22,7 @@ const Bountyform = () => {
         </div>
 
         <div className="flex flex-col gap-1 mt-2">
-          <label className="text-sm text-gray-400">Description*</label>
+          <label className="text-sm text-gray-400">Description<span className='text-red-600'>*</span></label>
           <textarea
             rows={4}
             placeholder="Describe the issue or what you are looking for..."
@@ -31,7 +31,7 @@ const Bountyform = () => {
         </div>
 
         <div className="flex flex-col gap-1 mt-2">
-          <label className="text-sm text-gray-400">Bounty Amount (Credits)*</label>
+          <label className="text-sm text-gray-400">Bounty Amount (Credits)<span className='text-red-600'>*</span></label>
           <input
             type="number"
             placeholder="Eg. 500"
@@ -39,8 +39,10 @@ const Bountyform = () => {
           />
         </div>
 
+        
+
         <div className="flex flex-col gap-1 mt-2">
-          <label className="text-sm text-gray-400">Difficulty*</label>
+          <label className="text-sm text-gray-400">Difficulty<span className='text-red-600'>*</span></label>
           <div className='flex flex-row gap-3 '>
             <div className='flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg border-gray-700 hover:border-emerald-500'>
               <div className="w-5 h-5 rounded-full bg-green-400 shadow-[0_0_10px_3px_rgba(34,197,94,0.7)]"></div>
