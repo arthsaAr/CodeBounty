@@ -114,7 +114,7 @@ const SetupBounty = () => {
 
                 {repos.length === 0 && !loading && !error && (
                     <div className='text-center py-8 text-gray-400'>
-                        <p className='text-lg'>No repositories found. Click "Import from GitHub" to get started!</p>
+                        <p className='text-lg'>Click "Import from GitHub" to get started!</p>
                     </div>
                 )}
 
