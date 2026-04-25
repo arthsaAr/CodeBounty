@@ -145,7 +145,7 @@ const SetupBounty = () => {
 
                 <BountyForm />
                 
-                <div className='flex flex-row gap-3'>
+                <div className='flex flex-row gap-3 mt-3'>
                     <div className='w-3/4 mt-3 flex p-3 flex-row rounded-lg bg-emerald-500 justify-center items-center hover:bg-emerald-600 transition-all'>
                         <RiAddFill color="black" size={20}/>
                         <h1 className="text-xl font-semibold text-black text-center ">Create Bounty</h1>
