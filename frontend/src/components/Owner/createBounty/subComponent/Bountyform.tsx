@@ -1,6 +1,9 @@
 import React from 'react'
+import { useState } from "react";
 
 const Bountyform = () => {
+  const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
+
   return (
     <div className='mt-2'>
         <div className="flex flex-col gap-1 mt-2">
@@ -44,15 +47,39 @@ const Bountyform = () => {
         <div className="flex flex-col gap-1 mt-2">
           <label className="text-sm text-gray-400">Difficulty<span className='text-red-600'> *</span></label>
           <div className='flex flex-row gap-3 '>
-            <div className='flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg border-gray-700 hover:border-emerald-500'>
+            <div 
+              onClick={() => setSelectedDifficulty("Easy")}
+              className={`flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg
+                    ${
+                      selectedDifficulty === "Easy"
+                      ? "border-emerald-500 bg-emerald-500/5"
+                      : "border-gray-800 hover:border-green-600"
+                    }
+              `}>
               <div className="w-5 h-5 rounded-full bg-green-400 shadow-[0_0_10px_3px_rgba(34,197,94,0.7)]"></div>
               <h1 className='font-semibold text-md'>Easy</h1>
             </div>
-            <div className='flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg border-gray-700 hover:border-emerald-500'>
+            <div 
+              onClick={() => setSelectedDifficulty("Medium")}
+              className={`flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg
+                    ${
+                      selectedDifficulty === "Medium"
+                      ? "border-emerald-500 bg-emerald-500/5"
+                      : "border-gray-800 hover:border-green-600"
+                    }
+              `}>
               <div className="w-5 h-5 rounded-full bg-yellow-400 shadow-[0_0_10px_3px_rgba(250,204,21,0.7)]"></div>
               <h1 className='font-semibold text-md'>Medium</h1>
             </div>
-            <div className='flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg border-gray-700 hover:border-emerald-500'>
+            <div 
+              onClick={() => setSelectedDifficulty("Hard")}
+              className={`flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg
+                    ${
+                      selectedDifficulty === "Hard"
+                      ? "border-emerald-500 bg-emerald-500/5"
+                      : "border-gray-800 hover:border-green-600"
+                    }
+              `}>
               <div className="w-5 h-5 rounded-full bg-red-500 shadow-[0_0_10px_3px_rgba(239,68,68,0.7)]"></div>
               <h1 className='font-semibold text-md'>Hard</h1>
             </div>
