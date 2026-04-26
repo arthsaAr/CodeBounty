@@ -81,18 +81,18 @@ const NavBar = ({ setActivePage, activePage, loginStatus }: NavBarProps) => {
       <div className="flex items-center gap-4">
         
       {loginStatus === "owner" ? 
-        <div className='flex flex-row bg-gray-700 rounded-full p-2 gap-2'>
+        <div className='flex flex-row bg-gray-700 rounded-full p-2 gap-2 cursor-pointer'>
           <RiCoinsLine className="text-green-700" size={22}/>
           <h3>5000</h3>
         </div>
       :  
         <div className='flex flex-row gap-2'>
-          <div className='flex flex-row bg-gray-700 rounded-full p-2 gap-2'>
+          <div className='flex flex-row bg-gray-700 rounded-full p-2 gap-2 cursor-pointer'>
             <RiCoinsLine className="text-green-700" size={22}/>
             <h3>320</h3>
           </div>
 
-          <div className='bg-gray-700 flex flex-row rounded-full p-2 gap-2'>
+          <div className='bg-gray-700 flex flex-row rounded-full p-2 gap-2 cursor-pointer'>
             <SlBadge className="text-green-700" size={22}/>  
             <h3>850</h3>
           </div>
