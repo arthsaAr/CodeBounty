@@ -9,6 +9,7 @@ import { RiAddFill } from "react-icons/ri";
 
 const SetupBounty = () => {
     const [step, setStep] = useState(1);
+    
 
     const [repos, setRepos] = useState([]);
     const [loading, setLoading] = useState(false); //(mainly for blocking button, and showing loading when a call is being made)
