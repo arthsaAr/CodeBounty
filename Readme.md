@@ -2,8 +2,6 @@ CodeBounty - A GitHub Code Review Bounty Platform!
 
 Under Active Development!
 
-Current pages for the site are as follows:
-
 ### LoginPage
 <img src="frontend/Screenshots/HomePage.png" width="1200" />
 
