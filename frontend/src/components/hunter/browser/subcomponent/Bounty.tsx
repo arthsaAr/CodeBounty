@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 type BountyProps = {
+  id: number;
   title: string;
   credits: number;
   description: string;
@@ -13,6 +15,7 @@ type BountyProps = {
 
 
 const Bounty = ({
+  id,
   title,
   credits,
   description,
@@ -22,8 +25,12 @@ const Bounty = ({
   author,
   date,
 }: BountyProps) => {
+  const navigate = useNavigate();
+
   return (
-    <div>
+    <div
+      onClick={() => navigate(`/bounty/${id}$`)}
+      >
         <div className='rounded-xl bg-[#151920] border border-gray-800 p-6 hover:border-emerald-700 cursor-pointer'>
         <div className='flex justify-between items-start gap-4'>
           <div>

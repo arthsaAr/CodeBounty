@@ -24,9 +24,9 @@ type dashboardProps = {
   role: string;
 };
 
-const HunterDashboard = ({
+const Dashboard = ({
   role
-}: HunterDashboard) => {
+}: Dashboard) => {
     
   // const [bounties, setBounties] = useState([]);
   const [activePage, setActivePage] = useState("dashboard");
@@ -122,4 +122,4 @@ const HunterDashboard = ({
   );
 }
 
-export default HunterDashboard;
+export default Dashboard;

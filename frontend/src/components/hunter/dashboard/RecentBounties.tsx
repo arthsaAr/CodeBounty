@@ -11,6 +11,7 @@ const RecentBounties = () => {
         </div>
 
         <Recentbounty 
+            id={1}
             title="Memory leak in Chart component"
             description="react-dashboard /src/components/Chart.tsx"
             difficulty="hard"
@@ -20,6 +21,7 @@ const RecentBounties = () => {
         />
 
         <Recentbounty 
+            id={2}
             title="Security vulnerability in JWT validation"
             description="express-api / src/middleware/auth.js"
             difficulty="hard"
@@ -28,7 +30,8 @@ const RecentBounties = () => {
             submissions={5}
         />
 
-        <Recentbounty 
+        <Recentbounty
+            id={3} 
             title="Date formatting edge cases"
             description="react-dashboard / src/utils/formatters.ts"
             difficulty="medium"
@@ -38,6 +41,7 @@ const RecentBounties = () => {
         />
 
         <Recentbounty 
+            id={4}
             title="Debounce hook optimization"
             description="react-dashboard / src/hooks/useDebounce.ts"
             difficulty="easy"

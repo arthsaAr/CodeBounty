@@ -49,7 +49,7 @@ export default function ProtectedRoute({ children, allowedRole }: Props) {
 
             setTimeout(() => {
                 setLoading(false);
-            }, 2000);
+            }, 800);
         };
 
         checkAuth();

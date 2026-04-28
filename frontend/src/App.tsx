@@ -3,6 +3,7 @@ import OAuthSuccess from "./pages/OAuthSuccess";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import BountyDetails from "./components/BountyDetails";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
           <ProtectedRoute allowedRole = "both">
             <Dashboard role="common" />
           </ProtectedRoute>
+          } />
+          <Route path="/bounty/:id" element={
+            <BountyDetails />
           } />
       </Routes>
     </Router>
