@@ -11,6 +11,7 @@ const YourBounties = () => {
         </div>
 
         <YourBounty 
+            id={1}
             title="Memory leak in Chart component"
             description="react-dashboard /src/components/Chart.tsx"
             difficulty="hard"
@@ -20,6 +21,7 @@ const YourBounties = () => {
         />
 
         <YourBounty 
+            id={2}
             title="Security vulnerability in JWT validation"
             description="express-api / src/middleware/auth.js"
             difficulty="hard"
@@ -29,6 +31,7 @@ const YourBounties = () => {
         />
 
         <YourBounty 
+            id={3}
             title="Date formatting edge cases"
             description="react-dashboard / src/utils/formatters.ts"
             difficulty="medium"
@@ -38,6 +41,7 @@ const YourBounties = () => {
         />
 
         <YourBounty 
+            id={4}
             title="Debounce hook optimization"
             description="react-dashboard / src/hooks/useDebounce.ts"
             difficulty="easy"
