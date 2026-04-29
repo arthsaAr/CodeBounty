@@ -96,4 +96,12 @@ router.patch("/:id/status", authenticate, async(req: AuthenticatedRequest, res) 
     }
 });
 
+router.get("/:id", async (req, res) => {
+  const bounty = await prisma.bounty.findUnique({
+    where: { id: Number(req.params.id) },
+  });
+
+  res.json(bounty);
+});
+
 export default router;

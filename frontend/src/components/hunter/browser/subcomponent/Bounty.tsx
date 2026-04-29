@@ -29,7 +29,7 @@ const Bounty = ({
 
   return (
     <div
-      onClick={() => navigate(`/bounty/${id}$`)}
+      onClick={() => navigate(`/bounty/${id}`)}
       >
         <div className='rounded-xl bg-[#151920] border border-gray-800 p-6 hover:border-emerald-700 cursor-pointer'>
         <div className='flex justify-between items-start gap-4'>

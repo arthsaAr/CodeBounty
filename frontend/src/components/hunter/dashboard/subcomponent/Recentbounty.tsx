@@ -21,13 +21,11 @@ const Recentbounty = ({
   reward,
   submissions
 }: RecentProps) => {
-  const [selectedBounty, setSelectedBounty] = useState<string | null>(null);
-
   const navigate = useNavigate();
 
   return (
     <div 
-      onClick={() => navigate(`/bounty/${id}$`)}
+      onClick={() => navigate(`/bounties/${id}`)}
       className='rounded-xl bg-[#151920] border border-gray-800 p-6 flex justify-between items-start hover:border-emerald-700 cursor-pointer mb-3'>
         <div>
             <h1 className='text-white text-2xl'>{title}</h1>
