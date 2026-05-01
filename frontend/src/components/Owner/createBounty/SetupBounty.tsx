@@ -9,6 +9,57 @@ import { RiAddFill } from "react-icons/ri";
 
 const SetupBounty = () => {
     const [step, setStep] = useState(1);
+    const [selectedRepoId, setSelectedRepoId] = useState<number | null>(null);
+    const [formData, setFormData] = useState({
+        title: "",
+        description: "",
+        amount: 0,
+        difficulty: "easy"
+        });
+
+    const createBounty = async () => {
+        try {
+            const token = localStorage.getItem("token");
+
+            if (!selectedRepoId) {
+                alert("Select a repository first");
+                return;
+            }
+
+            const res = await axios.post(
+                "http://localhost:3000/bounties",
+                {
+                    repositoryId: selectedRepoId,
+                    title: formData.title,
+                    description: formData.description,
+                    amount: Number(formData.amount),
+                    difficulty: formData.difficulty,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            // console.log("Bounty created:", res.data);
+
+            alert("Bounty created successfully!");
+
+            // optional reset
+            setStep(1);
+            setFormData({
+                title: "",
+                description: "",
+                amount: 0,
+                difficulty: "",
+            });
+
+        } catch (err: any) {
+            console.error(err);
+            alert(err.response?.data?.message || "Failed to create bounty");
+        }
+    };
     
 
     const [repos, setRepos] = useState([]);
@@ -126,7 +177,10 @@ const SetupBounty = () => {
                         description="Imported from GitHub"
                         language="Unknown"
                         stars="N/A"
-                        onSelect={() => setStep(2)}
+                        onSelect={() => {
+                            setSelectedRepoId(repo.id);
+                            setStep(2);
+                        }}
                     />
                 ))}
             </div>
@@ -144,10 +198,12 @@ const SetupBounty = () => {
                 </div>
                 <h1 className='text-xl font-semibold font-sans'>Bounty Details</h1>
 
-                <BountyForm />
+                <BountyForm formData={formData} setFormData={setFormData} />
                 
                 <div className='flex flex-row gap-3 mt-3'>
-                    <div className='w-3/4 mt-3 flex p-3 flex-row rounded-lg bg-emerald-500 justify-center items-center hover:bg-emerald-600 transition-all'>
+                    <div
+                        onClick={createBounty} 
+                        className='w-3/4 mt-3 flex p-3 flex-row rounded-lg bg-emerald-500 justify-center items-center hover:bg-emerald-600 transition-all'>
                         <RiAddFill color="black" size={20}/>
                         <h1 className="text-xl font-semibold text-black text-center ">Create Bounty</h1>
                     </div>

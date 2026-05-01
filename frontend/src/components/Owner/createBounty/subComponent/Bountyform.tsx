@@ -2,10 +2,12 @@ import React from 'react'
 import { useState } from "react";
 
 //complete this form completely(with added backend routes)
+type formProps = {
+  formData: any;
+  setFormData: React.Dispatch<React.SetStateAction<any>>;
+};
 
-const Bountyform = () => {
-  const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
-
+const Bountyform = ({ formData, setFormData }: formProps) => {
   return (
     <div className='mt-2'>
         <div className="flex flex-col gap-1 mt-2">
@@ -21,6 +23,13 @@ const Bountyform = () => {
           <label className="text-sm text-gray-400">Bounty Title<span className='text-red-600'> *</span></label>
           <input
             type="text"
+            value={formData.title}
+            onChange={(e) =>
+              setFormData((prev: any) => ({
+                ...prev,
+                title: e.target.value
+              }))
+            }
             placeholder="Eg. Memory leak in Component"
             className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
           />
@@ -30,6 +39,13 @@ const Bountyform = () => {
           <label className="text-sm text-gray-400">Description<span className='text-red-600'> *</span></label>
           <textarea
             rows={4}
+            value={formData.description}
+            onChange={(e) =>
+              setFormData((prev: any) => ({
+                ...prev,
+                description: e.target.value
+              }))
+            }
             placeholder="Describe the issue or what you are looking for..."
             className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500 resize-none"
           />
@@ -39,6 +55,13 @@ const Bountyform = () => {
           <label className="text-sm text-gray-400">Bounty Amount (Credits)<span className='text-red-600'> *</span></label>
           <input
             type="number"
+            value={formData.amount}
+            onChange={(e) =>
+              setFormData((prev: any) => ({
+                ...prev,
+                amount: e.target.value
+              }))
+            }
             placeholder="Eg. 500"
             className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
           />
@@ -50,22 +73,31 @@ const Bountyform = () => {
           <label className="text-sm text-gray-400">Difficulty<span className='text-red-600'> *</span></label>
           <div className='flex flex-row gap-3 '>
             <div 
-              onClick={() => setSelectedDifficulty("Easy")}
+              onClick={() =>
+                setFormData((prev: any) => ({
+                  ...prev,
+                  difficulty: "easy"
+                }))
+              }
               className={`flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg
                     ${
-                      selectedDifficulty === "Easy"
+                      formData.difficulty === "easy"
                       ? "border-emerald-500 bg-emerald-500/5"
                       : "border-gray-800 hover:border-green-600"
-                    }
-              `}>
+                  }`}>
               <div className="w-5 h-5 rounded-full bg-green-400 shadow-[0_0_10px_3px_rgba(34,197,94,0.7)]"></div>
               <h1 className='font-semibold text-md'>Easy</h1>
             </div>
             <div 
-              onClick={() => setSelectedDifficulty("Medium")}
+              onClick={() =>
+                setFormData((prev: any) => ({
+                  ...prev,
+                  difficulty: "medium"
+                }))
+              }
               className={`flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg
                     ${
-                      selectedDifficulty === "Medium"
+                      formData.difficulty === "medium"
                       ? "border-emerald-500 bg-emerald-500/5"
                       : "border-gray-800 hover:border-green-600"
                     }
@@ -74,10 +106,15 @@ const Bountyform = () => {
               <h1 className='font-semibold text-md'>Medium</h1>
             </div>
             <div 
-              onClick={() => setSelectedDifficulty("Hard")}
+              onClick={() =>
+                setFormData((prev: any) => ({
+                  ...prev,
+                  difficulty: "hard"
+                }))
+              }
               className={`flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg
                     ${
-                      selectedDifficulty === "Hard"
+                      formData.difficulty === "hard"
                       ? "border-emerald-500 bg-emerald-500/5"
                       : "border-gray-800 hover:border-green-600"
                     }
