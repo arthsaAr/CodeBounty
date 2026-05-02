@@ -196,7 +196,12 @@ const SetupBounty = () => {
                     <MdKeyboardBackspace size={20} />
                     <h1 className='text-lg'>Back to repositories</h1>
                 </div>
-                <h1 className='text-xl font-semibold font-sans'>Bounty Details</h1>
+
+                <div className='w-1/4 mt-3 flex p-3 flex-row rounded-lg justify-center items-center hover:bg-gray-600 border border-emerald-500'>
+                    <h1 className="text-xl font-semibold text-emerald-500 text-center ">Activate Bounty</h1>
+                </div>
+
+                <h1 className=' mt-2 text-xl font-semibold font-sans'>Bounty Details</h1>
 
                 <BountyForm formData={formData} setFormData={setFormData} />
                 
