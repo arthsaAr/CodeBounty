@@ -26,7 +26,7 @@ const SetupBounty = () => {
                 return;
             }
 
-            await axios.post(`http://localhost:3000/repositories/${selectedRepoId}/activate`, {
+            await axios.patch(`http://localhost:3000/repositories/${selectedRepoId}/activate`, {}, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
