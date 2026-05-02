@@ -27,8 +27,6 @@ type dashboardProps = {
 const Dashboard = ({
   role
 }: Dashboard) => {
-    
-  // const [bounties, setBounties] = useState([]);
   const [activePage, setActivePage] = useState("dashboard");
 
   return (

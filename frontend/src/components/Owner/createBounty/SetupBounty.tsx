@@ -32,8 +32,6 @@ const SetupBounty = () => {
                 }
             });
 
-            // console.log("Bounty created:", res.data);
-
             alert("Repository Activated successfully!");
 
         } catch (err: any) {
@@ -66,8 +64,6 @@ const SetupBounty = () => {
                     },
                 }
             );
-
-            // console.log("Bounty created:", res.data);
 
             alert("Bounty created successfully!");
 
@@ -137,8 +133,6 @@ const SetupBounty = () => {
             setLoading(false);
         }
     }
-
-
 
     //runs once when loading a page
     useEffect(() => {
