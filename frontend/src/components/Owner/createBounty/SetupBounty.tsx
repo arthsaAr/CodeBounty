@@ -17,6 +17,31 @@ const SetupBounty = () => {
         difficulty: "easy"
         });
 
+    const activateRepo = async () => {
+        try {
+            const token = localStorage.getItem("token");
+
+            if (!selectedRepoId) {
+                alert("Select a repository first");
+                return;
+            }
+
+            await axios.post(`http://localhost:3000/repositories/${selectedRepoId}/activate`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            // console.log("Bounty created:", res.data);
+
+            alert("Repository Activated successfully!");
+
+        } catch (err: any) {
+            console.error(err);
+            alert(err.response?.data?.message || "Failed to activate Repository");
+        }
+    };
+
     const createBounty = async () => {
         try {
             const token = localStorage.getItem("token");
@@ -113,6 +138,8 @@ const SetupBounty = () => {
         }
     }
 
+
+
     //runs once when loading a page
     useEffect(() => {
         fetchRepos();
@@ -197,8 +224,10 @@ const SetupBounty = () => {
                     <h1 className='text-lg'>Back to repositories</h1>
                 </div>
 
-                <div className='w-1/4 mt-3 flex p-3 flex-row rounded-lg justify-center items-center hover:bg-gray-600 border border-emerald-500'>
-                    <h1 className="text-xl font-semibold text-emerald-500 text-center ">Activate Bounty</h1>
+                <div
+                    onClick={activateRepo} 
+                    className='w-1/4 mt-3 flex p-3 flex-row rounded-lg justify-center items-center hover:bg-gray-600 border border-emerald-500'>
+                    <h1 className="text-xl font-semibold text-emerald-500 text-center ">Activate Repository</h1>
                 </div>
 
                 <h1 className=' mt-2 text-xl font-semibold font-sans'>Bounty Details</h1>

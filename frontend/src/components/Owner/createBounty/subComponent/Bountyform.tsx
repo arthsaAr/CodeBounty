@@ -10,6 +10,7 @@ type formProps = {
 const Bountyform = ({ formData, setFormData }: formProps) => {
   return (
     <div className='mt-2'>
+      
         <div className="flex flex-col gap-1 mt-2">
           <label className="text-sm text-gray-400">File path<span className='text-red-600'> *</span></label>
           <select className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white">
