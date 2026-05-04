@@ -77,7 +77,7 @@ const SetupBounty = () => {
             setFormData({
                 title: "",
                 description: "",
-                amount: 0,
+                amount: null as number | null,
                 difficulty: "",
             });
 
