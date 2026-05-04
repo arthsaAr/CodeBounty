@@ -49,6 +49,11 @@ const SetupBounty = () => {
                 return;
             }
 
+            if(Number(formData.amount) <= 0) {
+                alert("Please enter a valid bounty amount");
+                return;
+            }
+
             const res = await axios.post(
                 "http://localhost:3000/bounties",
                 {
