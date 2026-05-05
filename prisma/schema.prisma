@@ -1,69 +1,85 @@
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
 
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
 model User {
-  id            Int           @id @default(autoincrement())
-  githubId      String        @unique
-  username      String
-  email         String?
-  createdAt     DateTime      @default(now())
-  repositories  Repository[]
-  transactions  Transaction[]
-  bounties      Bounty[]      @relation("UserBounties")
-  bugReports    BugReport[]   // Added this
-  credits    Int      @default(1000)
-  reputation Int      @default(0)
+  id        Int      @id @default(autoincrement())
+  githubId  String   @unique
+  username  String
+  email     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  active    Boolean  @default(true)
+  credits   Int      @default(0)
+  reputation Int     @default(0)
+
+  repositories Repository[]
+  bounties     Bounty[]
+  bugReports   BugReport[]
 }
 
 model Repository {
-  id       Int      @id @default(autoincrement())
-  githubId String   @unique
-  name     String
-  url      String
-  active   Boolean  @default(false)
-  ownerId  Int
-  owner    User     @relation(fields: [ownerId], references: [id])
-  bounties Bounty[]
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  url         String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  active      Boolean  @default(true)
+
+  owner   User @relation(fields: [ownerId], references: [id])
+  ownerId Int
+
+  bounties   Bounty[]
+  bugReports BugReport[]
 }
 
 model Bounty {
-  id           Int         @id @default(autoincrement())
-  title        String
-  description  String
-  amount       Int
-  difficulty   String
-  status       String      @default("active")
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  reward      Int
+  status      String   @default("open")
+  path        String?
+  author      String?
+  dateOfCreation DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  active      Boolean  @default(true)
+
+  repository   Repository @relation(fields: [repositoryId], references: [id])
   repositoryId Int
-  creatorId    Int
-  repository   Repository  @relation(fields: [repositoryId], references: [id])
-  creator      User        @relation("UserBounties", fields: [creatorId], references: [id])
-  bugReports   BugReport[]
+
+  creator   User @relation(fields: [creatorId], references: [id])
+  creatorId Int
+
+  bugReports BugReport[]
 }
 
 model BugReport {
   id          Int      @id @default(autoincrement())
   title       String
   description String
-  severity    String
-  lineNumbers String?
-  status      String   @default("pending")
-  bountyId    Int
-  hunterId    Int
-  bounty      Bounty   @relation(fields: [bountyId], references: [id])
-  hunter      User     @relation(fields: [hunterId], references: [id])
-}
+  severity    String   @default("medium")
+  status      String   @default("open")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  active      Boolean  @default(true)
 
-model Transaction {
-  id        Int      @id @default(autoincrement())
-  userId    Int
-  user      User     @relation(fields: [userId], references: [id])
-  amount    Float
-  type      String
-  createdAt DateTime @default(now())
+  repository   Repository @relation(fields: [repositoryId], references: [id])
+  repositoryId Int
+
+  reporter User @relation(fields: [reporterId], references: [id])
+  reporterId Int
+
+  bounty   Bounty? @relation(fields: [bountyId], references: [id])
+  bountyId Int?
 }
