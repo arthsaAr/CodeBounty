@@ -30,7 +30,7 @@ const ActiveBounties = () => {
           <Bounty 
           id={bounty.id}
           title={bounty.title}
-          credits={bounty.credits}
+          credits={bounty.amount}
           description={bounty.description}
           difficulty={bounty.difficulty}
           repo={bounty.repo}
