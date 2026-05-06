@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GoSearch } from "react-icons/go";
 import { FaAngleDown } from "react-icons/fa6";
 import { CiFilter } from "react-icons/ci";
 
 const Searchbar = () => {
+  const[activeTab, setActiveTab] = useState(1);
+
   return (
     <>
      <div className="flex flex-row items-center w-full gap-3 mb-4">
@@ -33,16 +35,44 @@ const Searchbar = () => {
         <CiFilter className="text-gray-400" size={19} />
         <h3 className="text-gray-400">Difficulty:</h3>
 
-        <div className='rounded-lg bg-emerald-500 border border-emerald-500 px-3 py-1 h-8 flex items-center text-sm text-white'>
+        <div 
+          onClick={() => setActiveTab(1)}
+          className={`
+            rounded-lg cursor-pointer px-3 py-1 h-8 flex items-center text-sm
+            ${
+              activeTab === 1 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
+            }
+          `}>
             <h3>All</h3>
         </div>
-        <div className='rounded-lg bg-[#111827] border border-gray-700 px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600'>
+        <div
+          onClick={() => setActiveTab(2)}
+          className={`
+            rounded-lg bg-[#111827] cursor-pointer px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600
+            ${
+              activeTab === 2 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
+            }
+          `}>
             <h3>Hard</h3>
         </div>
-        <div className='rounded-lg bg-[#111827] border border-gray-700 px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600'>
+        <div 
+          onClick={() => setActiveTab(3)}
+          className={`
+            rounded-lg bg-[#111827] cursor-pointer px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600
+            ${
+              activeTab === 3 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
+            }
+          `}>
             <h3>Medium</h3>
         </div>
-        <div className='rounded-lg bg-[#111827] border border-gray-700 px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600'>
+        <div 
+          onClick={() => setActiveTab(4)}
+          className={`
+            rounded-lg bg-[#111827] cursor-pointer px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600
+            ${
+              activeTab === 4 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
+            }
+          `}>
             <h3>Easy</h3>
         </div>
     </div>

@@ -16,10 +16,8 @@ const ActiveBounties = () => {
         console.error("Failed to fetch bounties:", err);
       }
     };
-
     fetchBounties();
   }, []);
-
 
   return (
     <div className='mt-3'>

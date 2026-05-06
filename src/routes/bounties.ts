@@ -1,7 +1,3 @@
-// /**
-//  * creating bounty setup
-//  */
-
 import { Router } from "express";
 import { authenticate, AuthenticatedRequest } from "../middleware/authenticate";
 import { PrismaClient } from "@prisma/client";
@@ -13,7 +9,7 @@ const router = Router();
 router.post("/", authenticate, async (req: AuthenticatedRequest, res)=> {
     try{
         const user = req.user;
-        const { repositoryId, title, description, amount, difficulty} = req.body;
+        const { repositoryId, title, description, amount, difficulty } = req.body;
 
         if(!repositoryId || !title || !description || !amount || !difficulty){
             return res.status(400).json({ message: "All fields required"});
@@ -66,7 +62,6 @@ router.get("/", async(req , res) => {
 });
 
 //updating the status of bounties(like active/completed/cancelled)
-
 router.patch("/:id/status", authenticate, async(req: AuthenticatedRequest, res) => {
     try{
         const user = req.user;
