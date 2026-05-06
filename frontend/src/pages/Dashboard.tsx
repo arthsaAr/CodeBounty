@@ -26,8 +26,9 @@ type dashboardProps = {
 
 const Dashboard = ({
   role
-}: Dashboard) => {
+}: dashboardProps) => {
   const [activePage, setActivePage] = useState("dashboard");
+  const [selectedDifficulty, setSelectedDifficulty] = useState("all");
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
@@ -91,8 +92,8 @@ const Dashboard = ({
         (
           <>
           <Browserheader />
-          <Searchbar />
-          <ActiveBounties />
+          <Searchbar setSelectedDifficulty={setSelectedDifficulty} />
+          <ActiveBounties selectedDifficulty={selectedDifficulty} />
           </>
         )
         }

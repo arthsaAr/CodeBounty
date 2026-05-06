@@ -3,7 +3,11 @@ import { GoSearch } from "react-icons/go";
 import { FaAngleDown } from "react-icons/fa6";
 import { CiFilter } from "react-icons/ci";
 
-const Searchbar = () => {
+type SearchbarProps = {
+  setSelectedDifficulty: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Searchbar = ({ setSelectedDifficulty }: SearchbarProps) => {
   const[activeTab, setActiveTab] = useState(1);
 
   return (
@@ -36,7 +40,10 @@ const Searchbar = () => {
         <h3 className="text-gray-400">Difficulty:</h3>
 
         <div 
-          onClick={() => setActiveTab(1)}
+          onClick={() => {
+            setActiveTab(1);
+            setSelectedDifficulty("all");
+          }}
           className={`
             rounded-lg cursor-pointer px-3 py-1 h-8 flex items-center text-sm
             ${
@@ -46,7 +53,10 @@ const Searchbar = () => {
             <h3>All</h3>
         </div>
         <div
-          onClick={() => setActiveTab(2)}
+          onClick={() => {
+            setActiveTab(2);
+            setSelectedDifficulty("hard");
+          }}
           className={`
             rounded-lg bg-[#111827] cursor-pointer px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600
             ${
@@ -56,7 +66,10 @@ const Searchbar = () => {
             <h3>Hard</h3>
         </div>
         <div 
-          onClick={() => setActiveTab(3)}
+          onClick={() => {
+            setActiveTab(3);
+            setSelectedDifficulty("medium");
+          }}
           className={`
             rounded-lg bg-[#111827] cursor-pointer px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600
             ${
@@ -66,7 +79,10 @@ const Searchbar = () => {
             <h3>Medium</h3>
         </div>
         <div 
-          onClick={() => setActiveTab(4)}
+          onClick={() => {
+            setActiveTab(4);
+            setSelectedDifficulty("easy");
+          }}
           className={`
             rounded-lg bg-[#111827] cursor-pointer px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600
             ${

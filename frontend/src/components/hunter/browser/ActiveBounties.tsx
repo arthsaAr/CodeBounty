@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Bounty from "./subcomponent/Bounty";
 
+type ActiveBountiesProps = {
+  selectedDifficulty: string;
+}
 
-const ActiveBounties = () => {
+const ActiveBounties = ({ selectedDifficulty }: ActiveBountiesProps) => {
   const [bounties, setBounties] = useState([]);
 
   useEffect(() => {
@@ -19,12 +22,18 @@ const ActiveBounties = () => {
     fetchBounties();
   }, []);
 
+  
+const filteredBounties = 
+  selectedDifficulty === "all" ? 
+  bounties : bounties.filter((bounty: any) => bounty.difficulty === selectedDifficulty);
+
   return (
     <div className='mt-3'>
-      <h2 className='text-md text-gray-400 mb-3'>Showing {bounties.length} active bounties</h2>
+      <h2 className='text-md text-gray-400 mb-3'>Showing {filteredBounties.length} active bounties</h2>
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-        {bounties.map((bounty: any) => (
+        {filteredBounties
+          .map((bounty: any) => (
           <Bounty 
           id={bounty.id}
           title={bounty.title}
