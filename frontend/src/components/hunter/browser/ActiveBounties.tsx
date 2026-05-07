@@ -40,10 +40,10 @@ const filteredBounties =
           credits={bounty.amount}
           description={bounty.description}
           difficulty={bounty.difficulty}
-          repo={bounty.repo}
-          file={bounty.file}
-          author={bounty.author}
-          date={bounty.date}
+          // repo={bounty.repo}
+          // file={bounty.file}
+          author={bounty.creatorId.name}
+          // date={bounty.date}
           />
         ))}
       </div>
