@@ -42,7 +42,7 @@ const filteredBounties =
           difficulty={bounty.difficulty}
           repo={bounty.repository.name}
           // file={bounty.file}
-          // author={bounty.repository.owner.username}
+          author={bounty.creator?.username || "Unknown"}
           // date={bounty.date}
           />
         ))}

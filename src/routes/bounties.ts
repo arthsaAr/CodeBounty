@@ -39,6 +39,10 @@ router.post("/", authenticate, async (req: AuthenticatedRequest, res)=> {
             data: {
                 title, description, amount, difficulty, repositoryId, creatorId: user.id,
             },
+            include: {
+                repository: true,
+                creator: true,
+            },
         });
 
         res.json(bounty);
@@ -53,7 +57,10 @@ router.get("/", async(req , res) => {
     try{
         const bounties = await prisma.bounty.findMany({
             where: {status: "active"},
-            include: {repository: true},
+            include: {
+                repository: true,
+                creator: true,
+            },
         });
         res.json(bounties);
     }catch(error){
@@ -94,6 +101,10 @@ router.patch("/:id/status", authenticate, async(req: AuthenticatedRequest, res) 
 router.get("/:id", async (req, res) => {
   const bounty = await prisma.bounty.findUnique({
     where: { id: Number(req.params.id) },
+    include: {
+      repository: true,
+      creator: true,
+    },
   });
 
   res.json(bounty);
