@@ -40,9 +40,9 @@ const filteredBounties =
           credits={bounty.amount}
           description={bounty.description}
           difficulty={bounty.difficulty}
-          // repo={bounty.repo}
+          repo={bounty.repository.name}
           // file={bounty.file}
-          author={bounty.creatorId.name}
+          // author={bounty.repository.owner.username}
           // date={bounty.date}
           />
         ))}
