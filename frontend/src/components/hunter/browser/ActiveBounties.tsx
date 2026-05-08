@@ -41,7 +41,7 @@ const filteredBounties =
           description={bounty.description}
           difficulty={bounty.difficulty}
           repo={bounty.repository.name}
-          // file={bounty.file}
+          file={bounty.filePath}
           author={bounty.creator?.username || "Unknown"}
           // date={bounty.date}
           />

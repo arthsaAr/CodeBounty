@@ -13,9 +13,10 @@ const SetupBounty = () => {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-        amount: 0,
-        difficulty: "easy"
-        });
+        amount: "",
+        difficulty: "easy",
+        filePath: "",
+    });
 
     const activateRepo = async () => {
         try {
@@ -49,8 +50,19 @@ const SetupBounty = () => {
                 return;
             }
 
-            if(Number(formData.amount) <= 0) {
-                alert("Please enter a valid bounty amount");
+            const title = formData.title.trim();
+            const description = formData.description.trim();
+            const filePath = formData.filePath.trim();
+            const difficulty = formData.difficulty.trim();
+            const amountValue = Number(formData.amount);
+
+            if (!title || !description || !difficulty || !filePath) {
+                alert("Please fill in all bounty fields before submitting.");
+                return;
+            }
+
+            if (formData.amount === "" || Number.isNaN(amountValue) || amountValue <= 0) {
+                alert("Please enter a valid bounty amount greater than 0.");
                 return;
             }
 
@@ -58,10 +70,11 @@ const SetupBounty = () => {
                 "http://localhost:3000/bounties",
                 {
                     repositoryId: selectedRepoId,
-                    title: formData.title,
-                    description: formData.description,
-                    amount: Number(formData.amount),
-                    difficulty: formData.difficulty,
+                    title,
+                    description,
+                    amount: amountValue,
+                    difficulty,
+                    filePath,
                 },
                 {
                     headers: {
@@ -77,8 +90,9 @@ const SetupBounty = () => {
             setFormData({
                 title: "",
                 description: "",
-                amount: null as number | null,
-                difficulty: "",
+                amount: "",
+                difficulty: "easy",
+                filePath: "",
             });
 
         } catch (err: any) {
@@ -86,7 +100,6 @@ const SetupBounty = () => {
             alert(err.response?.data?.message || "Failed to create bounty");
         }
     };
-    
 
     const [repos, setRepos] = useState([]);
     const [loading, setLoading] = useState(false); //(mainly for blocking button, and showing loading when a call is being made)

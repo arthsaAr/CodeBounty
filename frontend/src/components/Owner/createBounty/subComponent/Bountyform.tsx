@@ -13,11 +13,24 @@ const Bountyform = ({ formData, setFormData }: formProps) => {
       
         <div className="flex flex-col gap-1 mt-2">
           <label className="text-sm text-gray-400">File path<span className='text-red-600'> *</span></label>
-          <select className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white">
+          <input 
+            type="text"
+            placeholder='Eg. src/components/Chart.tsx'
+            value={formData.filePath}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                filePath: e.target.value
+              })
+            }
+            className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
+          />
+          
+          {/* <select className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white">
             <option>src/components/Chart.tsx</option>
             <option>src/hooks/useDebounce.ts</option>
             <option>src/pages/Dashboard.tsx</option>
-          </select>
+          </select> */}
         </div>
 
         <div className="flex flex-col gap-1 mt-2">

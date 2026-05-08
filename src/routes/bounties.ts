@@ -9,14 +9,26 @@ const router = Router();
 router.post("/", authenticate, async (req: AuthenticatedRequest, res)=> {
     try{
         const user = req.user;
-        const { repositoryId, title, description, amount, difficulty } = req.body;
+        const repositoryId = Number(req.body.repositoryId);
+        const title = String(req.body.title ?? "").trim();
+        const description = String(req.body.description ?? "").trim();
+        const amount = Number(req.body.amount);
+        const difficulty = String(req.body.difficulty ?? "").trim();
+        const filePath = String(req.body.filePath ?? "").trim();
 
-        if(!repositoryId || !title || !description || !amount || !difficulty){
-            return res.status(400).json({ message: "All fields required"});
+        if (
+            !repositoryId ||
+            !title ||
+            !description ||
+            !difficulty ||
+            !filePath ||
+            Number.isNaN(amount)
+        ) {
+            return res.status(400).json({ message: "All fields are required and must be valid." });
         }
 
-        if(amount <= 0){
-            return res.status(400).json({message: "Amount must be greator than 0"});
+        if (amount <= 0) {
+            return res.status(400).json({ message: "Amount must be greater than 0." });
         }
 
         const repo = await prisma.repository.findUnique({
@@ -37,7 +49,7 @@ router.post("/", authenticate, async (req: AuthenticatedRequest, res)=> {
 
         const bounty = await prisma.bounty.create({
             data: {
-                title, description, amount, difficulty, repositoryId, creatorId: user.id,
+                title, description, amount, difficulty, filePath, repositoryId, creatorId: user.id,
             },
             include: {
                 repository: true,
