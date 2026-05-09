@@ -49,7 +49,15 @@ const Bounty = ({
 
         <div className='flex flex-row gap-2 mt-2 justify-between items-center'>
             <div className='flex flex-row gap-2'>
-                <span className='px-3 py-1 text-xs font-medium rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'>{difficulty}</span>
+                <span className={`px-3 py-1 text-xs font-medium rounded-full 
+                  ${difficulty === "easy" ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : 
+                    difficulty === "medium" ? "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20" :
+                    difficulty === "hard" ? "bg-red-500/10 text-red-400 border border-red-500/20" : 
+                    "bg-gray-100 text-gray-800"
+                  }
+                  `}>
+                  {difficulty}
+                </span>
                 <span className='text-gray-500 font-normal text-md'>{repo}</span>
             </div>
             <div>
