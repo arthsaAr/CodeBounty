@@ -3,9 +3,10 @@ import Bounty from "./subcomponent/Bounty";
 
 type ActiveBountiesProps = {
   selectedDifficulty: string;
+  sortingOption: string;
 }
 
-const ActiveBounties = ({ selectedDifficulty }: ActiveBountiesProps) => {
+const ActiveBounties = ({ selectedDifficulty, sortingOption }: ActiveBountiesProps) => {
   const [bounties, setBounties] = useState([]);
 
   useEffect(() => {
@@ -27,12 +28,22 @@ const filteredBounties =
   selectedDifficulty === "all" ? 
   bounties : bounties.filter((bounty: any) => bounty.difficulty === selectedDifficulty);
 
+const sortedBounties = [...filteredBounties].sort((a: any, b: any) => {
+  if (sortingOption === "newest") {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  }
+  if (sortingOption === "highest") {
+    return b.amount - a.amount;
+  }
+  return 0;
+});
+
   return (
     <div className='mt-3'>
       <h2 className='text-md text-gray-400 mb-3'>Showing {filteredBounties.length} active bounties</h2>
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-        {filteredBounties
+        {sortedBounties
           .map((bounty: any) => (
           <Bounty 
           id={bounty.id}

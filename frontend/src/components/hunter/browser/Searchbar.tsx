@@ -5,9 +5,10 @@ import { CiFilter } from "react-icons/ci";
 
 type SearchbarProps = {
   setSelectedDifficulty: React.Dispatch<React.SetStateAction<string>>;
+  setSortingOption?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Searchbar = ({ setSelectedDifficulty }: SearchbarProps) => {
+const Searchbar = ({ setSelectedDifficulty, setSortingOption }: SearchbarProps) => {
   const[activeTab, setActiveTab] = useState(1);
 
   return (
@@ -28,6 +29,7 @@ const Searchbar = ({ setSelectedDifficulty }: SearchbarProps) => {
         <select
           defaultValue="newest"
           className="h-full w-full text-white border border-gray-800 rounded-lg bg-[#1f2937] px-3 pr-10 appearance-none"
+          onChange={(e) => setSortingOption(e.target.value)}
         >
             <option value="newest" className='text-white'>Newest First</option>
             <option value="highest" className='text-white'>Highest Amount</option>
