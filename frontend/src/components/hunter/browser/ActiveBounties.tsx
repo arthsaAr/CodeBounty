@@ -43,7 +43,7 @@ const filteredBounties =
           repo={bounty.repository.name}
           file={bounty.filePath}
           author={bounty.creator?.username || "Unknown"}
-          // date={bounty.date}
+          date={bounty.createdAt}
           />
         ))}
       </div>

@@ -45,6 +45,7 @@ model Bounty {
   creator      User        @relation("UserBounties", fields: [creatorId], references: [id])
   repository   Repository  @relation(fields: [repositoryId], references: [id])
   bugReports   BugReport[]
+  createdAt    DateTime      @default(now())
 }
 
 model BugReport {
