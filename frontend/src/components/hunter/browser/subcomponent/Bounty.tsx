@@ -63,9 +63,16 @@ const Bounty = ({
             <h3 className="text-gray-200 text-md">
               {file}
             </h3>
-            <h3 className="text-gray-500 text-md">
-              by {author} • {date}
-            </h3>
+            <div className='flex flex-row gap-1'>
+              <h3 className="text-gray-500 text-md">
+                by {author} •
+              </h3>
+              <h3 className="text-gray-500 text-md">
+                <p>
+                  {new Date(date).toLocaleDateString()}
+                </p>
+              </h3>
+            </div>
           </div>
         </div>
     </div>
