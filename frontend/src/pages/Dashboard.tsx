@@ -30,6 +30,7 @@ const Dashboard = ({
   const [activePage, setActivePage] = useState("dashboard");
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [sortingOption, setSortingOption] = useState("newest");
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
@@ -93,8 +94,8 @@ const Dashboard = ({
         (
           <>
           <Browserheader />
-          <Searchbar setSelectedDifficulty={setSelectedDifficulty} setSortingOption={setSortingOption} />
-          <ActiveBounties selectedDifficulty={selectedDifficulty} sortingOption={sortingOption} />
+          <Searchbar setSelectedDifficulty={setSelectedDifficulty} setSortingOption={setSortingOption} setSearchQuery={setSearchQuery} />
+          <ActiveBounties selectedDifficulty={selectedDifficulty} sortingOption={sortingOption} searchQuery={searchQuery} />
           </>
         )
         }

@@ -6,9 +6,10 @@ import { CiFilter } from "react-icons/ci";
 type SearchbarProps = {
   setSelectedDifficulty: React.Dispatch<React.SetStateAction<string>>;
   setSortingOption?: React.Dispatch<React.SetStateAction<string>>;
+  setSearchQuery?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Searchbar = ({ setSelectedDifficulty, setSortingOption }: SearchbarProps) => {
+const Searchbar = ({ setSelectedDifficulty, setSortingOption, setSearchQuery }: SearchbarProps) => {
   const[activeTab, setActiveTab] = useState(1);
 
   return (
@@ -21,6 +22,7 @@ const Searchbar = ({ setSelectedDifficulty, setSortingOption }: SearchbarProps) 
             type="text"
             placeholder="Search bounties..."
             className="flex-1 bg-transparent text-sm outline-none placeholder:text-gray-400"
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
       </div>
