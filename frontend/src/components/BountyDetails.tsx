@@ -55,6 +55,12 @@ const BountyDetails = () => {
           <h1 className="text-3xl font-semibold mb-2 mt-3">{bounty?.title}</h1>
           <h3 className="text-lg mb-6 text-gray-400">{bounty?.description}</h3>
         </div>
+
+        <div className="flex flex-row px-8 md:px-16 py-6 mt-20">
+          <h1 className="text-lg font-semibold mb-2 mt-3">{bounty?.difficulty}</h1>
+          <h3 className="text-lg mb-6 text-gray-400">{bounty?.status}</h3>
+          <h3 className="text-lg mb-6 text-gray-400">{bounty?.createdAt}</h3>
+        </div>
     </div>
   )
 }
