@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./NavBar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { CiCalendar } from "react-icons/ci";
 
 const BountyDetails = () => {
   const { id } = useParams();
@@ -53,27 +54,34 @@ const BountyDetails = () => {
 
         <div className="flex flex-col md:flex-row justify-between px-8 md:px-16 py-6 mt-20 gap-8">
           <div className="flex flex-col items-center text-center md:items-start md:text-left gap-2">
-            <h1 className="text-4xl font-semibold">{bounty?.title}</h1>
-            <h3 className="text-lg  text-gray-400">{bounty?.description}</h3>
-            <div className="flex flex-col md:flex-row py-2 gap-2 items-center text-center md:items-start">
-              <span className="text-lg font-semibol py-1 rounded-full 
-                bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                {bounty?.difficulty}
-              </span>
-              <span className="text-lg font-semibol py-1 rounded-full 
-                bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                {bounty?.status}
-              </span>
-              <h3 className="text-lg mb-6 text-gray-400 items-center text-center">{bounty?.createdAt}</h3>
+
+            <div className="flex flex-col items-center md:items-start gap-2">
+              <h1 className="text-4xl font-semibold">{bounty?.title}</h1>
+              <h3 className="text-lg  text-gray-400">{bounty?.description}</h3>
+
+              <div className="flex flex-col md:flex-row gap-2 md:items-center">
+                <span className="text-lg font-semibold py-1 px-3 rounded-full
+                  bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  {bounty?.difficulty}
+                </span>
+                <span className="text-lg font-semibold py-1 px-3 rounded-full
+                  bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  {bounty?.status}
+                </span>
+
+                <div className="flex flex-row items-center gap-1">
+                  <CiCalendar size={24}/>
+                  <h3 className="text-lg text-gray-400">{new Date(bounty?.createdAt).toLocaleDateString()}</h3>
+                </div>
+              </div>
             </div>
           </div>
+          
           <div className="flex flex-col items-center text-center gap-1">
             <h3 className="text-4xl  text-emerald-400">{bounty?.amount}</h3>
             <h3 className="text-xl  text-gray-400">credits</h3>
           </div>
         </div>
-
-        
     </div>
   )
 }
