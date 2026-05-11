@@ -3,6 +3,7 @@ import Navbar from "./NavBar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { CiCalendar } from "react-icons/ci";
+import Bottombar from "../components/Bottombar";
 
 const BountyDetails = () => {
   const { id } = useParams();
@@ -52,6 +53,7 @@ const BountyDetails = () => {
     <div className="min-h-screen flex flex-col bg-black text-white">
         <Navbar setActivePage={null} activePage={"owner"} loginStatus={"owner"} />
 
+        <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         <div className="flex flex-col md:flex-row justify-between px-8 md:px-16 py-6 mt-20 gap-8">
           <div className="flex flex-col items-center text-center md:items-start md:text-left gap-2">
 
@@ -76,12 +78,15 @@ const BountyDetails = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="flex flex-col items-center text-center gap-1">
             <h3 className="text-4xl  text-emerald-400">{bounty?.amount}</h3>
             <h3 className="text-xl  text-gray-400">credits</h3>
           </div>
         </div>
+      </div>
+        
+      <Bottombar />
     </div>
   )
 }
