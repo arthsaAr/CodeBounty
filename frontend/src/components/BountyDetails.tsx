@@ -99,8 +99,8 @@ const BountyDetails = () => {
           </div>
         </div>
 
-        <RepositoryInfo />
-        <BountyStats />
+        <RepositoryInfo repository={bounty?.repository?.name} file={bounty?.filePath} owner={bounty?.repository?.owner?.username} />
+        <BountyStats submissions={1} reward={bounty?.amount} status={bounty?.status} />
         <SubmissionTips />
       </div>
         

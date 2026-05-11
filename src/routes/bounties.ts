@@ -70,7 +70,11 @@ router.get("/", async(req , res) => {
         const bounties = await prisma.bounty.findMany({
             where: {status: "active"},
             include: {
-                repository: true,
+                repository: {
+                    include: {
+                        owner: true
+                    }
+                },
                 creator: true,
             },
         });
@@ -114,7 +118,11 @@ router.get("/:id", async (req, res) => {
   const bounty = await prisma.bounty.findUnique({
     where: { id: Number(req.params.id) },
     include: {
-      repository: true,
+      repository: {
+        include: {
+          owner: true
+        }
+      },
       creator: true,
     },
   });
