@@ -5,6 +5,7 @@ import axios from "axios";
 import { CiCalendar } from "react-icons/ci";
 import Bottombar from "../components/Bottombar";
 import SubmissionTips from "./subComponent/SubmissionTips";
+import BountyStats from "./subComponent/BountyStats";
 
 const BountyDetails = () => {
   const { id } = useParams();
@@ -96,6 +97,7 @@ const BountyDetails = () => {
           </div>
         </div>
 
+        <BountyStats />
         <SubmissionTips />
       </div>
         
