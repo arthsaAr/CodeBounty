@@ -6,6 +6,8 @@ import { CiCalendar } from "react-icons/ci";
 import Bottombar from "../components/Bottombar";
 import SubmissionTips from "./subComponent/SubmissionTips";
 import BountyStats from "./subComponent/BountyStats";
+import Repository from "./Owner/createBounty/subComponent/Repository";
+import RepositoryInfo from "./subComponent/RepositoryInfo";
 
 const BountyDetails = () => {
   const { id } = useParams();
@@ -97,6 +99,7 @@ const BountyDetails = () => {
           </div>
         </div>
 
+        <RepositoryInfo />
         <BountyStats />
         <SubmissionTips />
       </div>

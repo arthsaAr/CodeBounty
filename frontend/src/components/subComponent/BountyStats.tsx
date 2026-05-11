@@ -2,7 +2,7 @@ import React from 'react'
 
 const BountyStats = () => {
   return (
-    <div className='rounded-lg bg-[#151920] border w-1/3 border-gray-800 p-5 justify-between items-center cursor-pointer'>
+    <div className='mt-4 rounded-lg bg-[#151920] border w-1/3 border-gray-800 p-5 justify-between items-center cursor-pointer'>
         <h1 className='text-white text-lg'>Bounty Stats</h1>
 
         <div className='flex flex-col gap-3 mt-3'>
