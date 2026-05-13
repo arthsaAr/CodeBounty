@@ -8,6 +8,7 @@ import SubmissionTips from "./subComponent/SubmissionTips";
 import BountyStats from "./subComponent/BountyStats";
 import Repository from "./Owner/createBounty/subComponent/Repository";
 import RepositoryInfo from "./subComponent/RepositoryInfo";
+import { MdKeyboardBackspace } from "react-icons/md";
 
 const BountyDetails = () => {
   const { id } = useParams();
@@ -57,9 +58,17 @@ const BountyDetails = () => {
     <div className="min-h-screen flex flex-col bg-black text-white">
         <Navbar setActivePage={null} activePage={"owner"} loginStatus={"owner"} />
 
+        
+
         <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         <div className="flex flex-col md:flex-row justify-between px-8 md:px-16 py-6 mt-20 gap-8">
           <div className="flex flex-col items-center text-center md:items-start md:text-left gap-2">
+
+            <div onClick={() => window.history.back()}
+                className='inline-flex flex-row hover:bg-[#1d2532] items-center gap-1 border border-[#151920] px-3 py-2 justify-start rounded-lg mb-2'>
+                <MdKeyboardBackspace size={20} />
+                <h1 className='text-lg'>Back to repositories</h1>
+            </div>
 
             <div className="flex flex-col items-center md:items-start gap-2">
               <h1 className="text-4xl font-semibold">{bounty?.title}</h1>
