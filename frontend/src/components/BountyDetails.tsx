@@ -4,6 +4,7 @@ import { CiCalendar } from "react-icons/ci";
 import SubmissionTips from "./subComponent/SubmissionTips";
 import BountyStats from "./subComponent/BountyStats";
 import RepositoryInfo from "./subComponent/RepositoryInfo";
+import Codebox from "./subComponent/Codebox";
 import { MdKeyboardBackspace } from "react-icons/md";
 
 type detailsProps = {
@@ -62,8 +63,8 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
   }
   
   return (
-      <div className="flex-grow px-8 md:px-16 py-6 mt-20">
-        <div className="flex flex-col md:flex-row justify-between px-8 md:px-16 py-6 mt-20 gap-8">
+      <div className="flex-grow px-8 md:px-16 py-6">
+        <div className="flex flex-col md:flex-row justify-between px-8 md:px-16 py-6 gap-8">
           <div className="flex flex-col items-center text-center md:items-start md:text-left gap-2">
 
             <div onClick={() => setBountyClicked(0)}
@@ -110,9 +111,18 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
           </div>
         </div>
 
-        <RepositoryInfo repository={bounty?.repository?.name} file={bounty?.filePath} owner={bounty?.repository?.owner?.username} />
-        <BountyStats submissions={1} reward={bounty?.amount} status={bounty?.status} />
-        <SubmissionTips />
+        <div className="flex flex-row w-full gap-3 items-start">
+  
+        <div className="w-1/2 flex flex-col">
+          <Codebox />
+        </div>
+
+        <div className="w-1/2 flex flex-col gap-3">
+          <RepositoryInfo repository={bounty?.repository?.name} file={bounty?.filePath} owner={bounty?.repository?.owner?.username} />
+          <BountyStats submissions={1} reward={bounty?.amount} status={bounty?.status} />
+          <SubmissionTips />
+        </div>
+      </div>
       </div>
   )
 }

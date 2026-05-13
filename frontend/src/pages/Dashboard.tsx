@@ -104,7 +104,6 @@ const Dashboard = ({
 
         {activePage === "bounties" && bountyClicked === 0 &&
         (
-          ///
           <>
           <Browserheader />
           <Searchbar setSelectedDifficulty={setSelectedDifficulty} setSortingOption={setSortingOption} setSearchQuery={setSearchQuery} />
@@ -113,7 +112,6 @@ const Dashboard = ({
             setclickedID={setclickedID}
             selectedDifficulty={selectedDifficulty} sortingOption={sortingOption} searchQuery={searchQuery} />
           </>
-          ///
         )
         }
 

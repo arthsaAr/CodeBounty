@@ -8,7 +8,7 @@ type RepositoryInfoProps = {
 
 const RepositoryInfo = ({ repository, file, owner }: RepositoryInfoProps) => {
   return (
-    <div className='rounded-lg bg-[#151920] border w-1/3 border-gray-800 p-5 justify-between items-center cursor-pointer'>
+    <div className='mt-2 rounded-lg bg-[#151920] border w-full border-gray-800 p-6 justify-between items-center cursor-pointer'>
         <h1 className='text-white text-lg'>Repository Info</h1>
 
         <div className='flex flex-col gap-2 mt-3'>
