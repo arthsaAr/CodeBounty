@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./NavBar";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import { CiCalendar } from "react-icons/ci";
-import Bottombar from "../components/Bottombar";
 import SubmissionTips from "./subComponent/SubmissionTips";
 import BountyStats from "./subComponent/BountyStats";
 import RepositoryInfo from "./subComponent/RepositoryInfo";
@@ -11,20 +8,27 @@ import { MdKeyboardBackspace } from "react-icons/md";
 
 type detailsProps = {
   setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
+  selectedID?: number | null;
 }
 
-const BountyDetails = ({setBountyClicked}: detailsProps) => {
-  const { id } = useParams();
+const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
+  // const { id } = selectedID;
 
   const [bounty, setBounty] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (selectedID == null) {
+      setBounty(null);
+      setLoading(false);
+      return;
+    }
+
     const fetchBountyDetails = async () => {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.get(`http://localhost:3000/bounties/${id}`, 
+        const res = await axios.get(`http://localhost:3000/bounties/${selectedID}`, 
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -40,7 +44,7 @@ const BountyDetails = ({setBountyClicked}: detailsProps) => {
     };
 
     fetchBountyDetails();
-  }, [id]);
+  }, [selectedID]);
 
   //same loading animation as when fetching repos.
   if(loading){

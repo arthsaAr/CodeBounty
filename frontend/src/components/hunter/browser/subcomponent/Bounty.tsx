@@ -25,7 +25,8 @@ const Bounty = ({
   file,
   author,
   date,
-  setBountyClicked
+  setBountyClicked,
+  setclickedID
 }: BountyProps) => {
   // const navigate = useNavigate();
 
