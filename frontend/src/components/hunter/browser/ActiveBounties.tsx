@@ -5,9 +5,11 @@ type ActiveBountiesProps = {
   selectedDifficulty: string;
   sortingOption: string;
   searchQuery: string;
+  setBountyClicked: React.Dispatch<React.SetStateAction<number | null>>;
+  setclickedID?: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const ActiveBounties = ({ selectedDifficulty, sortingOption, searchQuery }: ActiveBountiesProps) => {
+const ActiveBounties = ({ selectedDifficulty, sortingOption, searchQuery, setBountyClicked, setclickedID }: ActiveBountiesProps) => {
   const [bounties, setBounties] = useState([]);
 
   useEffect(() => {
@@ -52,7 +54,9 @@ const searchedBounties = sortedBounties.filter((bounty: any) =>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
         {searchedBounties
           .map((bounty: any) => (
-          <Bounty 
+          <Bounty
+          setBountyClicked={setBountyClicked}
+          setclickedID={setclickedID}
           id={bounty.id}
           title={bounty.title}
           credits={bounty.amount}

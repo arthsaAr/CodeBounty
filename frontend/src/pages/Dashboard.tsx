@@ -1,5 +1,6 @@
 //starting dashboard implementation!
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/NavBar";
 import HunterStat from "../components/hunter/dashboard/Quickstat";
 import OwnerStat from "../components/Owner/dashboard/Quickstat";
@@ -19,10 +20,12 @@ import YourBounties from '../components/Owner/dashboard/YourBounties';
 import Recentactivity from '../components/Owner/dashboard/RecentActivity';
 import CreateHeader from "../components/Owner/createBounty/CreateHeader";
 import SetupBounty from '../components/Owner/createBounty/SetupBounty';
+import BountyDetails from "../components/BountyDetails";
 
 type dashboardProps = {
   role: string;
 };
+
 
 const Dashboard = ({
   role
@@ -31,6 +34,15 @@ const Dashboard = ({
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [sortingOption, setSortingOption] = useState("newest");
   const [searchQuery, setSearchQuery] = useState("");
+  const [bountyClicked, setBountyClicked] = useState<number | null>(0);
+  const [clickedID,  setclickedID] = useState<number | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(activePage === "bounties" && bountyClicked === true){
+      navigate(`/bounty/${clickedID}`);
+    }
+  }, [activePage, bountyClicked, clickedID, navigate]);
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
@@ -90,12 +102,25 @@ const Dashboard = ({
         )
         }
 
-        {activePage === "bounties" && 
+        {activePage === "bounties" && bountyClicked === 0 &&
         (
+          ///
           <>
           <Browserheader />
           <Searchbar setSelectedDifficulty={setSelectedDifficulty} setSortingOption={setSortingOption} setSearchQuery={setSearchQuery} />
-          <ActiveBounties selectedDifficulty={selectedDifficulty} sortingOption={sortingOption} searchQuery={searchQuery} />
+          <ActiveBounties
+            setBountyClicked={setBountyClicked}
+            setclickedID={setclickedID}
+            selectedDifficulty={selectedDifficulty} sortingOption={sortingOption} searchQuery={searchQuery} />
+          </>
+          ///
+        )
+        }
+
+        {activePage === "bounties" && bountyClicked === 1 &&
+        (
+          <>
+          <BountyDetails setBountyClicked={setBountyClicked} />
           </>
         )
         }
