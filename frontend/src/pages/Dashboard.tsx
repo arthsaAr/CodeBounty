@@ -38,8 +38,11 @@ const Dashboard = ({
   const [bountyClickedOwner, setBountyClickedOwner] = useState<number | null>(0);
   const [clickedIDOwner,  setclickedIDOwner] = useState<number | null>(null);
 
-  const [bountyClickedDashboard, setBountyClickedDashboard] = useState<number | null>(0);
-  const [clickedIDDashboard,  setclickedIDDashboard] = useState<number | null>(null);
+  const [bountyClickedCommon, setBountyClickedCommon] = useState<number | null>(0);
+  const [clickedIDCommon,  setclickedIDCommon] = useState<number | null>(null);
+
+  const [bountyClickedHunter, setBountyClickedHunter] = useState<number | null>(0);
+  const [clickedIDHunter,  setclickedIDHunter] = useState<number | null>(null);
 
   // const navigate = useNavigate();
 
@@ -60,19 +63,15 @@ const Dashboard = ({
             {role === "owner" && 
               <OwnerStat />
             }
-             
-            {role === "common" && 
-              <CommonStat />
-            }
 
-            {role === "hunter" && bountyClickedDashboard === 0 &&
+            {role === "hunter" && bountyClickedHunter === 0 &&
             <>
               <HunterStat />
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
                   <RecentBounties 
-                    setBountyClickedDashboard={setBountyClickedDashboard}
-                    setclickedIDDashboard={setclickedIDDashboard} 
+                    setBountyClickedHunter={setBountyClickedHunter}
+                    setclickedIDHunter={setclickedIDHunter} 
                     />
                 </div>
                 <div className="flex-1">
@@ -82,9 +81,9 @@ const Dashboard = ({
               </>
             }
 
-            {role === "hunter" && bountyClickedDashboard === 1 &&
+            {role === "hunter" && bountyClickedHunter === 1 &&
               <>
-                <BountyDetails setBountyClicked={setBountyClickedDashboard} selectedID={clickedIDDashboard} />
+                <BountyDetails setBountyClicked={setBountyClickedHunter} selectedID={clickedIDHunter} />
               </>
             }
 
@@ -99,15 +98,27 @@ const Dashboard = ({
               </div>
             }
 
-            {role === "common" && 
+            {role === "common" && bountyClickedCommon === 0 &&
+            <>
+              <CommonStat />
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
-                  <YourBounties />
+                  <YourBounties 
+                    setBountyClickedCommon={setBountyClickedCommon}
+                    setclickedIDCommon={setclickedIDCommon} 
+                    />
                 </div>
                 <div className="flex-1">
                   <Submissions />
                 </div>
               </div>
+            </>
+            }
+
+            {role === "common" && bountyClickedCommon === 1 &&
+              <>
+                <BountyDetails setBountyClicked={setBountyClickedCommon} selectedID={clickedIDCommon} />
+              </>
             }
 
             <Quickactions curPage={role} setActivePage={setActivePage} />
@@ -131,7 +142,7 @@ const Dashboard = ({
         {activePage === "bounties" && bountyClickedOwner === 1 &&
         (
           <>
-          <BountyDetails setBountyClickedOwner={setBountyClickedOwner} selectedID={clickedIDOwner} />
+          <BountyDetails setBountyClicked={setBountyClickedOwner} selectedID={clickedIDOwner} />
           </>
         )
         }

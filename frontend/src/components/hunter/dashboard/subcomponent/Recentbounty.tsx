@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type RecentProps = {
-  setBountyClickedDashboard?: React.Dispatch<React.SetStateAction<number | null>>;
-  setclickedIDDashboard?: React.Dispatch<React.SetStateAction<number | null>>;
+  setBountyClickedHunter?: React.Dispatch<React.SetStateAction<number | null>>;
+  setclickedIDHunter?: React.Dispatch<React.SetStateAction<number | null>>;
   id: number;
   title: string;
   description: string;
@@ -15,8 +15,8 @@ type RecentProps = {
 };
 
 const Recentbounty = ({
-  setBountyClickedDashboard,
-  setclickedIDDashboard,
+  setBountyClickedHunter,
+  setclickedIDHunter,
   id,
   title,
   description,
@@ -31,8 +31,8 @@ const Recentbounty = ({
     <div 
       onClick={
         () => {
-          setBountyClickedDashboard(1);
-          setclickedIDDashboard(id);
+          setBountyClickedHunter(1);
+          setclickedIDHunter(id);
         }
       }
       className='rounded-xl bg-[#151920] border border-gray-800 p-6 flex justify-between items-start hover:border-emerald-700 cursor-pointer mb-3'>

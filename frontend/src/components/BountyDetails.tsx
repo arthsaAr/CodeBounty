@@ -8,11 +8,11 @@ import Codebox from "./subComponent/Codebox";
 import { MdKeyboardBackspace } from "react-icons/md";
 
 type detailsProps = {
-  setBountyClickedOwner?: React.Dispatch<React.SetStateAction<number | null>>;
+  setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
   selectedID?: number | null;
 }
 
-const BountyDetails = ({setBountyClickedOwner, selectedID}: detailsProps) => {
+const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
   // const { id } = selectedID;
 
   const [bounty, setBounty] = useState<any>(null);
@@ -67,7 +67,7 @@ const BountyDetails = ({setBountyClickedOwner, selectedID}: detailsProps) => {
         <div className="flex flex-col md:flex-row justify-between px-8 md:px-16 py-6 gap-8">
           <div className="flex flex-col items-center text-center md:items-start md:text-left gap-2">
 
-            <div onClick={() => setBountyClickedOwner(0)}
+            <div onClick={() => setBountyClicked(0)}
                 className='inline-flex flex-row hover:bg-[#1d2532] items-center gap-1 border border-[#151920] px-3 py-2 justify-start rounded-lg mb-2'>
                 <MdKeyboardBackspace size={20} />
                 <h1 className='text-lg'>Back to repositories</h1>
