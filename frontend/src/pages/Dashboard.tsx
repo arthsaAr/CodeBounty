@@ -34,11 +34,13 @@ const Dashboard = ({
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [sortingOption, setSortingOption] = useState("newest");
   const [searchQuery, setSearchQuery] = useState("");
-  const [bountyClicked, setBountyClicked] = useState<number | null>(0);
-  const [clickedID,  setclickedID] = useState<number | null>(null);
+
+  const [bountyClickedOwner, setBountyClickedOwner] = useState<number | null>(0);
+  const [clickedIDOwner,  setclickedIDOwner] = useState<number | null>(null);
 
   const [bountyClickedDashboard, setBountyClickedDashboard] = useState<number | null>(0);
   const [clickedIDDashboard,  setclickedIDDashboard] = useState<number | null>(null);
+
   // const navigate = useNavigate();
 
   // useEffect(() => {
@@ -113,23 +115,23 @@ const Dashboard = ({
         )
         }
 
-        {activePage === "bounties" && bountyClicked === 0 &&
+        {activePage === "bounties" && bountyClickedOwner === 0 &&
         (
           <>
           <Browserheader />
           <Searchbar setSelectedDifficulty={setSelectedDifficulty} setSortingOption={setSortingOption} setSearchQuery={setSearchQuery} />
           <ActiveBounties
-            setBountyClicked={setBountyClicked}
-            setclickedID={setclickedID}
+            setBountyClickedOwner={setBountyClickedOwner}
+            setclickedIDOwner={setclickedIDOwner}
             selectedDifficulty={selectedDifficulty} sortingOption={sortingOption} searchQuery={searchQuery} />
           </>
         )
         }
 
-        {activePage === "bounties" && bountyClicked === 1 &&
+        {activePage === "bounties" && bountyClickedOwner === 1 &&
         (
           <>
-          <BountyDetails setBountyClicked={setBountyClicked} selectedID={clickedID} />
+          <BountyDetails setBountyClickedOwner={setBountyClickedOwner} selectedID={clickedIDOwner} />
           </>
         )
         }

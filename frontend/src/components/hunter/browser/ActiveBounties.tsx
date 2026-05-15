@@ -5,11 +5,11 @@ type ActiveBountiesProps = {
   selectedDifficulty: string;
   sortingOption: string;
   searchQuery: string;
-  setBountyClicked: React.Dispatch<React.SetStateAction<number | null>>;
-  setclickedID?: React.Dispatch<React.SetStateAction<number | null>>;
+  setBountyClickedOwner: React.Dispatch<React.SetStateAction<number | null>>;
+  setclickedIDOwner?: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const ActiveBounties = ({ selectedDifficulty, sortingOption, searchQuery, setBountyClicked, setclickedID }: ActiveBountiesProps) => {
+const ActiveBounties = ({ selectedDifficulty, sortingOption, searchQuery, setBountyClickedOwner, setclickedIDOwner }: ActiveBountiesProps) => {
   const [bounties, setBounties] = useState([]);
 
   useEffect(() => {
@@ -55,8 +55,8 @@ const searchedBounties = sortedBounties.filter((bounty: any) =>
         {searchedBounties
           .map((bounty: any) => (
           <Bounty
-          setBountyClicked={setBountyClicked}
-          setclickedID={setclickedID}
+          setBountyClickedOwner={setBountyClickedOwner}
+          setclickedIDOwner={setclickedIDOwner}
           id={bounty.id}
           title={bounty.title}
           credits={bounty.amount}

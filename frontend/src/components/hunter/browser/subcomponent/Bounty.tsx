@@ -11,8 +11,8 @@ type BountyProps = {
   file: string;
   author: string;
   date: string;
-  setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
-  setclickedID?: React.Dispatch<React.SetStateAction<number | null>>;
+  setBountyClickedOwner?: React.Dispatch<React.SetStateAction<number | null>>;
+  setclickedIDOwner?: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 const Bounty = ({
@@ -25,15 +25,15 @@ const Bounty = ({
   file,
   author,
   date,
-  setBountyClicked,
-  setclickedID
+  setBountyClickedOwner,
+  setclickedIDOwner
 }: BountyProps) => {
   // const navigate = useNavigate();
 
   return (
     <div onClick={() => {
-      setBountyClicked(1)
-      setclickedID(id);
+      setBountyClickedOwner(1)
+      setclickedIDOwner(id);
     }}
       >
         <div className='rounded-xl bg-[#151920] border border-gray-800 p-6 hover:border-emerald-700 cursor-pointer'>
