@@ -34,6 +34,8 @@ const RecentBounties = ({ setBountyClickedDashboard, setclickedIDDashboard }: Re
         {bounties
           .map((recentBounty: any) => (
           <Recentbounty 
+            setBountyClickedDashboard={setBountyClickedDashboard}
+            setclickedIDDashboard={setclickedIDDashboard}
             id={recentBounty.id}
             title={recentBounty.title}
             description={recentBounty.description}

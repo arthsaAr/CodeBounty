@@ -36,6 +36,9 @@ const Dashboard = ({
   const [searchQuery, setSearchQuery] = useState("");
   const [bountyClicked, setBountyClicked] = useState<number | null>(0);
   const [clickedID,  setclickedID] = useState<number | null>(null);
+
+  const [bountyClickedDashboard, setBountyClickedDashboard] = useState<number | null>(0);
+  const [clickedIDDashboard,  setclickedIDDashboard] = useState<number | null>(null);
   // const navigate = useNavigate();
 
   // useEffect(() => {
@@ -52,10 +55,6 @@ const Dashboard = ({
       <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         {activePage === "dashboard" && (
           <>
-            {role === "hunter" && 
-              <HunterStat />
-            }
-
             {role === "owner" && 
               <OwnerStat />
             }
@@ -64,15 +63,27 @@ const Dashboard = ({
               <CommonStat />
             }
 
-            {role === "hunter" && 
+            {role === "hunter" && bountyClickedDashboard === 0 &&
+            <>
+              <HunterStat />
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
-                  <RecentBounties />
+                  <RecentBounties 
+                    setBountyClickedDashboard={setBountyClickedDashboard}
+                    setclickedIDDashboard={setclickedIDDashboard} 
+                    />
                 </div>
                 <div className="flex-1">
                   <Submissions />
                 </div>
               </div>
+              </>
+            }
+
+            {role === "hunter" && bountyClickedDashboard === 1 &&
+              <>
+                <BountyDetails setBountyClicked={setBountyClickedDashboard} selectedID={clickedIDDashboard} />
+              </>
             }
 
             {role === "owner" && 
