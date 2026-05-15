@@ -1,5 +1,4 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom";
 
 type BountyProps = {
   id: number;
@@ -28,7 +27,6 @@ const Bounty = ({
   setBountyClickedOwner,
   setclickedIDOwner
 }: BountyProps) => {
-  // const navigate = useNavigate();
 
   return (
     <div onClick={() => {

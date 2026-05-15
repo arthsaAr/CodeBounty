@@ -26,7 +26,6 @@ type dashboardProps = {
   role: string;
 };
 
-
 const Dashboard = ({
   role
 }: dashboardProps) => {
@@ -44,14 +43,6 @@ const Dashboard = ({
   const [bountyClickedHunter, setBountyClickedHunter] = useState<number | null>(0);
   const [clickedIDHunter,  setclickedIDHunter] = useState<number | null>(null);
 
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if(activePage === "bounties" && bountyClicked === 1){
-  //     navigate(`/bounty/${clickedID}`);
-  //   }
-  // }, [activePage, bountyClicked, clickedID, navigate]);
-
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
 
@@ -60,18 +51,14 @@ const Dashboard = ({
       <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         {activePage === "dashboard" && (
           <>
-            {role === "owner" && 
-              <OwnerStat />
-            }
-
             {role === "hunter" && bountyClickedHunter === 0 &&
             <>
               <HunterStat />
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
                   <RecentBounties 
-                    setBountyClickedHunter={setBountyClickedHunter}
-                    setclickedIDHunter={setclickedIDHunter} 
+                    setBountyClicked={setBountyClickedHunter}
+                    setclickedID={setclickedIDHunter} 
                     />
                 </div>
                 <div className="flex-1">
@@ -87,15 +74,27 @@ const Dashboard = ({
               </>
             }
 
-            {role === "owner" && 
+            {role === "owner" && bountyClickedOwner === 0 &&
+            <>
+              <OwnerStat />
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
-                  <YourBounties />
+                  <YourBounties
+                    setBountyClicked={setBountyClickedOwner}
+                    setclickedID={setclickedIDOwner}  
+                  />
                 </div>
                 <div className="flex-1">
                   <Recentactivity />
                 </div>
               </div>
+            </>
+            }
+
+            {role === "owner" && bountyClickedOwner === 1 &&
+              <>
+                <BountyDetails setBountyClicked={setBountyClickedOwner} selectedID={clickedIDOwner} />
+              </>
             }
 
             {role === "common" && bountyClickedCommon === 0 &&
@@ -104,8 +103,8 @@ const Dashboard = ({
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
                   <YourBounties 
-                    setBountyClickedCommon={setBountyClickedCommon}
-                    setclickedIDCommon={setclickedIDCommon} 
+                    setBountyClicked={setBountyClickedCommon}
+                    setclickedID={setclickedIDCommon} 
                     />
                 </div>
                 <div className="flex-1">

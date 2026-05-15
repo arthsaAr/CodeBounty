@@ -3,11 +3,11 @@ import { RiCoinsLine } from 'react-icons/ri'
 import Recentbounty from './subcomponent/Recentbounty'
 
 type RecentBountiesProps = {
-    setBountyClickedHunter?: React.Dispatch<React.SetStateAction<number | null>>;
-    setclickedIDHunter?: React.Dispatch<React.SetStateAction<number | null>>;
+    setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
+    setclickedID?: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const RecentBounties = ({ setBountyClickedHunter, setclickedIDHunter }: RecentBountiesProps) => {
+const RecentBounties = ({ setBountyClicked, setclickedID }: RecentBountiesProps) => {
     const [bounties, setBounties] = useState([]);
     
     useEffect(() => {
@@ -34,8 +34,8 @@ const RecentBounties = ({ setBountyClickedHunter, setclickedIDHunter }: RecentBo
         {bounties
           .map((recentBounty: any) => (
           <Recentbounty 
-            setBountyClickedHunter={setBountyClickedHunter}
-            setclickedIDHunter={setclickedIDHunter}
+            setBountyClicked={setBountyClicked}
+            setclickedID={setclickedID}
             id={recentBounty.id}
             title={recentBounty.title}
             description={recentBounty.description}
