@@ -22,11 +22,6 @@ const SetupBounty = () => {
         try {
             const token = localStorage.getItem("token");
 
-            // if (!selectedRepoId) {
-            //     alert("Select a repository first");
-            //     return;
-            // }
-
             await axios.patch(`http://localhost:3000/repositories/${repoId}/activate`, {}, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -211,7 +206,7 @@ const SetupBounty = () => {
 
                 {repos.map((repo: any) => (
                     <Repository
-                        onClick={activateRepo(repo.id)} 
+                        onClick={() => activateRepo(repo.id)} 
                         key={repo.id}
                         title={repo.name}
                         description="Imported from GitHub"
@@ -236,13 +231,7 @@ const SetupBounty = () => {
                     <MdKeyboardBackspace size={20} />
                     <h1 className='text-lg'>Back to repositories</h1>
                 </div>
-
-                {/* <div
-                    onClick={activateRepo} 
-                    className='w-1/4 mt-3 flex p-3 flex-row rounded-lg justify-center items-center hover:bg-gray-600 border border-emerald-500'>
-                    <h1 className="text-xl font-semibold text-emerald-500 text-center ">Activate Repository</h1>
-                </div> */}
-
+                
                 <h1 className=' mt-2 text-xl font-semibold font-sans'>Bounty Details</h1>
 
                 <BountyForm formData={formData} setFormData={setFormData} />
