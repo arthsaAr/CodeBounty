@@ -3,11 +3,12 @@ import { RiCoinsLine } from 'react-icons/ri'
 import YourBounty from '../../hunter/dashboard/subcomponent/Recentbounty'
 
 type YourBountiesProps = {
+    setActivePage?: React.Dispatch<React.SetStateAction<string>>;
     setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
     setclickedID?: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const YourBounties = ({ setBountyClicked, setclickedID }: YourBountiesProps) => {
+const YourBounties = ({ setActivePage, setBountyClicked, setclickedID }: YourBountiesProps) => {
     const [bounties, setBounties] = useState([]);
         
     useEffect(() => {
@@ -28,7 +29,11 @@ const YourBounties = ({ setBountyClicked, setclickedID }: YourBountiesProps) => 
     <div>
         <div className='flex flex-row justify-between mb-4 items-center'>
             <h2 className='text-2xl font-semibold'>Your Bounties</h2>
-            <button className='text-lg text-white hover:text-emerald-400'>View All</button>
+            <button 
+                onClick={() => {
+                    setActivePage("bounties");
+                }}
+                className='text-lg text-white hover:text-emerald-400'>View All</button>
         </div>
 
         {bounties

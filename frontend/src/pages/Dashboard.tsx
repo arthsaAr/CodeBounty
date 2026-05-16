@@ -1,6 +1,5 @@
 //starting dashboard implementation!
-import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
 import Navbar from "../components/NavBar";
 import HunterStat from "../components/hunter/dashboard/Quickstat";
 import OwnerStat from "../components/Owner/dashboard/Quickstat";
@@ -57,6 +56,7 @@ const Dashboard = ({
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
                   <RecentBounties 
+                    setActivePage={setActivePage}
                     setBountyClicked={setBountyClickedHunter}
                     setclickedID={setclickedIDHunter} 
                     />
@@ -80,6 +80,7 @@ const Dashboard = ({
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
                   <YourBounties
+                    setActivePage={setActivePage}
                     setBountyClicked={setBountyClickedOwner}
                     setclickedID={setclickedIDOwner}  
                   />
@@ -103,6 +104,7 @@ const Dashboard = ({
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
                   <YourBounties 
+                    setActivePage={setActivePage}
                     setBountyClicked={setBountyClickedCommon}
                     setclickedID={setclickedIDCommon} 
                     />

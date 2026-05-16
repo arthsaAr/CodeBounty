@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { RiCoinsLine } from 'react-icons/ri'
 import Recentbounty from './subcomponent/Recentbounty'
 
 type RecentBountiesProps = {
+    setActivePage?: React.Dispatch<React.SetStateAction<string>>;
     setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
     setclickedID?: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const RecentBounties = ({ setBountyClicked, setclickedID }: RecentBountiesProps) => {
+const RecentBounties = ({ setActivePage, setBountyClicked, setclickedID }: RecentBountiesProps) => {
     const [bounties, setBounties] = useState([]);
     
     useEffect(() => {
@@ -28,7 +28,11 @@ const RecentBounties = ({ setBountyClicked, setclickedID }: RecentBountiesProps)
     <div>
         <div className='flex flex-row justify-between mb-4 items-center'>
             <h2 className='text-2xl font-semibold'>Recent Bounties</h2>
-            <button className='text-lg text-white hover:text-emerald-400'>View All</button>
+            <button 
+                onClick={() => {
+                    setActivePage("bounties");
+                }}
+                className="text-lg text-white hover:text-emerald-400">View All</button>
         </div>
 
         {bounties
