@@ -2,6 +2,7 @@
 import { Router, Request, Response } from "express";
 import passport from "../config/passport";
 import jwt from "jsonwebtoken";
+import { authenticate, AuthenticatedRequest } from "../middleware/authenticate";
 
 const router = Router();
 
@@ -33,5 +34,18 @@ router.get(
         res.redirect(`http://localhost:5173/oauth-success?token=${token}`);
     }
 );
+
+router.get(
+    "/loggedname",
+    authenticate,
+    (req: AuthenticatedRequest, res: Response) => {
+        res.json({
+            id: req.user.id,
+            username: req.user.username,
+        });
+    }
+);
+
+
 
 export default router;
