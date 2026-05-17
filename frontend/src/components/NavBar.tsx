@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FiTarget } from 'react-icons/fi'
 import { MdOutlineDashboard, MdOutlineLogout  } from "react-icons/md";
 import { GoTrophy } from "react-icons/go";
@@ -14,6 +14,36 @@ type NavBarProps = {
 }
 
 const NavBar = ({ setActivePage, activePage, loginStatus }: NavBarProps) => {
+    const [userName, setUserName] = React.useState("");
+
+    const getName = async () => {
+        const token = localStorage.getItem("token");
+
+        if (!token){
+          return;
+        }
+
+        try {
+            const res = await fetch("http://localhost:3000/auth/loggedname", { 
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                setUserName(data.username);
+            } else {
+                console.error("Failed to fetch user data");
+            }
+        } catch (error) {
+            console.error("Error fetching name:", error);
+        }
+    }
+
+    useEffect(() => {
+        getName();
+    }, []);
 
   return (
     <div className="w-full fixed top-0 z-50 bg-[#0f131a]/70 backdrop-blur-md text-white px-6 py-4 flex items-center justify-between">
@@ -100,7 +130,7 @@ const NavBar = ({ setActivePage, activePage, loginStatus }: NavBarProps) => {
       }
 
         <img src={pic1} className="w-8 h-8 rounded-full border border-emerald-400" />
-        <button className="hover:text-green-400">demo_user</button>
+        <button className="hover:text-green-400">{userName}</button>
         <button onClick={() => {
                 localStorage.removeItem("token");
                 window.location.href = "/login";
