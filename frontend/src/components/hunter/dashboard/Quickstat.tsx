@@ -4,9 +4,36 @@ import { SlBadge } from "react-icons/sl";
 import { RiCoinsLine } from "react-icons/ri";
 
 const Quickstat = () => {
+  const [userName, setUserName] = React.useState("");
+  
+      const getName = async () => {
+          const token = localStorage.getItem("token");
+  
+          if (!token){
+            return;
+          }
+  
+          try {
+              const res = await fetch("http://localhost:3000/auth/loggedname", { 
+                  headers: {
+                      Authorization: `Bearer ${token}`,
+                  },
+              });
+  
+              if (res.ok) {
+                  const data = await res.json();
+                  setUserName(data.username);
+              } else {
+                  console.error("Failed to fetch user data");
+              }
+          } catch (error) {
+              console.error("Error fetching name:", error);
+          }
+      }
+
   return (
     <div>
-        <h1 className="text-3xl font-semibold mb-2 mt-3">Welcome back, demo_user!</h1>
+        <h1 className="text-3xl font-semibold mb-2 mt-3">Welcome back, {userName}!</h1>
         <h3 className="text-lg mb-6 text-gray-400">Browse bounties and submit bug reports</h3>
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 max-w-5xl'>
