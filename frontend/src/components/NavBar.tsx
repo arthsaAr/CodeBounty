@@ -24,20 +24,24 @@ const NavBar = ({ setActivePage, activePage, loginStatus }: NavBarProps) => {
         }
 
         try {
-            const res = await fetch("http://localhost:3000/auth/loggedname", { 
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+          console.log("NavBar: getName() token present:", !!token);
+          const res = await fetch("http://localhost:3000/auth/loggedname", { 
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
 
-            if (res.ok) {
-                const data = await res.json();
-                setUserName(data.username);
-            } else {
-                console.error("Failed to fetch user data");
-            }
+          console.log("NavBar: fetch /auth/loggedname ->", res.status, res.statusText);
+
+          if (res.ok) {
+            const data = await res.json();
+            setUserName(data.username);
+          } else {
+            const body = await res.text().catch(() => "<unable to read body>");
+            console.error("Failed to fetch user data", res.status, body);
+          }
         } catch (error) {
-            console.error("Error fetching name:", error);
+          console.error("Error fetching name:", error);
         }
     }
 
