@@ -31,9 +31,9 @@ const Quickstat = () => {
         }
     }
 
-        useEffect(() => {
-          getName();
-        }, []);
+    useEffect(() => {
+      getName();
+    }, []);
 
   return (
     <div>
