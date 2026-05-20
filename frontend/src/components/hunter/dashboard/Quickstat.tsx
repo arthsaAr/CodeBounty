@@ -3,37 +3,11 @@ import { CiCircleCheck } from "react-icons/ci";
 import { SlBadge } from "react-icons/sl";
 import { RiCoinsLine } from "react-icons/ri";
 
-const Quickstat = () => {
-  const [userName, setUserName] = useState("");
-  
-  const getName = async () => {
-      const token = localStorage.getItem("token");
+type quickStatProps = {
+  userName: string;
+}
 
-      if (!token){
-        return;
-      }
-
-      try {
-          const res = await fetch("http://localhost:3000/auth/loggedname", { 
-              headers: {
-                  Authorization: `Bearer ${token}`,
-              },
-          });
-
-          if (res.ok) {
-              const data = await res.json();
-              setUserName(data.username);
-          } else {
-              console.error("Failed to fetch user data");
-          }
-      } catch (error) {
-          console.error("Error fetching name:", error);
-      }
-  }
-
-  useEffect(() => {
-      getName();
-    }, []);
+const Quickstat = ({ userName }: quickStatProps) => {
 
   return (
     <div>

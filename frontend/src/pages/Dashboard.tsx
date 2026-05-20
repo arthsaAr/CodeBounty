@@ -83,7 +83,7 @@ const Dashboard = ({
           <>
             {role === "hunter" && bountyClickedHunter === 0 &&
             <>
-              <HunterStat />
+              <HunterStat userName={userName} />
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
                   <RecentBounties 
@@ -107,7 +107,7 @@ const Dashboard = ({
 
             {role === "owner" && bountyClickedOwner === 0 &&
             <>
-              <OwnerStat />
+              <OwnerStat userName={userName} />
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
                   <YourBounties
@@ -131,7 +131,7 @@ const Dashboard = ({
 
             {role === "common" && bountyClickedCommon === 0 &&
             <>
-              <CommonStat />
+              <CommonStat userName={userName} />
               <div className="flex flex-row gap-8 mt-6">
                 <div className="flex-1">
                   <YourBounties 

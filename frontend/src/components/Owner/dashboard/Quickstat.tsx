@@ -3,37 +3,11 @@ import { FiTarget } from 'react-icons/fi'
 import { RiCoinsLine } from "react-icons/ri";
 import { FaArrowTrendUp } from "react-icons/fa6";
 
-const Quickstat = () => {
-  const [userName, setUserName] = useState("");
-    
-    const getName = async () => {
-        const token = localStorage.getItem("token");
-  
-        if (!token){
-          return;
-        }
-  
-        try {
-            const res = await fetch("http://localhost:3000/auth/loggedname", { 
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-  
-            if (res.ok) {
-                const data = await res.json();
-                setUserName(data.username);
-            } else {
-                console.error("Failed to fetch user data");
-            }
-        } catch (error) {
-            console.error("Error fetching name:", error);
-        }
-    }
+type quickStatProps = {
+  userName: string;
+}
 
-    useEffect(() => {
-      getName();
-    }, []);
+const Quickstat = ({ userName }: quickStatProps) => {
 
   return (
     <div>
