@@ -10,7 +10,6 @@ import { RiAddFill } from "react-icons/ri";
 const SetupBounty = () => {
     const [step, setStep] = useState(1);
     const [selectedRepoId, setSelectedRepoId] = useState<number | null>(null);
-    const [userName, setUserName] = useState("");
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -18,19 +17,6 @@ const SetupBounty = () => {
         difficulty: "easy",
         filePath: "",
     });
-
-    const getName = async () => {
-        const token = localStorage.getItem("token");
-
-        const res = await fetch("http://localhost:3000/auth/me", {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
-
-        const data = await res.json();
-        setUserName(data.username);
-    }
 
     const activateRepo = async (repoId: number) => {
         try {

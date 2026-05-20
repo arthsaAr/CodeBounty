@@ -1,6 +1,6 @@
 import React from 'react'
 
-const header = () => {
+const Browserheader = () => {
   return (
     <div>
         <h1 className="text-3xl font-semibold mb-2 mt-3">Browse Bounties</h1>
@@ -9,4 +9,4 @@ const header = () => {
   )
 }
 
-export default header
+export default Browserheader
