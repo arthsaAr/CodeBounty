@@ -8,47 +8,13 @@ import pic1 from "../assets/profile/boy.png";
 import { RiAddFill } from "react-icons/ri";
 
 type NavBarProps = {
+  userName: string;
   setActivePage: (page: string) => void;
   activePage: string;
   loginStatus: string;
 }
 
-const NavBar = ({ setActivePage, activePage, loginStatus }: NavBarProps) => {
-    const [userName, setUserName] = React.useState("");
-
-    const getName = async () => {
-        const token = localStorage.getItem("token");
-
-        if (!token){
-          return;
-        }
-
-        try {
-          console.log("NavBar: getName() token present:", !!token);
-          const res = await fetch("http://localhost:3000/auth/loggedname", { 
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-
-          console.log("NavBar: fetch /auth/loggedname ->", res.status, res.statusText);
-
-          if (res.ok) {
-            const data = await res.json();
-            setUserName(data.username);
-          } else {
-            const body = await res.text().catch(() => "<unable to read body>");
-            console.error("Failed to fetch user data", res.status, body);
-          }
-        } catch (error) {
-          console.error("Error fetching name:", error);
-        }
-    }
-
-    useEffect(() => {
-        getName();
-    }, []);
-
+const NavBar = ({ userName, setActivePage, activePage, loginStatus }: NavBarProps) => {
   return (
     <div className="w-full fixed top-0 z-50 bg-[#0f131a]/70 backdrop-blur-md text-white px-6 py-4 flex items-center justify-between">
         <div className="text-xl font-semibold">

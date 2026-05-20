@@ -1,5 +1,5 @@
 //starting dashboard implementation!
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/NavBar";
 import HunterStat from "../components/hunter/dashboard/Quickstat";
 import OwnerStat from "../components/Owner/dashboard/Quickstat";
@@ -42,11 +42,42 @@ const Dashboard = ({
   const [bountyClickedHunter, setBountyClickedHunter] = useState<number | null>(0);
   const [clickedIDHunter,  setclickedIDHunter] = useState<number | null>(null);
 
+  const [userName, setUserName] = useState("");
+    
+    const getName = async () => {
+        const token = localStorage.getItem("token");
+  
+        if (!token){
+          return;
+        }
+  
+        try {
+            const res = await fetch("http://localhost:3000/auth/loggedname", { 
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+  
+            if (res.ok) {
+                const data = await res.json();
+                setUserName(data.username);
+            } else {
+                console.error("Failed to fetch user data");
+            }
+        } catch (error) {
+            console.error("Error fetching name:", error);
+        }
+    }
+  
+    useEffect(() => {
+        getName();
+      }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
 
-      <Navbar setActivePage={setActivePage} activePage={activePage} loginStatus={role} />
-      
+      <Navbar userName={userName} setActivePage={setActivePage} activePage={activePage} loginStatus={role} />
+
       <div className="flex-grow px-8 md:px-16 py-6 mt-20">
         {activePage === "dashboard" && (
           <>
