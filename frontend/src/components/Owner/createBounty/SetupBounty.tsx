@@ -18,24 +18,6 @@ const SetupBounty = () => {
         filePath: "",
     });
 
-    const activateRepo = async (repoId: number) => {
-        try {
-            const token = localStorage.getItem("token");
-
-            await axios.patch(`http://localhost:3000/repositories/${repoId}/activate`, {}, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-
-            alert("Repository Activated successfully!");
-
-        } catch (err: any) {
-            console.error(err);
-            alert(err.response?.data?.message || "Failed to activate Repository");
-        }
-    };
-
     const createBounty = async () => {
         try {
             const token = localStorage.getItem("token");
@@ -60,6 +42,13 @@ const SetupBounty = () => {
                 alert("Please enter a valid bounty amount greater than 0.");
                 return;
             }
+
+            //activating the  repo first here! while creating a bounty itself!
+            await axios.patch(`http://localhost:3000/repositories/${selectedRepoId}/activate`, {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
 
             const res = await axios.post(
                 "http://localhost:3000/bounties",
@@ -206,7 +195,6 @@ const SetupBounty = () => {
 
                 {repos.map((repo: any) => (
                     <Repository
-                        onClick={() => activateRepo(repo.id)} 
                         key={repo.id}
                         title={repo.name}
                         description="Imported from GitHub"
