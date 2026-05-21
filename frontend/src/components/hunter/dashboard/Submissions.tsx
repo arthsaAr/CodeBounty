@@ -1,6 +1,4 @@
 import React from 'react'
-import { IoCheckmarkCircleOutline } from 'react-icons/io5';
-import { MdAccessTimeFilled } from "react-icons/md";
 import Submission from './subcomponent/Submission';
 
 const submissions = () => {

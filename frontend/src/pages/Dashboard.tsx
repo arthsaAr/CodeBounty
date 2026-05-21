@@ -43,6 +43,8 @@ const Dashboard = ({
   const [clickedIDHunter,  setclickedIDHunter] = useState<number | null>(null);
 
   const [userName, setUserName] = useState("");
+
+  const [bountyCount, setBountyCount] = useState(0);
     
     const getName = async () => {
         const token = localStorage.getItem("token");
@@ -85,13 +87,16 @@ const Dashboard = ({
             <>
               <HunterStat userName={userName} />
               <div className="flex flex-row gap-8 mt-6">
-                <div className="flex-1">
-                  <RecentBounties 
-                    setActivePage={setActivePage}
-                    setBountyClicked={setBountyClickedHunter}
+                {bountyCount > 0 && (
+                  <div className="flex-1">
+                    <RecentBounties 
+                      setBountyCount={setBountyCount}
+                      setActivePage={setActivePage}
+                      setBountyClicked={setBountyClickedHunter}
                     setclickedID={setclickedIDHunter} 
                     />
                 </div>
+                )}
                 <div className="flex-1">
                   <Submissions />
                 </div>
