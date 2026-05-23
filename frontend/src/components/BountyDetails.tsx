@@ -13,8 +13,6 @@ type detailsProps = {
 }
 
 const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
-  // const { id } = selectedID;
-
   const [bounty, setBounty] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -35,7 +33,6 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
               Authorization: `Bearer ${token}`,
             },
           });
-
         setBounty(res.data);
       } catch (error) {
         console.error("Error fetching bounty details:", error);

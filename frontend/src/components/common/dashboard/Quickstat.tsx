@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { CiCircleCheck } from "react-icons/ci";
 import { FiTarget } from 'react-icons/fi'
 import { RiCoinsLine } from "react-icons/ri";

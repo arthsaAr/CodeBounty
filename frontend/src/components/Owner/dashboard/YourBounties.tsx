@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { RiCoinsLine } from 'react-icons/ri'
 import YourBounty from '../../hunter/dashboard/subcomponent/Recentbounty'
 
 type YourBountiesProps = {
