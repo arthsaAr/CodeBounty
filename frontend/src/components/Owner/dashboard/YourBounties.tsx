@@ -39,6 +39,27 @@ const YourBounties = ({ setActivePage, setBountyClicked, setclickedID }: YourBou
                 className='text-lg text-white hover:text-emerald-400'>View All</button>
         </div>
 
+        {bounties.length > 0 ? (
+            bounties
+            .map((recentBounty: any) => (
+            <YourBounty 
+                setBountyClicked={setBountyClicked}
+                setclickedID={setclickedID}
+                id={recentBounty.id}
+                title={recentBounty.title}
+                description={recentBounty.description}
+                difficulty={recentBounty.difficulty}
+                status={recentBounty.status}
+                reward={recentBounty.reward}
+                submissions={3}
+                />
+            ))
+        ) : (
+            <div className="text-gray-400 italic p-4 bg-zinc-900/50 rounded-lg text-center border border-zinc-800">
+                No bounty at the moment!
+            </div>
+        )}
+
         {bounties
           .map((recentBounty: any) => (
           <YourBounty 
