@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Recentbounty from './subcomponent/Recentbounty'
 
 type RecentBountiesProps = {
-    setBountyCount?: React.Dispatch<React.SetStateAction<number>>;
     setActivePage?: React.Dispatch<React.SetStateAction<string>>;
     setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
     setclickedID?: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const RecentBounties = ({ setBountyCount, setActivePage, setBountyClicked, setclickedID }: RecentBountiesProps) => {
+const RecentBounties = ({ setActivePage, setBountyClicked, setclickedID }: RecentBountiesProps) => {
     const [bounties, setBounties] = useState([]);
     
     useEffect(() => {
@@ -18,7 +17,6 @@ const RecentBounties = ({ setBountyCount, setActivePage, setBountyClicked, setcl
 
         const data = await res.json();
         setBounties(data);
-        setBountyCount(data.length);
         } catch (err) {
         console.error("Failed to fetch bounties:", err);
         }

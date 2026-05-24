@@ -24,6 +24,10 @@ const YourBounties = ({ setActivePage, setBountyClicked, setclickedID }: YourBou
     fetchBounties();
     }, []);
 
+    if (bounties.length === 0) {
+        return null;
+    }
+
   return (
     <div>
         <div className='flex flex-row justify-between mb-4 items-center'>
@@ -49,7 +53,6 @@ const YourBounties = ({ setActivePage, setBountyClicked, setclickedID }: YourBou
             submissions={3}
         />
         ))}
-
     </div>
   )
 }
