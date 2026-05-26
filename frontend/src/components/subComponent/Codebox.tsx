@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaFileCode } from "react-icons/fa";
+import { FaRegPaperPlane } from "react-icons/fa";
 
 const Codebox = () => {
   // Dummy code string
@@ -16,12 +17,23 @@ function greet() {
     <div className="w-full h-full rounded-xl border border-[#1f2937] bg-[#0d1117] overflow-hidden">
 
       {/* Header */}
-      <div className="flex items-center gap-2 px-3 py-3 border-b border-[#1f2937] bg-[#161b22]">
-        <FaFileCode color='green' size={20}/>
+      
+      <div className="flex flex-row items-center justify-between gap-2">
+        <div className="flex items-center gap-2 px-3 py-3 border-b border-[#1f2937] bg-[#161b22]">
+          <FaFileCode color='green' size={20}/>
+          
+          <span className="ml-1 text-sm text-gray-400 font-medium">
+            example.ts
+          </span>
+        </div>
 
-        <span className="ml-1 text-sm text-gray-400 font-medium">
-          example.ts
-        </span>
+        
+        <button className="flex flex-row gap-2 bg-emerald-500 p-3 hover:bg-emerald-400 text-black text-sm py-1 mt-3  font-semibold items-center rounded-lg 1/4">
+         <FaRegPaperPlane color='black' size={18}/>
+         <span>
+          Submit Bug Report
+         </span>
+        </button>
       </div>
 
       {/* main code Area */}
