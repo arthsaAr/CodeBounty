@@ -2,7 +2,11 @@ import React from 'react'
 import { FaFileCode } from "react-icons/fa";
 import { FaRegPaperPlane } from "react-icons/fa";
 
-const Codebox = () => {
+type codeboxProps = {
+  setSubmitClicked?: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
+const Codebox = ({ setSubmitClicked }: codeboxProps) => {
   // Dummy code string
   const code = `const message = "Hello World";
 console.log(message);
@@ -28,7 +32,8 @@ function greet() {
         </div>
 
         
-        <button className="flex flex-row gap-2 bg-emerald-500 p-3 hover:bg-emerald-400 text-black text-sm py-1 mt-3  font-semibold items-center rounded-lg 1/4">
+        <button className="flex flex-row gap-2 bg-emerald-500 p-3 hover:bg-emerald-400 text-black text-sm py-1 mt-3  font-semibold items-center rounded-lg 1/4" 
+                onClick={() => setSubmitClicked(1)}>
          <FaRegPaperPlane color='black' size={18}/>
          <span>
           Submit Bug Report
