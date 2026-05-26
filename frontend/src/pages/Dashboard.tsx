@@ -144,6 +144,7 @@ const Dashboard = ({
                   <Submissions />
                 </div>
               </div>
+              
             </>
             }
 
@@ -152,8 +153,10 @@ const Dashboard = ({
                 <BountyDetails setBountyClicked={setBountyClickedCommon} selectedID={clickedIDCommon} />
               </>
             }
-
-            <Quickactions curPage={role} setActivePage={setActivePage} />
+            
+            {bountyClickedCommon === 0 && bountyClickedHunter === 0 && bountyClickedOwner === 0 &&
+              <Quickactions curPage={role} setActivePage={setActivePage} />
+            }
           </>
         )
         }
