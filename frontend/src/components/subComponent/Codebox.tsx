@@ -1,7 +1,6 @@
 import React from 'react'
 import { FaFileCode } from "react-icons/fa";
 import { FaRegPaperPlane } from "react-icons/fa";
-import { useSearchParams } from 'react-router-dom';
 
 type codeboxProps = {
   submitClicked?: boolean;

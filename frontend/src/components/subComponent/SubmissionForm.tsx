@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const SubmissionForm = () => {
+    const [formData, setFormData] = useState({
+            title: "",
+            description: "",
+            severity: "",
+        });
+
   return (
     <div className="w-full h-full mt-2 rounded-xl border p-6 border-[#1f2937] bg-[#0d1117] overflow-hidden">
         <h1 className='text-white font-semibold text-lg'>Submit Bug Report</h1>
@@ -10,6 +16,12 @@ const SubmissionForm = () => {
             type="text"
             placeholder='Brief description of the bug'
             className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
+            onChange={(e) =>
+              setFormData((prev: any) => ({
+                ...prev,
+                title: e.target.value
+              }))
+            }
           />
         </div>
 
@@ -19,6 +31,12 @@ const SubmissionForm = () => {
             rows={4}
             placeholder="Detailed explanation of the bug and steps to fix it..."
             className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500 resize-none"
+            onChange={(e) =>
+              setFormData((prev: any) => ({
+                ...prev,
+                description: e.target.value
+              }))
+            }
           />
         </div>
 
@@ -26,22 +44,66 @@ const SubmissionForm = () => {
           <label className="text-sm text-gray-400">Severity<span className='text-red-600'> *</span></label>
           <div className='flex flex-row gap-3 '>
             <div 
-              className={`w-1/4 p-6 text-center items-center rounded-lg border-2 border-gray-700 hover:border-emerald-500 text-lg
+                onClick={() =>
+                setFormData((prev: any) => ({
+                  ...prev,
+                  severity: "easy"
+                }))
+              }
+              className={`flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg
+                    ${
+                      formData.severity === "easy"
+                      ? "border-emerald-500 bg-emerald-500/5"
+                      : "border-gray-800 hover:border-green-700"
+                    }
               `}>
                 <h1 className='font-semibold text-md'>Easy</h1>
             </div>
             <div 
-              className={`w-1/4 p-6 text-center items-center rounded-lg border-2 border-gray-700 hover:border-emerald-500 text-lg
+                onClick={() =>
+                setFormData((prev: any) => ({
+                  ...prev,
+                  severity: "medium"
+                }))
+              }
+              className={`flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg
+                    ${
+                      formData.severity === "medium"
+                      ? "border-emerald-500 bg-emerald-500/5"
+                      : "border-gray-800 hover:border-green-700"
+                    }
               `}>
                 <h1 className='font-semibold text-md'>Medium</h1>
             </div>
             <div 
-              className={`w-1/4 p-6 text-center items-center rounded-lg border-2 border-gray-700 hover:border-emerald-500 text-lg
+                onClick={() =>
+                    setFormData((prev: any) => ({
+                    ...prev,
+                    severity: "hard"
+                    }))
+                }
+              className={`flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg
+                    ${
+                      formData.severity === "hard"
+                      ? "border-emerald-500 bg-emerald-500/5"
+                      : "border-gray-800 hover:border-green-700"
+                    }
               `}>
                 <h1 className='font-semibold text-md'>Hard</h1>
             </div>
             <div 
-              className={`w-1/4 p-6 text-center items-center rounded-lg border-2 border-gray-700 hover:border-emerald-500 text-lg
+                onClick={() =>
+                    setFormData((prev: any) => ({
+                    ...prev,
+                    severity: "critical"
+                    }))
+                }
+              className={`flex flex-col gap-2 w-1/3 p-6 text-center items-center rounded-lg border-2 text-lg
+                    ${
+                      formData.severity === "critical"
+                      ? "border-emerald-500 bg-emerald-500/5"
+                      : "border-gray-800 hover:border-green-700"
+                    }
               `}>
                 <h1 className='font-semibold text-md'>Critical</h1>
             </div>
