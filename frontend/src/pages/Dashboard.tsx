@@ -144,7 +144,6 @@ const Dashboard = ({
                   <Submissions />
                 </div>
               </div>
-              
             </>
             }
 

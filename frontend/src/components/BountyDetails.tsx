@@ -6,6 +6,7 @@ import BountyStats from "./subComponent/BountyStats";
 import RepositoryInfo from "./subComponent/RepositoryInfo";
 import Codebox from "./subComponent/Codebox";
 import { MdKeyboardBackspace } from "react-icons/md";
+import Submissions from "./subComponent/Submissions";
 
 type detailsProps = {
   setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
@@ -111,8 +112,9 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
 
         <div className="flex flex-row w-full gap-3 items-start">
   
-        <div className="w-1/2 flex flex-col">
+        <div className="w-1/2 flex flex-col gap-3">
           <Codebox setSubmitClicked={setSubmitClicked} />
+          <Submissions />
         </div>
 
         <div className="w-1/2 flex flex-col gap-3">
