@@ -17,7 +17,7 @@ type detailsProps = {
 const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
   const [bounty, setBounty] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [submitClicked, setSubmitClicked] = useState<number | null>(0);
+  const [submitClicked, setSubmitClicked] = useState(false);
 
   useEffect(() => {
     if (selectedID == null) {
@@ -114,9 +114,9 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
         <div className="flex flex-row w-full gap-3 items-start">
   
         <div className="w-1/2 flex flex-col gap-3">
-          <Codebox setSubmitClicked={setSubmitClicked} />
+          <Codebox submitClicked={submitClicked} setSubmitClicked={setSubmitClicked} />
           {
-            submitClicked === 1 && (
+            submitClicked && (
               <SubmissionForm />
             )
           }
