@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { RiAddFill } from 'react-icons/ri';
 
 const SubmissionForm = () => {
     const [formData, setFormData] = useState({
@@ -110,6 +111,14 @@ const SubmissionForm = () => {
             </div>
         </div>
 
+        <div className='flex flex-row gap-3 mt-3'>
+            <div className='w-3/4 mt-3 p-3 rounded-lg bg-emerald-500 justify-center items-center hover:bg-emerald-600 transition-all'>
+                <h1 className="text-xl font-semibold text-black text-center ">Submit Report</h1>
+            </div>
+            <div className='w-1/4 mt-3 flex p-3 flex-row rounded-lg justify-center items-center hover:bg-gray-700 border border-emerald-500'>
+                <h1 className="text-xl font-semibold text-emerald-500 text-center ">Cancel</h1>
+            </div>
+        </div>
     </div>
   )
 }
