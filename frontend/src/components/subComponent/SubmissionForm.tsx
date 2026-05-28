@@ -4,6 +4,8 @@ const SubmissionForm = () => {
     const [formData, setFormData] = useState({
             title: "",
             description: "",
+            linestart: "",
+            lineend: "",
             severity: "",
         });
 
@@ -49,7 +51,7 @@ const SubmissionForm = () => {
               onChange={(e) =>
                 setFormData((prev: any) => ({
                   ...prev,
-                  title: e.target.value
+                  linestart: e.target.value
                 }))
               }
             />
@@ -62,7 +64,7 @@ const SubmissionForm = () => {
               onChange={(e) =>
                 setFormData((prev: any) => ({
                   ...prev,
-                  title: e.target.value
+                  lineend: e.target.value
                 }))
               }
             />
