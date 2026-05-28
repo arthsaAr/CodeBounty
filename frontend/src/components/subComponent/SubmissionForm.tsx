@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { RiAddFill } from 'react-icons/ri';
 
 const SubmissionForm = () => {
     const [formData, setFormData] = useState({
@@ -13,7 +12,7 @@ const SubmissionForm = () => {
         <h1 className='text-white font-semibold text-lg'>Submit Bug Report</h1>
         <div className="flex flex-col gap-1 mt-2">
           <label className="text-md text-gray-400">Title<span className='text-red-600'> *</span></label>
-          <input 
+          <input
             type="text"
             placeholder='Brief description of the bug'
             className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
@@ -39,6 +38,35 @@ const SubmissionForm = () => {
               }))
             }
           />
+        </div>
+
+        <div className='flex flex-row gap-2 items-center'>
+          <div className="flex flex-col gap-1 mt-2 w-1/2">
+            <label className="text-md text-gray-400">Line Start<span className='text-red-600'> *</span></label>
+            <input
+              type="text"
+              className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
+              onChange={(e) =>
+                setFormData((prev: any) => ({
+                  ...prev,
+                  title: e.target.value
+                }))
+              }
+            />
+          </div>
+          <div className="flex flex-col gap-1 mt-2 w-1/2">
+            <label className="text-md text-gray-400">Line End<span className='text-red-600'> *</span></label>
+            <input
+              type="text"
+              className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
+              onChange={(e) =>
+                setFormData((prev: any) => ({
+                  ...prev,
+                  title: e.target.value
+                }))
+              }
+            />
+          </div>
         </div>
 
         <div className="flex flex-col gap-1 mt-2">
