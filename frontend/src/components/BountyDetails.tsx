@@ -18,6 +18,7 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
   const [bounty, setBounty] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [submitClicked, setSubmitClicked] = useState(false);
+  const [submitCounter, setSubmitCounter] = useState(0);
 
   useEffect(() => {
     if (selectedID == null) {
@@ -117,7 +118,7 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
           <Codebox submitClicked={submitClicked} setSubmitClicked={setSubmitClicked} />
           {
             submitClicked && (
-              <SubmissionForm />
+              <SubmissionForm setSubmitCounter={setSubmitCounter} />
             )
           }
           <Submissions />
@@ -125,7 +126,7 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
 
         <div className="w-1/2 flex flex-col gap-3">
           <RepositoryInfo repository={bounty?.repository?.name} file={bounty?.filePath} owner={bounty?.repository?.owner?.username} />
-          <BountyStats submissions={1} reward={bounty?.amount} status={bounty?.status} />
+          <BountyStats submissions={submitCounter} reward={bounty?.amount} status={bounty?.status} />
           <SubmissionTips />
         </div>
       </div>
