@@ -59,21 +59,6 @@ const YourBounties = ({ setActivePage, setBountyClicked, setclickedID }: YourBou
                 No bounty at the moment!
             </div>
         )}
-
-        {bounties
-          .map((recentBounty: any) => (
-          <YourBounty 
-            setBountyClicked={setBountyClicked}
-            setclickedID={setclickedID}
-            id={recentBounty.id}
-            title={recentBounty.title}
-            description={recentBounty.description}
-            difficulty={recentBounty.difficulty}
-            status={recentBounty.status}
-            reward={recentBounty.reward}
-            submissions={3}
-        />
-        ))}
     </div>
   )
 }
