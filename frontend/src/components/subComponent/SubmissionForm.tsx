@@ -9,6 +9,39 @@ const SubmissionForm = () => {
             severity: "",
         });
 
+        const handleSubmit = async () => {
+          try {
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+              alert("You must be logged in to submit a bug report.");
+              return;
+            }
+
+            const title = formData.title.trim();
+            const description = formData.description.trim();
+            const linestart = Number(formData.linestart);
+            const lineend = Number(formData.lineend);
+            const severity = formData.severity.trim();
+
+            if (!title || !description || !severity) {
+              alert("Please fill in all required fields before submitting.");
+              return;
+            }
+
+            if (formData.linestart === "" || formData.lineend === "" || Number.isNaN(linestart) || Number.isNaN(lineend) || linestart <= 0 || lineend <= 0 || lineend < linestart) {
+              alert("Please enter valid line numbers. Line end must be greater than or equal to line start.");
+              return;
+            }
+
+            alert("Bug report submitted successfully!");
+            
+          } catch (err: any) {
+            console.error("Error submitting bug report:", err);
+            alert("An error occurred while submitting the bug report. Please try again.");
+          }
+        }
+
   return (
     <div className="w-full h-full mt-2 rounded-xl border p-6 border-[#1f2937] bg-[#0d1117] overflow-hidden">
         <h1 className='text-white font-semibold text-lg'>Submit Bug Report</h1>
@@ -46,7 +79,7 @@ const SubmissionForm = () => {
           <div className="flex flex-col gap-1 mt-2 w-1/2">
             <label className="text-md text-gray-400">Line Start<span className='text-red-600'> *</span></label>
             <input
-              type="text"
+              type="number"
               className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
               onChange={(e) =>
                 setFormData((prev: any) => ({
@@ -59,7 +92,7 @@ const SubmissionForm = () => {
           <div className="flex flex-col gap-1 mt-2 w-1/2">
             <label className="text-md text-gray-400">Line End<span className='text-red-600'> *</span></label>
             <input
-              type="text"
+              type="number"
               className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
               onChange={(e) =>
                 setFormData((prev: any) => ({
@@ -142,7 +175,9 @@ const SubmissionForm = () => {
         </div>
 
         <div className='flex flex-row gap-3 mt-3'>
-            <div className='w-3/4 mt-3 p-3 rounded-lg bg-emerald-500 justify-center items-center hover:bg-emerald-600 transition-all'>
+            <div 
+                onClick={handleSubmit}
+                className='w-3/4 mt-3 p-3 rounded-lg bg-emerald-500 justify-center items-center hover:bg-emerald-600 transition-all'>
                 <h1 className="text-xl font-semibold text-black text-center ">Submit Report</h1>
             </div>
             <div className='w-1/4 mt-3 flex p-3 flex-row rounded-lg justify-center items-center hover:bg-gray-700 border border-emerald-500'>
