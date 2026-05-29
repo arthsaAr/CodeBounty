@@ -118,9 +118,9 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
           <Codebox submitClicked={submitClicked} setSubmitClicked={setSubmitClicked} />
           {
             submitClicked && (
-              <SubmissionForm setSubmitCounter={setSubmitCounter} />
+              <SubmissionForm setSubmitClicked={setSubmitClicked} setSubmitCounter={setSubmitCounter} />
             )
-          }
+          } 
           <Submissions submitClicked={submitCounter} />
         </div>
 

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 
 type formProps = {
+  setSubmitClicked: React.Dispatch<React.SetStateAction<boolean>>;
   setSubmitCounter: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SubmissionForm = ({ setSubmitCounter }: formProps) => {
+const SubmissionForm = ({ setSubmitClicked, setSubmitCounter }: formProps) => {
     const [formData, setFormData] = useState({
             title: "",
             description: "",
@@ -41,6 +42,7 @@ const SubmissionForm = ({ setSubmitCounter }: formProps) => {
 
             alert("Bug report submitted successfully!");
             setSubmitCounter((prev) => prev + 1);
+            setSubmitClicked(false);
 
           } catch (err: any) {
             console.error("Error submitting bug report:", err);
