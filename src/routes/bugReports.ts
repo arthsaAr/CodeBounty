@@ -9,14 +9,17 @@ const router = Router();
 router.post("/", authenticate, async (req: AuthenticatedRequest, res) => {
     try{
         const user = req.user;
-        const {bountyId, title, description, severity, lineNumbers } = req.body;
+        const { bountyId, title, description, severity, linestart, lineend } = req.body;
 
-        if(!bountyId || !title || !description || !severity ){
-            return res.status(400).json({ message: "Required fields are missing!"});
+        if (!bountyId || !title || !description || !severity || linestart === undefined || lineend === undefined) {
+            return res.status(400).json({ message: "Required fields are missing!" });
         }
 
+        //converting bountyid to number for actual database
+        const parsedBountyId = Number(bountyId);
+
         const bounty = await prisma.bounty.findUnique({
-            where: {id: bountyId},
+            where: {id: parsedBountyId},
         });
 
         if(!bounty){
@@ -29,7 +32,13 @@ router.post("/", authenticate, async (req: AuthenticatedRequest, res) => {
 
         const report = await prisma.bugReport.create({
             data: {
-                title, description, severity, lineNumbers, bountyId, hunterId: user.id,
+                title, 
+                description, 
+                severity,                           // Prisma automatically checks this against your new Enum we just added
+                lineStart: Number(linestart),       //making sure these map to database camelCase Ints
+                lineEnd: Number(lineend),
+                bountyId: parsedBountyId, 
+                hunterId: user.id,
             },
         });
 
