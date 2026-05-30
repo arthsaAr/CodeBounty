@@ -1,11 +1,13 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 
 type formProps = {
   setSubmitClicked: React.Dispatch<React.SetStateAction<boolean>>;
   setSubmitCounter: React.Dispatch<React.SetStateAction<number>>;
+  selectedID?: number | null;
 }
 
-const SubmissionForm = ({ setSubmitClicked, setSubmitCounter }: formProps) => {
+const SubmissionForm = ({ setSubmitClicked, setSubmitCounter, selectedID }: formProps) => {
     const [formData, setFormData] = useState({
             title: "",
             description: "",
@@ -13,7 +15,6 @@ const SubmissionForm = ({ setSubmitClicked, setSubmitCounter }: formProps) => {
             lineend: "",
             severity: "",
         });
-    
 
         const handleSubmit = async () => {
           try {
@@ -39,6 +40,23 @@ const SubmissionForm = ({ setSubmitClicked, setSubmitCounter }: formProps) => {
               alert("Please enter valid line numbers. Line end must be greater than or equal to line start.");
               return;
             }
+
+            const res = await axios.post(
+              "http://localhost:3000/bugReports",
+              {
+                  bountyId: selectedID,
+                  title,
+                  description,
+                  severity,
+                  linestart,
+                  lineend,
+              },
+              {
+                  headers: {
+                      Authorization: `Bearer ${token}`,
+                  },
+              }
+          );
 
             alert("Bug report submitted successfully!");
             setSubmitCounter((prev) => prev + 1);
