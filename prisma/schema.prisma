@@ -48,17 +48,27 @@ model Bounty {
   createdAt    DateTime      @default(now())
 }
 
+enum Severity {
+  easy
+  medium
+  hard
+  critical
+}
+
 model BugReport {
-  id          Int     @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   title       String
   description String
   bountyId    Int
   hunterId    Int
-  lineNumbers String?
-  severity    String
-  status      String  @default("pending")
-  bounty      Bounty  @relation(fields: [bountyId], references: [id])
-  hunter      User    @relation(fields: [hunterId], references: [id])
+  lineStart   Int       // Changed to Int to match your frontend logic
+  lineEnd     Int       // Changed to Int to match your frontend logic
+  severity    Severity  // Using the new Enum type
+  status      String    @default("pending")
+  createdAt   DateTime  @default(now()) // Good practice to track when bugs are filed
+  
+  bounty      Bounty    @relation(fields: [bountyId], references: [id])
+  hunter      User      @relation(fields: [hunterId], references: [id])
 }
 
 model Transaction {
