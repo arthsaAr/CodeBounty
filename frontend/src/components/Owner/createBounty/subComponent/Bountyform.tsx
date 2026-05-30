@@ -1,29 +1,39 @@
 import React from 'react'
+import FileTreePicker from './FileTreePicker'
 
 //complete this form completely(with added backend routes)
 type formProps = {
   formData: any;
   setFormData: React.Dispatch<React.SetStateAction<any>>;
+  repoUrl?: string;
 };
 
-const Bountyform = ({ formData, setFormData }: formProps) => {
+const Bountyform = ({ formData, setFormData, repoUrl }: formProps) => {
   return (
     <div className='mt-2'>
       
         <div className="flex flex-col gap-1 mt-2">
           <label className="text-sm text-gray-400">File path<span className='text-red-600'> *</span></label>
-          <input 
-            type="text"
-            placeholder='Eg. src/components/Chart.tsx'
-            value={formData.filePath}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                filePath: e.target.value
-              })
-            }
-            className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
-          />
+          {repoUrl ? (
+            <FileTreePicker
+              repoUrl={repoUrl}
+              selectedPath={formData.filePath}
+              onSelect={(path) => setFormData({ ...formData, filePath: path })}
+            />
+          ) : (
+            <input 
+              type="text"
+              placeholder='Eg. src/components/Chart.tsx'
+              value={formData.filePath}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  filePath: e.target.value
+                })
+              }
+              className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
+            />
+          )}
         </div>
 
         <div className="flex flex-col gap-1 mt-2">
