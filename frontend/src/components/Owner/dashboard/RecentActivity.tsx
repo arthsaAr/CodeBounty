@@ -6,7 +6,7 @@ const Recentactivity = () => {
     <div>
         <h2 className='text-2xl font-semibold mb-4'>Recent Activity</h2>
 
-{/* TODO - Implement dynamic submissions fetching */}
+        {/* TODO - Implement dynamic submissions fetching */}
         <Submission 
             title="useEffect cleanup missing in Chart"
             description="react-dashboard • Lines 45-60"

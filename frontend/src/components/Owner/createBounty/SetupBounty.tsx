@@ -125,7 +125,6 @@ const SetupBounty = () => {
                 }
             });
 
-            //reff.
             await fetchRepos();   //refreshing after import
         } catch(err: any) {
             const errorMsg = err.response?.data?.message || "Failed to import repositories";
