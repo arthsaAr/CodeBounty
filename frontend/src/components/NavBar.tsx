@@ -17,7 +17,22 @@ type NavBarProps = {
 const NavBar = ({ userName, setActivePage, activePage, loginStatus }: NavBarProps) => {
   return (
     <div className="w-full fixed top-0 z-50 bg-[#0f131a]/70 backdrop-blur-md text-white px-6 py-4 flex items-center justify-between">
-        <div className="text-xl font-semibold">
+        <div 
+          onClick={ () => {
+            if(loginStatus == "hunter"){
+            window.location.href = "/dashboard-hunter"
+            }
+
+            if(loginStatus == "owner"){
+            window.location.href = "/dashboard-owner"
+            }
+
+            if(loginStatus == "common"){
+            window.location.href = "/dashboard-common"
+            }
+
+          }}
+          className="text-xl font-semibold cursor-pointer">
             <span className="text-green-400">&lt;/&gt;</span>{" "}
             Code<span className="text-green-400">Bounty</span>
         </div>
