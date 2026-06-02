@@ -44,7 +44,7 @@ router.post("/", authenticate, async (req: AuthenticatedRequest, res) => {
 
         res.json(report);
     }catch(error){
-        console.error(error);
+        console.error("From backend: ", error);
         res.status(500).json({message: "Failed to submit bug report"});
     }
 });

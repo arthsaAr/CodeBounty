@@ -40,6 +40,12 @@ const SubmissionForm = ({ setSubmitClicked, setSubmitCounter, selectedID }: form
               alert("Please enter valid line numbers. Line end must be greater than or equal to line start.");
               return;
             }
+            
+
+            if (selectedID == null) {
+              alert(`No bounty selected. Please select a bounty before submitting. ID: ${selectedID}`);
+              return;
+            }
 
             const res = await axios.post(
               "http://localhost:3000/bugReports",

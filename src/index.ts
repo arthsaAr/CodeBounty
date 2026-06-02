@@ -36,7 +36,7 @@ app.use(passport.initialize());
 app.use("/auth", authRoutes);
 app.use("/repositories", repositoryRoutes);
 app.use("/bounties", bountyRoutes);
-app.use("/bug-Reports", bugReportsRoutes);
+app.use("/bugReports", bugReportsRoutes);
 
 //testing the protected route
 //first authenticate --> checks token --> if valid route runs and if invalid 401
