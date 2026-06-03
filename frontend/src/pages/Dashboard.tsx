@@ -143,7 +143,8 @@ const Dashboard = ({
                     />
                 </div>
                 <div className="flex-1">
-                  <Submissions />
+                  <Submissions 
+                    clickedID={clickedIDCommon} />
                 </div>
               </div>
             </>
