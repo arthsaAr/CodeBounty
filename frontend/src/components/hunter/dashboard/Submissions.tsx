@@ -6,19 +6,13 @@ const submissions = () => {
     <div>
         <h2 className='text-2xl font-semibold mb-4'>Your Submissions</h2>
 
-        <Submission 
+        {/* <Submission 
             title="useEffect cleanup missing in Chart"
             description="react-dashboard • Lines 45-60"
             difficulty="high"
             status="pending"
-        />
+        /> */}
 
-        <Submission 
-            title="JWT validation bypass in auth middleware"
-            description="express-api • Lines 12-15"
-            difficulty="critical"
-            status="approved"
-        />
     </div>
   )
 }
