@@ -51,7 +51,6 @@ router.post("/", authenticate, async (req: AuthenticatedRequest, res) => {
 
 
 //getting bug reports for a bounty(from owner POV)
-
 router.get("/bounty/:bountyId", authenticate, async (req: AuthenticatedRequest, res) => {
     try{
         const user = req.user;
