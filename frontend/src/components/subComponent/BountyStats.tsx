@@ -8,7 +8,7 @@ type BountyStatsProps = {
 
 const BountyStats = ({ submissions, reward, status }: BountyStatsProps) => {
   return (
-    <div className='mt-2 rounded-lg bg-[#151920] border w-full border-gray-800 p-6 justify-between items-center cursor-pointer'>
+    <div className='mt-2 rounded-lg bg-[#0d1117] border w-full border-gray-800 p-6 justify-between items-center cursor-pointer'>
         <h1 className='text-white text-lg'>Bounty Stats</h1>
 
         <div className='flex flex-col gap-3 mt-3'>

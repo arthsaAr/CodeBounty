@@ -3,7 +3,7 @@ import { GiHazardSign } from "react-icons/gi";
 
 const SubmissionTips = () => {
   return (
-    <div className='mt-4 rounded-lg bg-[#151920] border w-full border-gray-800 p-6 justify-between items-center cursor-pointer'>
+    <div className='mt-4 rounded-lg bg-[#0d1117] border w-full border-gray-800 p-6 justify-between items-center cursor-pointer'>
         <div className='flex flex-row gap-1 items-center'>
             <GiHazardSign size={24} color='green'/>
             <h1 className='text-emerald-400 text-lg'>Submission Tips</h1>
