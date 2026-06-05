@@ -119,7 +119,9 @@ const Dashboard = ({
                   />
                 </div>
                 <div className="flex-1">
-                  <Recentactivity />
+                  <Recentactivity 
+                    clickedID={clickedIDOwner}
+                  />
                 </div>
               </div>
             </>
