@@ -121,7 +121,7 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
               <SubmissionForm selectedID={selectedID} setSubmitClicked={setSubmitClicked} setSubmitCounter={setSubmitCounter} />
             )
           } 
-          <Submissions submitClicked={submitCounter} />
+          <Submissions clickedID={selectedID} submitClicked={submitCounter} />
         </div>
 
         <div className="w-1/2 flex flex-col gap-3">

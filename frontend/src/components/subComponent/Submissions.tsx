@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import Submission from "../hunter/dashboard/Submissions";
 
 type SubmissionsProps = {
+  clickedID?: number | null;
   submitClicked: number;
 }
 
-const Submissions = ({ submitClicked }: SubmissionsProps) => {
+const Submissions = ({ clickedID, submitClicked }: SubmissionsProps) => {
    const [recentSubmissions, setRecentSubmissions] = useState([]);
     
       useEffect(() => {
@@ -35,7 +37,9 @@ const Submissions = ({ submitClicked }: SubmissionsProps) => {
         <h1 className='text-white font-semibold text-lg'>Submissions({submitClicked})</h1>
 
         <div className='mt-2 rounded-lg bg-[#151920] border w-full border-gray-800 p-6 justify-between items-center cursor-pointer'>
-            TODO!
+            <Submission
+                clickedID={clickedID}
+            />
         </div>
     </div>
   )
