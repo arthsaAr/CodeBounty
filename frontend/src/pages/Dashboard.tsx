@@ -95,6 +95,7 @@ const Dashboard = ({
                 <div className="flex-1">
                   <Submissions
                     clickedID={clickedIDHunter}
+                    requestPage={activePage}
                   />
                 </div>
               </div>
@@ -146,6 +147,7 @@ const Dashboard = ({
                 </div>
                 <div className="flex-1">
                   <Submissions 
+                    requestPage={activePage}
                     clickedID={clickedIDCommon} />
                 </div>
               </div>

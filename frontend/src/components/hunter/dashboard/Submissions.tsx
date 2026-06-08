@@ -41,7 +41,8 @@ const Submissions = ({ requestPage, clickedID }: SubmissionsProps) => {
         {reports.length > 0 ? (
             reports
             .map((recentReport: any) => (
-            <Submission 
+            <Submission
+                requestPage={requestPage}
                 title={recentReport.title}
                 description={recentReport.description}
                 difficulty={recentReport.severity}
