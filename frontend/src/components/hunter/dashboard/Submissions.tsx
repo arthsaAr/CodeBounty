@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Submission from './subcomponent/Submission';
 
 type SubmissionsProps = {
+    requestPage: string;
     clickedID?: number | null;
 }
 
-const submissions = ({ clickedID }: SubmissionsProps) => {
+const Submissions = ({ requestPage, clickedID }: SubmissionsProps) => {
   const [reports, setReports] = useState([]);
 
   useEffect(() => {
@@ -33,7 +34,9 @@ const submissions = ({ clickedID }: SubmissionsProps) => {
 
   return (
     <div>
-        <h2 className='text-2xl font-semibold mb-4'>Your Submissions</h2>
+        {requestPage !== "bountyDetails" && ( 
+            <h2 className='text-2xl font-semibold mb-4'>Your Submissions</h2>
+        )}
 
         {reports.length > 0 ? (
             reports
@@ -54,4 +57,4 @@ const submissions = ({ clickedID }: SubmissionsProps) => {
   )
 }
 
-export default submissions
+export default Submissions
