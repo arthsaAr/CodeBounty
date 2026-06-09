@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Submission from './subcomponent/Submission';
 
 type SubmissionsProps = {
     requestPage: string;
     clickedID?: number | null;
+    submitClicked?: number;
 }
 
-const Submissions = ({ requestPage, clickedID }: SubmissionsProps) => {
-  const [reports, setReports] = useState([]);
+type Report = {
+    title: string;
+    description: string;
+    severity: string;
+    status: string;
+};
+
+const Submissions = ({ requestPage, clickedID, submitClicked }: SubmissionsProps) => {
+    const [reports, setReports] = useState<Report[]>([]);
 
   useEffect(() => {
       const fetchBounties = async () => {
@@ -27,10 +35,10 @@ const Submissions = ({ requestPage, clickedID }: SubmissionsProps) => {
           }
       };
       
-      if (clickedID) {
+      if (clickedID != null) {
           fetchBounties();
       }
-      }, [clickedID]);
+      }, [clickedID, submitClicked]);
 
   return (
     <div>
@@ -39,8 +47,7 @@ const Submissions = ({ requestPage, clickedID }: SubmissionsProps) => {
         )}
 
         {reports.length > 0 ? (
-            reports
-            .map((recentReport: any) => (
+            reports.map((recentReport) => (
             <Submission
                 requestPage={requestPage}
                 title={recentReport.title}
