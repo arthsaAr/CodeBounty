@@ -69,7 +69,14 @@ router.get("/bounty/:bountyId", authenticate, async (req: AuthenticatedRequest, 
         }
 
         const reports = await prisma.bugReport.findMany({
-            where: {bountyId}
+            where: {bountyId},
+            include: {
+                hunter: {
+                    select: {
+                        username: true
+                    }
+                }
+            }
         });
 
         res.json(reports);

@@ -54,6 +54,7 @@ const Submissions = ({ requestPage, clickedID, submitClicked }: SubmissionsProps
                 description={recentReport.description}
                 difficulty={recentReport.severity}
                 status={recentReport.status}
+                username={recentReport.hunter?.username}
                 />
             ))
         ) : (
