@@ -8,6 +8,8 @@ type SubmissionProps = {
   difficulty: string;
   status: string;
   username: string;
+  lineStart: number | null;
+  lineEnd: number | null;
 };
 
 const Submission = ({
@@ -16,7 +18,9 @@ const Submission = ({
   description,
   difficulty,
   status,
-  username
+  username,
+  lineStart,
+  lineEnd
 }: SubmissionProps) => {
   return (
     <div className='flex gap-2 mb-3 flex-row rounded-xl bg-[#151920] border border-gray-800 p-6 justify-start items-start cursor-pointer'>
@@ -33,7 +37,7 @@ const Submission = ({
               <h2 className='text-gray-500 font-normal text-md'>{description}</h2>
               <div className='flex flex-row gap-2 mt-2'>
                   <span className='px-3 py-1 text-xs font-medium rounded-full bg-red-500/10 text-red-400 border border-red-500/20'>{difficulty}</span>
-                  <span className='text-gray-500 font-normal text-md'>Lines 46-60</span>
+                  <span className='text-gray-500 font-normal text-md'>Lines {lineStart}-{lineEnd}</span>
                   <span className='text-gray-500 font-normal text-md'>By {username}</span>
               </div>
           </div>
