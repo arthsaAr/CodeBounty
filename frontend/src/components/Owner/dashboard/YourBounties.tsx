@@ -50,7 +50,7 @@ const YourBounties = ({ setActivePage, setBountyClicked, setclickedID }: YourBou
                 description={recentBounty.description}
                 difficulty={recentBounty.difficulty}
                 status={recentBounty.status}
-                reward={recentBounty.reward}
+                reward={recentBounty.amount}
                 submissions={3}
                 />
             ))
