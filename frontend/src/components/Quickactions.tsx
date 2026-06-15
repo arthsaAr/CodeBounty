@@ -37,6 +37,7 @@ const Quickactions = ({
             }
 
             <div 
+                onClick={() => setActivePage("reviewSubmissions")}
                 className='flex flex-col gap-1 items-center border border-gray-800 bg-[#151920] hover:border-emerald-700 rounded-lg p-8 '>
                 <FaRegFileCode color="green" size={55} />
                 <h2 className='text-2xl'>Review Submissions</h2>

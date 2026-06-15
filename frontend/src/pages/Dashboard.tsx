@@ -20,6 +20,7 @@ import Recentactivity from '../components/Owner/dashboard/RecentActivity';
 import CreateHeader from "../components/Owner/createBounty/CreateHeader";
 import SetupBounty from '../components/Owner/createBounty/SetupBounty';
 import BountyDetails from "../components/BountyDetails";
+import SubmissionReview from "../components/SubmissionReview";
 
 type dashboardProps = {
   role: string;
@@ -202,6 +203,12 @@ const Dashboard = ({
             <TopThreeCard />
             <Ranking />
             <SummaryCard />
+          </>
+        )}
+
+        {activePage === "reviewSubmissions" && (
+          <>
+            <SubmissionReview />
           </>
         )}
       </div>
