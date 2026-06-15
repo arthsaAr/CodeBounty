@@ -208,7 +208,7 @@ const Dashboard = ({
 
         {activePage === "reviewSubmissions" && (
           <>
-            <SubmissionReview />
+            <SubmissionReview setActivePage={setActivePage} />
           </>
         )}
       </div>
