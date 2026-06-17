@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ReviewerHeader from './subComponent/ReviewerHeader';
 import { CiFilter } from "react-icons/ci";
+import AllReports from './subComponent/AllReports';
 
 type reviewProps = {
   setActivePage: (page: string) => void;
@@ -74,8 +75,7 @@ const SubmissionReview = ( { setActivePage }: reviewProps ) => {
                 <h3>Rejected</h3>
             </div>
         </div>
-
-
+        <AllReports />
     </div>
   )
 }
