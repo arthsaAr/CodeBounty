@@ -2,7 +2,7 @@ CodeBounty - A GitHub Code Review Bounty Platform!
 
 // Under Active Development!
 
-Development paused for few months!
+_**Development paused for few months!**_
 
 ### LoginPage
 <img src="frontend/Screenshots/HomePage.png" width="1200" />
