@@ -3,6 +3,7 @@ CodeBounty - A GitHub Code Review Bounty Platform!
 // Under Active Development!
 
 _**Development paused for few months!**_
+
 _**Starting back active development - August 30**_
 
 ### LoginPage
