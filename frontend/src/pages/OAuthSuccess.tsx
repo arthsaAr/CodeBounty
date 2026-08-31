@@ -14,7 +14,6 @@ export default function OAuthSuccess() {
       localStorage.setItem("token", token);
 
       // For now just send to owner dashboard
-
       //only to owner dashboard(for hunter)
       if(role === "hunter"){
         navigate("/dashboard-hunter");
