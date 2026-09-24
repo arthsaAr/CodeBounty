@@ -22,7 +22,7 @@ export default function OAuthSuccess() {
       }else if(role === "both"){
         navigate("/dashboard-common");
       }else{
-        // alert("Must select a role!");
+        //alert("Must select a role!");
         return;
       }
     } else {
