@@ -45,7 +45,7 @@ export default function ProtectedRoute({ children, allowedRole }: Props) {
 
             setIsValid(valid);
 
-            setIsValid(valid);
+            // setIsValid(valid);
 
             setTimeout(() => {
                 setLoading(false);
