@@ -221,7 +221,7 @@ const SetupBounty = () => {
                 
                 <h1 className=' mt-2 text-xl font-semibold font-sans'>Bounty Details</h1>
 
-                <BountyForm formData={formData} setFormData={setFormData} />
+                <BountyForm formData={formData} setFormData={setFormData}  repoId={selectedRepoId} />
                 
                 <div className='flex flex-row gap-3 mt-3'>
                     <div
