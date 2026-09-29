@@ -1,16 +1,25 @@
 import React from 'react'
+import FilePathSelect from './FilePathSelect'
 
 //complete this form completely(with added backend routes)
 type formProps = {
   formData: any;
   setFormData: React.Dispatch<React.SetStateAction<any>>;
+  repoId: number | null;
 };
 
-const Bountyform = ({ formData, setFormData }: formProps) => {
+const Bountyform = ({ formData, setFormData, repoId }: formProps) => {
   return (
     <div className='mt-2'>
       
-        <div className="flex flex-col gap-1 mt-2">
+        <FilePathSelect
+          repoId={repoId}
+          value={formData.filePath}
+          onChange={(path) =>
+            setFormData((prev: any) => ({ ...prev, filePath: path }))
+          }
+        />
+        {/* <div className="flex flex-col gap-1 mt-2">
           <label className="text-sm text-gray-400">File path<span className='text-red-600'> *</span></label>
           <input 
             type="text"
@@ -24,7 +33,7 @@ const Bountyform = ({ formData, setFormData }: formProps) => {
             }
             className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
           />
-        </div>
+        </div> */}
 
         <div className="flex flex-col gap-1 mt-2">
           <label className="text-sm text-gray-400">Bounty Title<span className='text-red-600'> *</span></label>
