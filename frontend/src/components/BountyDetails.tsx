@@ -115,7 +115,7 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
         <div className="flex flex-row w-full gap-3 items-start">
   
         <div className="w-1/2 flex flex-col gap-3">
-          <Codebox submitClicked={submitClicked} setSubmitClicked={setSubmitClicked} />
+          <Codebox bountyId={bounty?.id} submitClicked={submitClicked} setSubmitClicked={setSubmitClicked} />
           {
             submitClicked && (
               <SubmissionForm selectedID={selectedID} setSubmitClicked={setSubmitClicked} setSubmitCounter={setSubmitCounter} />
