@@ -7,7 +7,7 @@ type Props = {
   onChange: (path: string) => void;
 };
 
-const MAX_VISIBLE = 100;
+const MAX_VISIBLE = 100; //total number of files names to show in dropdown
 
 const FilePathSelect = ({ repoId, value, onChange }: Props) => {
   const [files, setFiles] = useState<string[]>([]);
@@ -20,10 +20,10 @@ const FilePathSelect = ({ repoId, value, onChange }: Props) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setFiles([]);
+    setFiles([]);     //setting initial state for files
     setError(null);
-    if (!repoId) return; // no repo selected -> nothing to fetch
-    let cancelled = false;
+    if (!repoId) return; // making sure a repo is selected for fetching files from it
+    let cancelled = false;  //toggle, initial setter
 
     const load = async () => {
       try {
@@ -34,9 +34,9 @@ const FilePathSelect = ({ repoId, value, onChange }: Props) => {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (cancelled) return;
-        console.log("files response:", res.data); // remove once it works
-        setFiles(res.data.files ?? []);
-        setTruncated(!!res.data.truncated);
+        
+        setFiles(res.data.files ?? []);   //if we have data then setting it to the files state!
+        setTruncated(!!res.data.truncated);   //if the data is truncated then setting it to the truncated state!(truncated means cuttoff somewhere.)
       } catch (err: any) {
         if (cancelled) return;
         setError(err.response?.data?.message || "Failed to load files");
@@ -49,6 +49,7 @@ const FilePathSelect = ({ repoId, value, onChange }: Props) => {
     return () => { cancelled = true; };
   }, [repoId]);
 
+  // Close the dropdown when clicking outside of it
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
@@ -59,6 +60,7 @@ const FilePathSelect = ({ repoId, value, onChange }: Props) => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  // Filter files based on the query and limit the number of visible files
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return q ? files.filter((f) => f.toLowerCase().includes(q)) : files;
@@ -72,6 +74,8 @@ const FilePathSelect = ({ repoId, value, onChange }: Props) => {
     setOpen(false);
   };
 
+
+  // Handle keyboard navigation and selection
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -88,6 +92,8 @@ const FilePathSelect = ({ repoId, value, onChange }: Props) => {
     }
   };
 
+
+  // Determine the appropriate message to display when there are no files to show
   const emptyMessage = !repoId
     ? "No repository selected. Go back and pick one."
     : files.length === 0
@@ -106,6 +112,8 @@ const FilePathSelect = ({ repoId, value, onChange }: Props) => {
           disabled={loading || !!error}
           placeholder={loading ? "Loading files..." : "Search and select a file (e.g. src/App.tsx)"}
           value={open ? query : value}
+
+          // When the input is focused, open the dropdown and reset the query and highlight
           onFocus={() => { setOpen(true); setQuery(""); setHighlight(0); }}
           onChange={(e) => { setQuery(e.target.value); setOpen(true); setHighlight(0); }}
           onKeyDown={handleKeyDown}
