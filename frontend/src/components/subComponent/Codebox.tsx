@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { FaFileCode } from "react-icons/fa";
 import { FaRegPaperPlane } from "react-icons/fa";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 type codeboxProps = {
   bountyId?: number | null;
@@ -9,6 +11,37 @@ type codeboxProps = {
   submitClicked?: boolean;
   setSubmitClicked?: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+//figuring out the language from the file extension, so the colours match the file type
+const getLanguage = (path?: string) => {
+  const ext = path?.split(".").pop()?.toLowerCase() || "";
+
+  const languages: Record<string, string> = {
+    ts: "typescript",
+    tsx: "tsx",
+    js: "javascript",
+    jsx: "jsx",
+    java: "java",
+    py: "python",
+    c: "c",
+    cpp: "cpp",
+    cs: "csharp",
+    go: "go",
+    rs: "rust",
+    php: "php",
+    rb: "ruby",
+    html: "markup",
+    css: "css",
+    json: "json",
+    md: "markdown",
+    sql: "sql",
+    sh: "bash",
+    yml: "yaml",
+    yaml: "yaml",
+  };
+
+  return languages[ext] || "text";
+};
 
 const Codebox = ({ bountyId, filePath, submitClicked, setSubmitClicked }: codeboxProps) => {
   const [code, setCode] = useState("");
@@ -41,7 +74,7 @@ const Codebox = ({ bountyId, filePath, submitClicked, setSubmitClicked }: codebo
     fetchContent();
   }, [bountyId]);
 
-  const eachLines = code.split("\n");
+  // const eachLines = code.split("\n");
 
   return (
     <div className="w-full h-full rounded-xl border border-[#1f2937] bg-[#0d1117] overflow-hidden">
@@ -71,25 +104,16 @@ const Codebox = ({ bountyId, filePath, submitClicked, setSubmitClicked }: codebo
       ) : error ? (
         <p className="p-6 text-sm text-red-400">{error}</p>
       ) : (
-        <div className="overflow-auto max-h-[70vh] p-4 font-mono text-sm">
-          {eachLines.map((line, index) => (
-            <div
-              key={index}
-              className="flex gap-4 hover:bg-white/5 px-2 rounded-md"
-            >
-
-              {/* increasing line number */}
-              <span className="w-8 text-right text-gray-500 select-none">
-                {index + 1}
-              </span>
-
-              {/* main code */}
-              <span className="text-gray-300 whitespace-pre">
-                {line || " "}
-              </span>
-
-            </div>
-          ))}
+        <div className="overflow-auto max-h-[70vh] font-mono text-sm">
+          <SyntaxHighlighter
+            language={getLanguage(filePath)}
+            style={vscDarkPlus}
+            showLineNumbers
+            customStyle={{ margin: 0, padding: "1rem", background: "transparent", fontSize: "0.875rem" }}
+            lineNumberStyle={{ color: "#6b7280", minWidth: "2.5em" }}
+          >
+            {code}
+          </SyntaxHighlighter>
         </div>
       )}
     </div>
