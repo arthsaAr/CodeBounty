@@ -106,11 +106,11 @@ const Codebox = ({ bountyId, filePath, submitClicked, setSubmitClicked }: codebo
       ) : (
         <div className="overflow-auto max-h-[70vh] font-mono text-sm">
           <SyntaxHighlighter
-            language={getLanguage(filePath)}
-            style={vscDarkPlus}
-            showLineNumbers
-            customStyle={{ margin: 0, padding: "1rem", background: "transparent", fontSize: "0.875rem" }}
-            lineNumberStyle={{ color: "#6b7280", minWidth: "2.5em" }}
+            language={getLanguage(filePath)}      //saying which language to use
+            style={vscDarkPlus}                   //the color theme selected!
+            showLineNumbers             //showing line numbers on the left        
+            customStyle={{ margin: 0, padding: "1rem", background: "transparent", fontSize: "0.875rem" }}   //custom styling for the code box
+            lineNumberStyle={{ color: "#6b7280", minWidth: "2.5em" }}                 //custom styling for the line numbers
           >
             {code}
           </SyntaxHighlighter>
