@@ -121,11 +121,11 @@ router.get("/", authenticate, async (req: AuthenticatedRequest, res) => {
     }
 });
 
-//folders and file types we don't want showing up in the file dropdown
+//folders and file types to exclude from the dropdown
 const IGNORED_DIRS = ["node_modules/", ".git/", "dist/", "build/", ".next/", "coverage/", "vendor/"];
 const IGNORED_EXT = /\.(png|jpe?g|gif|svg|ico|webp|pdf|zip|lock|woff2?|ttf|mp4|mp3)$/i;
 
-//getting all the file paths of a repository (for the file path dropdown while creating a bounty)
+//getting all the file paths of a repository
 router.get("/:id/files", authenticate, async (req: AuthenticatedRequest, res) => {
     try {
         const user = req.user;

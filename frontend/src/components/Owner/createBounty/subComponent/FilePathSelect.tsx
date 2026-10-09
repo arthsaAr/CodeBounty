@@ -92,7 +92,6 @@ const FilePathSelect = ({ repoId, value, onChange }: Props) => {
     }
   };
 
-
   // Determine the appropriate message to display when there are no files to show
   const emptyMessage = !repoId
     ? "No repository selected. Go back and pick one."
