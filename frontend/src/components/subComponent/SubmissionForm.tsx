@@ -5,9 +5,10 @@ type formProps = {
   setSubmitClicked: React.Dispatch<React.SetStateAction<boolean>>;
   setSubmitCounter: React.Dispatch<React.SetStateAction<number>>;
   selectedID?: number | null;
+  totalLines?: number;
 }
 
-const SubmissionForm = ({ setSubmitClicked, setSubmitCounter, selectedID }: formProps) => {
+const SubmissionForm = ({ setSubmitClicked, setSubmitCounter, selectedID, totalLines }: formProps) => {
     const [formData, setFormData] = useState({
             title: "",
             description: "",
@@ -41,6 +42,10 @@ const SubmissionForm = ({ setSubmitClicked, setSubmitCounter, selectedID }: form
               return;
             }
             
+            if (totalLines && (linestart > totalLines || lineend > totalLines)) {
+              alert(`This file only has ${totalLines} lines. Please enter line numbers between 1 and ${totalLines}.`);
+              return;
+            }
 
             if (selectedID == null) {
               alert(`No bounty selected. Please select a bounty before submitting. ID: ${selectedID}`);
@@ -112,6 +117,7 @@ const SubmissionForm = ({ setSubmitClicked, setSubmitCounter, selectedID }: form
             <label className="text-md text-gray-400">Line Start<span className='text-red-600'> *</span></label>
             <input
               type="number"
+              min={1}
               className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
               onChange={(e) =>
                 setFormData((prev: any) => ({
@@ -125,6 +131,7 @@ const SubmissionForm = ({ setSubmitClicked, setSubmitCounter, selectedID }: form
             <label className="text-md text-gray-400">Line End<span className='text-red-600'> *</span></label>
             <input
               type="number"
+              max={totalLines}
               className="bg-[#0f131a] border border-gray-800 focus:border-emerald-500 outline-none rounded-lg px-3 py-2 text-white placeholder-gray-500"
               onChange={(e) =>
                 setFormData((prev: any) => ({

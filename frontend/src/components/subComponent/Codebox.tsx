@@ -10,6 +10,7 @@ type codeboxProps = {
   filePath?: string;
   submitClicked?: boolean;
   setSubmitClicked?: React.Dispatch<React.SetStateAction<boolean>>;
+  setTotalLines?: React.Dispatch<React.SetStateAction<number>>;
 }
 
 //figuring out the language from the file extension, so the colours match the file type
@@ -43,7 +44,7 @@ const getLanguage = (path?: string) => {
   return languages[ext] || "text";
 };
 
-const Codebox = ({ bountyId, filePath, submitClicked, setSubmitClicked }: codeboxProps) => {
+const Codebox = ({ bountyId, filePath, submitClicked, setSubmitClicked, setTotalLines }: codeboxProps) => {
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -64,6 +65,7 @@ const Codebox = ({ bountyId, filePath, submitClicked, setSubmitClicked }: codebo
         });
 
         setCode(res.data.content);
+        setTotalLines?.(res.data.content.replace(/\n$/, "").split("\n").length); // Set total lines in parent component
       } catch (err: any) {
         setError(err.response?.data?.message || "Failed to load file content");
       } finally {

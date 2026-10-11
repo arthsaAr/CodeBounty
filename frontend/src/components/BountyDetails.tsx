@@ -19,6 +19,7 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
   const [loading, setLoading] = useState(true);
   const [submitClicked, setSubmitClicked] = useState(false);
   const [submitCounter, setSubmitCounter] = useState(0);
+  const [totalLines, setTotalLines] = useState(0);
 
   useEffect(() => {
     if (selectedID == null) {
