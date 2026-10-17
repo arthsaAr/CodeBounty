@@ -102,7 +102,7 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
 
               <div className="flex flex-row items-center gap-1">
                 <FiUser size={24} className="text-gray-400" />
-                <h3 className="text-lg text-gray-400">{bounty?.author?.username}</h3>
+                <h3 className="text-lg text-gray-400">{bounty?.creator?.username}</h3>
               </div>
 
                 <div className="flex flex-row items-center gap-1">
