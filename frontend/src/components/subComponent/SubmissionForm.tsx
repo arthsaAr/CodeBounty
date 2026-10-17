@@ -18,6 +18,7 @@ const SubmissionForm = ({ setSubmitClicked, setSubmitCounter, selectedID, totalL
         });
 
         const handleSubmit = async () => {
+          console.log("totalLines:", totalLines);
           try {
             const token = localStorage.getItem("token");
 

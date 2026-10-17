@@ -8,6 +8,7 @@ import Codebox from "./subComponent/Codebox";
 import { MdKeyboardBackspace } from "react-icons/md";
 import Submissions from "./subComponent/Submissions";
 import SubmissionForm from "./subComponent/SubmissionForm";
+import { FiUser } from 'react-icons/fi';
 
 type detailsProps = {
   setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
@@ -99,6 +100,11 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
                   {bounty?.status}
                 </span>
 
+              <div className="flex flex-row items-center gap-1">
+                <FiUser size={24} className="text-gray-400" />
+                <h3 className="text-lg text-gray-400">{bounty?.author?.username}</h3>
+              </div>
+
                 <div className="flex flex-row items-center gap-1">
                   <CiCalendar size={24}/>
                   <h3 className="text-lg text-gray-400">{new Date(bounty?.createdAt).toLocaleDateString()}</h3>
@@ -116,10 +122,10 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
         <div className="flex flex-row w-full gap-3 items-start">
   
         <div className="w-1/2 flex flex-col gap-3">
-          <Codebox bountyId={selectedID} filePath={bounty?.filePath} submitClicked={submitClicked} setSubmitClicked={setSubmitClicked} />
+          <Codebox bountyId={selectedID} filePath={bounty?.filePath} submitClicked={submitClicked} setSubmitClicked={setSubmitClicked} setTotalLines={setTotalLines} />
           {
             submitClicked && (
-              <SubmissionForm selectedID={selectedID} setSubmitClicked={setSubmitClicked} setSubmitCounter={setSubmitCounter} />
+              <SubmissionForm selectedID={selectedID} setSubmitClicked={setSubmitClicked} setSubmitCounter={setSubmitCounter} totalLines={totalLines} />
             )
           } 
           <Submissions clickedID={selectedID} submitClicked={submitCounter} />
