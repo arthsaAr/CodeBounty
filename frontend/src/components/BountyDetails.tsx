@@ -21,6 +21,7 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
   const [submitClicked, setSubmitClicked] = useState(false);
   const [submitCounter, setSubmitCounter] = useState(0);
   const [totalLines, setTotalLines] = useState(0);
+  const [submissionCount, setSubmissionCount] = useState(0);
 
   useEffect(() => {
     if (selectedID == null) {
@@ -128,12 +129,12 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
               <SubmissionForm selectedID={selectedID} setSubmitClicked={setSubmitClicked} setSubmitCounter={setSubmitCounter} totalLines={totalLines} />
             )
           } 
-          <Submissions clickedID={selectedID} submitClicked={submitCounter} />
+          <Submissions clickedID={selectedID} submitClicked={submitCounter} count={submissionCount} setCount={setSubmissionCount} />
         </div>
 
         <div className="w-1/2 flex flex-col gap-3">
           <RepositoryInfo repository={bounty?.repository?.name} file={bounty?.filePath} owner={bounty?.repository?.owner?.username} />
-          <BountyStats submissions={submitCounter} reward={bounty?.amount} status={bounty?.status} />
+          <BountyStats submissions={submissionCount} reward={bounty?.amount} status={bounty?.status} />
           <SubmissionTips />
         </div>
       </div>

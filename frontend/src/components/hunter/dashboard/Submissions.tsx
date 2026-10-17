@@ -5,16 +5,21 @@ type SubmissionsProps = {
     requestPage: string;
     clickedID?: number | null;
     submitClicked?: number;
+    setCount?: React.Dispatch<React.SetStateAction<number>>;
 }
 
 type Report = {
+    id: number;
     title: string;
     description: string;
     severity: string;
     status: string;
+    lineStart: number;
+    lineEnd: number;
+    hunter?: { username: string };
 };
 
-const Submissions = ({ requestPage, clickedID, submitClicked }: SubmissionsProps) => {
+const Submissions = ({ requestPage, clickedID, submitClicked, setCount }: SubmissionsProps) => {
     const [reports, setReports] = useState<Report[]>([]);
 
   useEffect(() => {
@@ -30,6 +35,8 @@ const Submissions = ({ requestPage, clickedID, submitClicked }: SubmissionsProps
   
           const data = await res.json();
           setReports(data);
+
+          setCount?.(Array.isArray(data) ? data.length : 0);   //this sends the real number of submissions/reports to the heading!
           } catch (err) {
           console.error("Failed to fetch bounties:", err);
           }
@@ -49,6 +56,7 @@ const Submissions = ({ requestPage, clickedID, submitClicked }: SubmissionsProps
         {reports.length > 0 ? (
             reports.map((recentReport) => (
             <Submission
+                key={recentReport.id}
                 requestPage={requestPage}
                 title={recentReport.title}
                 description={recentReport.description}
