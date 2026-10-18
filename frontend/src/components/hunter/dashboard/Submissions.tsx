@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import Submission from './subcomponent/Submission';
 
+const API_URL = "http://localhost:3000";
+
 type SubmissionsProps = {
     requestPage: string;
     clickedID?: number | null;
@@ -26,7 +28,7 @@ const Submissions = ({ requestPage, clickedID, submitClicked, setCount }: Submis
       const fetchBounties = async () => {
           try {
           const token = localStorage.getItem("token");
-          const res = await fetch(`http://localhost:3000/bugReports/bounty/${clickedID}`, {
+          const res = await fetch(`${API_URL}/bugReports/bounty/${clickedID}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`

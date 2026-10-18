@@ -5,6 +5,8 @@ type props = {
     clickedID?: number | null;
 }
 
+const API_URL = "http://localhost:3000";
+
 const Recentactivity = ({ clickedID }: props) => {
    const [activity, setActivity] = useState([]);
   
@@ -12,7 +14,7 @@ const Recentactivity = ({ clickedID }: props) => {
         const fetchBounties = async () => {
             try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:3000/bugReports/bounty/${clickedID}`, {
+            const res = await fetch(`${API_URL}/bugReports/bounty/${clickedID}`, {
                   method: "GET",
                   headers: {
                       "Authorization": `Bearer ${token}`

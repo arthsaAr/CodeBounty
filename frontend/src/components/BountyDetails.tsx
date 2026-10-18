@@ -10,6 +10,8 @@ import Submissions from "./subComponent/Submissions";
 import SubmissionForm from "./subComponent/SubmissionForm";
 import { FiUser } from 'react-icons/fi';
 
+const API_URL = "http://localhost:3000";
+
 type detailsProps = {
   setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
   selectedID?: number | null;
@@ -34,7 +36,7 @@ const BountyDetails = ({setBountyClicked, selectedID}: detailsProps) => {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.get(`http://localhost:3000/bounties/${selectedID}`, 
+        const res = await axios.get(`${API_URL}/bounties/${selectedID}`, 
           {
             headers: {
               Authorization: `Bearer ${token}`,

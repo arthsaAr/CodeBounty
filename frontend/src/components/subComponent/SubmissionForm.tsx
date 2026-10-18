@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 
+const API_URL = "http://localhost:3000";
+
 type formProps = {
   setSubmitClicked: React.Dispatch<React.SetStateAction<boolean>>;
   setSubmitCounter: React.Dispatch<React.SetStateAction<number>>;
@@ -54,7 +56,7 @@ const SubmissionForm = ({ setSubmitClicked, setSubmitCounter, selectedID, totalL
             }
 
             const res = await axios.post(
-              "http://localhost:3000/bugReports",
+              `${API_URL}/bugReports`,
               {
                   bountyId: selectedID,
                   title,

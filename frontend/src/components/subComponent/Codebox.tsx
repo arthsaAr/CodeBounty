@@ -5,6 +5,8 @@ import { FaRegPaperPlane } from "react-icons/fa";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
+const API_URL = "http://localhost:3000";
+
 type codeboxProps = {
   bountyId?: number | null;
   filePath?: string;
@@ -58,7 +60,7 @@ const Codebox = ({ bountyId, filePath, submitClicked, setSubmitClicked, setTotal
         setError(null);
         const token = localStorage.getItem("token");
 
-        const res = await axios.get(`http://localhost:3000/bounties/${bountyId}/content`, {
+        const res = await axios.get(`${API_URL}/bounties/${bountyId}/content`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -75,8 +77,6 @@ const Codebox = ({ bountyId, filePath, submitClicked, setSubmitClicked, setTotal
 
     fetchContent();
   }, [bountyId]);
-
-  // const eachLines = code.split("\n");
 
   return (
     <div className="w-full h-full rounded-xl border border-[#1f2937] bg-[#0d1117] overflow-hidden">

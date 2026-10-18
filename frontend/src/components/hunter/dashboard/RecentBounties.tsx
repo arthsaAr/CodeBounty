@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Recentbounty from './subcomponent/Recentbounty'
 
+const API_URL = "http://localhost:3000";
+
 type RecentBountiesProps = {
     setActivePage?: React.Dispatch<React.SetStateAction<string>>;
     setBountyClicked?: React.Dispatch<React.SetStateAction<number | null>>;
@@ -13,7 +15,7 @@ const RecentBounties = ({ setActivePage, setBountyClicked, setclickedID }: Recen
     useEffect(() => {
     const fetchBounties = async () => {
         try {
-        const res = await fetch("http://localhost:3000/bounties/");
+        const res = await fetch(`${API_URL}/bounties/`);
 
         const data = await res.json();
         setBounties(data);

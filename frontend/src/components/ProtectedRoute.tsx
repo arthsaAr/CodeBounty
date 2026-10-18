@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = "http://localhost:3000";
+
 interface Props {
     children: React.ReactNode;
     allowedRole: string;
@@ -28,7 +30,7 @@ export default function ProtectedRoute({ children, allowedRole }: Props) {
                 // return;
             } else {
                 try{
-                    await axios.get("http://localhost:3000/protected", {
+                    await axios.get(`${API_URL}/protected`, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },

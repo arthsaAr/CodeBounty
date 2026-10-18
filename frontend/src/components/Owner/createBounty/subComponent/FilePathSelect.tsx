@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 
+const API_URL = "http://localhost:3000";
+
 type Props = {
   repoId: number | null;
   value: string;
@@ -30,7 +32,7 @@ const FilePathSelect = ({ repoId, value, onChange }: Props) => {
         setLoading(true);
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:3000/repositories/${repoId}/files`,
+          `${API_URL}/repositories/${repoId}/files`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (cancelled) return;

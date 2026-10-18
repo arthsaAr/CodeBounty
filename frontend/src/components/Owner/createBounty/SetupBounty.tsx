@@ -7,6 +7,9 @@ import { MdKeyboardBackspace } from "react-icons/md";
 import axios from "axios";
 import { RiAddFill } from "react-icons/ri";
 
+
+const API_URL = "http://localhost:3000";
+
 const SetupBounty = () => {
     const [step, setStep] = useState(1);
     const [selectedRepoId, setSelectedRepoId] = useState<number | null>(null);
@@ -44,14 +47,14 @@ const SetupBounty = () => {
             }
 
             //activating the  repo first here! while creating a bounty itself!
-            await axios.patch(`http://localhost:3000/repositories/${selectedRepoId}/activate`, {}, {
+            await axios.patch(`${API_URL}/repositories/${selectedRepoId}/activate`, {}, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
 
             const res = await axios.post(
-                "http://localhost:3000/bounties",
+                `${API_URL}/bounties`,
                 {
                     repositoryId: selectedRepoId,
                     title,
@@ -96,7 +99,7 @@ const SetupBounty = () => {
             setError(null);
             const token = localStorage.getItem("token");
 
-            const res = await axios.get("http://localhost:3000/repositories", {
+            const res = await axios.get(`${API_URL}/repositories`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -119,7 +122,7 @@ const SetupBounty = () => {
             const token = localStorage.getItem("token");
             
             //calling import from backend
-            await axios.get("http://localhost:3000/repositories/import", {
+            await axios.get(`${API_URL}/repositories/import`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
