@@ -20,20 +20,6 @@ type BountyHeaderProps = {
   onBack?: () => void;
 };
 
-const DIFFICULTY_STYLES: Record<string, string> = {
-  easy: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
-  medium: "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20",
-  hard: "bg-red-500/10 text-red-400 border border-red-500/20",
-};
-const DEFAULT_DIFFICULTY_STYLE = "bg-gray-100 text-gray-800";
-
-const STATUS_STYLES: Record<string, string> = {
-  active: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
-  completed: "bg-gray-500/10 text-gray-400 border border-gray-500/20",
-  cancelled: "bg-red-500/10 text-red-400 border border-red-500/20",
-};
-const DEFAULT_STATUS_STYLE = STATUS_STYLES.active;
-
 const BountyHeader = ({ bounty, onBack }: BountyHeaderProps) => {
   return (
     <div className="flex flex-col md:flex-row justify-between px-8 md:px-16 py-6 gap-8">
@@ -52,19 +38,23 @@ const BountyHeader = ({ bounty, onBack }: BountyHeaderProps) => {
           <h3 className="text-lg text-gray-400">{bounty?.description}</h3>
 
           <div className="flex flex-col md:flex-row gap-2 md:items-center">
-            <span
-              className={`px-3 py-1 text-lg font-medium rounded-full ${
-                DIFFICULTY_STYLES[bounty?.difficulty ?? ""] ?? DEFAULT_DIFFICULTY_STYLE
-              }`}
-            >
+            <span className={`px-3 py-1 text-lg font-medium rounded-full 
+              ${bounty?.difficulty === "easy" ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : 
+                bounty?.difficulty === "medium" ? "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20" :
+                bounty?.difficulty === "hard" ? "bg-red-500/10 text-red-400 border border-red-500/20" : 
+                "bg-gray-100 text-gray-800"
+              }
+              `}>
               {bounty?.difficulty}
             </span>
 
-            <span
-              className={`text-lg font-semibold py-1 px-3 rounded-full ${
-                STATUS_STYLES[bounty?.status ?? ""] ?? DEFAULT_STATUS_STYLE
-              }`}
-            >
+            <span className={`text-lg font-semibold py-1 px-3 rounded-full
+              ${bounty?.status === "active" ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" :
+                bounty?.status === "completed" ? "bg-gray-500/10 text-gray-400 border border-gray-500/20" :
+                bounty?.status === "cancelled" ? "bg-red-500/10 text-red-400 border border-red-500/20" :
+                "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+              }
+              `}>
               {bounty?.status}
             </span>
 
