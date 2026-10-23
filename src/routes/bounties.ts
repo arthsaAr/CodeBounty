@@ -115,6 +115,19 @@ router.patch("/:id/status", authenticate, async(req: AuthenticatedRequest, res) 
     }
 });
 
+//adding a new /mine route!
+router.get("/mine", authenticate, async (req: AuthenticatedRequest, res) => {
+    try{
+        const bounties = await prisma.bounty.findMany({
+            where: {creatorId: req.user.id},
+            include: { repository: { include: { owner: true } }, creator: true },
+        });
+        res.json(bounties);
+    }catch(error){
+        res.status(500).json({message: "Failed to fetch your bounties"});
+    }
+});
+
 router.get("/:id", async (req, res) => {
   const bounty = await prisma.bounty.findUnique({
     where: { id: Number(req.params.id) },
