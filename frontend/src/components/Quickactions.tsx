@@ -17,7 +17,7 @@ const Quickactions = ({
     <div className='mt-3'>
         <h2 className='text-2xl font-semibold mb-4'>Quick Actions</h2>
         
-        <div className='flex flex-row gap-4'>
+        <div className='flex flex-row gap-4 cursor-pointer'>
             <div 
                 onClick={() => setActivePage("bounties")}
                 className='flex flex-col gap-1 items-center border border-gray-800 bg-[#151920] hover:border-emerald-700 rounded-lg p-8 '>
