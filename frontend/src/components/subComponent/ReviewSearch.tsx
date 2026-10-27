@@ -21,7 +21,7 @@ const ReviewSearch = ({ setActivePage }: reviewProps) => {
                     activeTab === 1 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
                 }
                 `}>
-                <h3>All</h3>
+                <h3>All <span className="text-xs text-gray-400">(0)</span></h3>
             </div>
             <div
                 onClick={() => {
@@ -33,7 +33,7 @@ const ReviewSearch = ({ setActivePage }: reviewProps) => {
                     activeTab === 2 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
                 }
                 `}>
-                <h3>Pending</h3>
+                <h3>Pending <span className="text-xs text-gray-400">(0)</span></h3>
             </div>
             <div 
                 onClick={() => {
@@ -45,7 +45,7 @@ const ReviewSearch = ({ setActivePage }: reviewProps) => {
                     activeTab === 3 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
                 }
                 `}>
-                <h3>Approved</h3>
+                <h3>Approved <span className="text-xs text-gray-400">(0)</span></h3>
             </div>
             <div 
                 onClick={() => {
@@ -57,7 +57,7 @@ const ReviewSearch = ({ setActivePage }: reviewProps) => {
                     activeTab === 4 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
                 }
                 `}>
-                <h3>Rejected</h3>
+                <h3>Rejected <span className="text-xs text-gray-400">(0)</span></h3>
             </div>
         </div>
   )
