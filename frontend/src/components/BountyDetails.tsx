@@ -6,7 +6,7 @@ import RepositoryInfo from "./subComponent/RepositoryInfo";
 import Codebox from "./subComponent/Codebox";
 import Submissions from "./subComponent/Submissions";
 import SubmissionForm from "./subComponent/SubmissionForm";
-import BountyHeader, { Bounty } from "./subComponent/BountyHeader";
+import BountyHeader, { type Bounty } from "./subComponent/BountyHeader";
 
 const API_URL = "http://localhost:3000";
 
