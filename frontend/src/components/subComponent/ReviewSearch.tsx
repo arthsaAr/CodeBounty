@@ -1,63 +1,64 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { CiFilter } from "react-icons/ci";
 
 type reviewProps = {
-  setActivePage: (page: string) => void;
+  statusFilter: "all" | "pending" | "approved" | "rejected";
+  setStatusFilter: React.Dispatch<React.SetStateAction<"all" | "pending" | "approved" | "rejected">>;
+  counts: { all: number; pending: number; approved: number; rejected: number };
 }
 
-const ReviewSearch = ({ setActivePage }: reviewProps) => {
-    const [activeTab, setActiveTab] = useState(1);
+const ReviewSearch = ({ statusFilter, setStatusFilter, counts }: reviewProps) => {
   return (
         <div className='flex flex-row gap-3 items-center justify-start'>
             <CiFilter className="text-gray-400" size={24} />
 
             <div 
                 onClick={() => {
-                setActiveTab(1);
+                setStatusFilter("all");
                 }}
                 className={`
                 rounded-lg cursor-pointer px-3 py-1 h-8 flex items-center text-sm
                 ${
-                    activeTab === 1 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
+                    statusFilter === "all" ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
                 }
                 `}>
-                <h3>All <span className="text-xs text-gray-400">(0)</span></h3>
+                <h3>All <span className="text-xs text-gray-400">({counts.all})</span></h3>
             </div>
             <div
                 onClick={() => {
-                setActiveTab(2);
+                setStatusFilter("pending");
                 }}
                 className={`
                 rounded-lg bg-[#111827] cursor-pointer px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600
                 ${
-                    activeTab === 2 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
+                    statusFilter === "pending" ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
                 }
                 `}>
-                <h3>Pending <span className="text-xs text-gray-400">(0)</span></h3>
+                <h3>Pending <span className="text-xs text-gray-400">({counts.pending})</span></h3>
             </div>
             <div 
                 onClick={() => {
-                setActiveTab(3);
+                setStatusFilter("approved");
                 }}
                 className={`
                 rounded-lg bg-[#111827] cursor-pointer px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600
                 ${
-                    activeTab === 3 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
+                    statusFilter === "approved" ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
                 }
                 `}>
-                <h3>Approved <span className="text-xs text-gray-400">(0)</span></h3>
+                <h3>Approved <span className="text-xs text-gray-400">({counts.approved})</span></h3>
             </div>
             <div 
                 onClick={() => {
-                setActiveTab(4);
+                setStatusFilter("rejected");
                 }}
                 className={`
                 rounded-lg bg-[#111827] cursor-pointer px-3 py-1 h-8 flex items-center text-sm text-gray-300 hover:bg-gray-600
                 ${
-                    activeTab === 4 ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
+                    statusFilter === "rejected" ? "bg-emerald-500 border-emerald-500 text-white" : "bg-[#111827] text-gray-300 hover:bg-emerald-500"
                 }
                 `}>
-                <h3>Rejected <span className="text-xs text-gray-400">(0)</span></h3>
+                <h3>Rejected <span className="text-xs text-gray-400">({counts.rejected})</span></h3>
             </div>
         </div>
   )

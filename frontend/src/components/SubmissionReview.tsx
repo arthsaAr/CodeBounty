@@ -8,7 +8,8 @@ type reviewProps = {
 }
 
 const SubmissionReview = ( { setActivePage }: reviewProps ) => {
-    const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(1);
+  const [statusFilter, setStatusFilter] = useState<"all" | "pending" | "approved" | "rejected">("all");
 
   return (
     <div>
@@ -22,7 +23,7 @@ const SubmissionReview = ( { setActivePage }: reviewProps ) => {
 
         <ReviewerHeader />
 
-        <ReviewSearch setActivePage={setActivePage} />
+        <ReviewSearch statusFilter={statusFilter} setStatusFilter={setStatusFilter} counts={counts} />
         <AllReports />
     </div>
   )
