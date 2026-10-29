@@ -23,7 +23,9 @@ export default function OAuthSuccess() {
         navigate("/dashboard-common");
       }else{
         //alert("Must select a role!");
-        return;
+        // return;
+        navigate("/login");   //redirecting to login page if role is not selected
+        //this prevents the infinite loop that stays in Logging you in forever!
       }
     } else {
       navigate("/login");
