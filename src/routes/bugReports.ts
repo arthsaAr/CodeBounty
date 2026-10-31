@@ -85,6 +85,31 @@ router.get("/bounty/:bountyId", authenticate, async (req: AuthenticatedRequest, 
     }
 });
 
+//getting aall the reports of the logged in owner's bounties (this is for submission review page   )
+router.get("/review", authenticate, async (req: AuthenticatedRequest, res) => {
+    try{
+        const user = req.user;
+ 
+        const reports = await prisma.bugReport.findMany({
+            where: {bounty: {creatorId: user.id}},
+            include: {
+                hunter: {
+                    select: {id: true, username: true}
+                },
+                bounty: {
+                    select: {id: true, title: true, amount: true, filePath: true}
+                }
+            },
+            orderBy: {createdAt: "desc"},
+        });
+ 
+        res.json(reports);
+    }catch(error){
+        console.error("Fetch review reports error:", error);
+        res.status(500).json({message: "Failed to fetch the reports"});
+    }
+});
+
 
 //approve or reject a report(from OWNER)
 router.patch("/:id/status", authenticate, async (req: AuthenticatedRequest, res)=> {
