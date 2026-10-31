@@ -11,6 +11,7 @@ const SubmissionReview = ( { setActivePage }: reviewProps ) => {
   const [activeTab, setActiveTab] = useState(1);
   const [statusFilter, setStatusFilter] = useState<"all" | "pending" | "approved" | "rejected">("all");
 
+  const counts = { all: 0, pending: 0, approved: 0, rejected: 0 };
   return (
     <div>
         <h1 className='text-md'>
